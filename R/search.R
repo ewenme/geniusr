@@ -7,10 +7,6 @@
 #' search_artist(search_term = "Kanye")
 #' @export
 
-
-token <- "SB277VYNUSE88uuv18caQEQY548vApvUe3bIUCE3e0Olqp3TJs21zlRng_OvC285"
-
-# search artist name for artist ID
 search_artist <- function(search_term, n_results=10) {
 
   # base URL
@@ -21,7 +17,7 @@ search_artist <- function(search_term, n_results=10) {
 
   # search for term
   req <- httr::GET(url = paste0(base_url, search_term, '&per_page=',
-                          n_results, '&access_token=', token))
+                          n_results, '&access_token=', genius_token()))
 
   # extract request content
   res <- httr::content(req)

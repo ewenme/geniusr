@@ -7,7 +7,6 @@
 #' @param force force setting a new Genius API token for the current environment?
 #' @return atomic character vector containing the Genius API token
 #' @export
-
 genius_token <- function(force = FALSE) {
 
   env <- Sys.getenv('GENIUS_API_TOKEN')

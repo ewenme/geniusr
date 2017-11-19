@@ -6,7 +6,6 @@
 #' @examples
 #' search_artist(search_term = "Kanye")
 #' @export
-
 search_artist <- function(search_term, n_results=10) {
 
   # base URL

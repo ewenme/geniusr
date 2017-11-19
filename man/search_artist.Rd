@@ -12,7 +12,8 @@ search_artist(search_term, n_results = 10)
 \item{n_results}{Number of results to return.}
 }
 \description{
-The Genius API lets you search hosted content (all songs). Use \code{search_artist} to return \code{artist_id} and \code{artist_name} for all matches to a search.
+The Genius API lets you search hosted content (all songs). Use \code{search_artist} to
+return \code{artist_id}, \code{artist_name} and \code{artist_url} for all matches to a search.
 }
 \examples{
 search_artist(search_term = "Kanye")

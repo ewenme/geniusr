@@ -2,3 +2,4 @@
 
 export(genius_token)
 export(search_artist)
+export(search_track)

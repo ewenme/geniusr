@@ -70,7 +70,7 @@ search_track <- function(search_term, n_results=10) {
   # drill down
   res <- res$response$hits
 
-  # extract artist info from returned results
+  # extract track and artist info from returned results
   track_info <- purrr::map_df(1:length(res), function(x) {
     trk <- res[[x]]$result
     tmp <- res[[x]]$result$primary_artist

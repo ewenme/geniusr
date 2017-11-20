@@ -50,7 +50,13 @@ get_lyrics <- function(lyrics_url) {
   # remove cue split col
   lyrics$cue_split <- NULL
 
+  # return non-cue lines
+  lyrics <- lyrics[lyrics$cues == FALSE, ]
+
+  # remove cue col
+  lyrics$cues <- NULL
+
   # Remove lines with things such as [Intro: person & so and so]
-  return(lyrics[lyrics$cues == FALSE, ])
+  return(lyrics)
 
 }

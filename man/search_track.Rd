@@ -13,8 +13,8 @@ search_track(search_term, n_results = 10)
 }
 \description{
 The Genius API lets you search hosted content (all songs). Use \code{search_track} to
-return \code{track_id}, \code{track_name}, \code{track_url},
-\code{artist_id}, \code{artist_name} and \code{artist_url} for all matches to a search.
+return \code{track_id}, \code{track_name}, \code{lyrics_url} and
+\code{artist_id} for all matches to a search.
 }
 \examples{
 search_track(search_term = "Ferrari")

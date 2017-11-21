@@ -7,7 +7,7 @@
 get_lyrics(lyrics_url)
 }
 \arguments{
-\item{lyrics_url}{lyric page URL (like in \code{lyrics_url} returned by \code{\link{search_track}})}
+\item{lyrics_url}{lyric page URL (like in \code{lyrics_url} returned by \code{\link{search_song}})}
 }
 \description{
 Get lyrics from Genius' lyric pages.

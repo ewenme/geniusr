@@ -2,7 +2,7 @@
 % Please edit documentation in R/search.R
 \name{search_artist}
 \alias{search_artist}
-\title{Retrieve artist info for a search term}
+\title{Retrieve artist identifiers for a search term}
 \usage{
 search_artist(search_term, n_results = 10)
 }

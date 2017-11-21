@@ -3,4 +3,5 @@
 export(genius_token)
 export(get_lyrics)
 export(search_artist)
-export(search_track)
+export(search_song)
+export(song_meta)

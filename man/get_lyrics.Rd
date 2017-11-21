@@ -13,5 +13,5 @@ get_lyrics(lyrics_url)
 Get lyrics from Genius' lyric pages.
 }
 \examples{
-get_lyrics(lyrics_url = "/Waka-flocka-flame-rooster-in-my-rari-lyrics")
+get_lyrics(lyrics_url = "/Mike-will-made-it-california-rari-lyrics")
 }

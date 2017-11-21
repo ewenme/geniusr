@@ -21,7 +21,7 @@ song_meta <- function(song_id) {
   res <- res$response
 
   # extract track info from returned results
-  track_info <- purrr::map_df(1:length(res), function(x) {
+  song_info <- purrr::map_df(1:length(res), function(x) {
     trk <- res[[x]]
     alb <- res[[x]]$album
     art <- res[[x]]$primary_artist
@@ -40,7 +40,7 @@ song_meta <- function(song_id) {
   })
 
   # isolate unique pairs
-  return(unique(track_info))
+  return(unique(song_info))
 
 }
 
@@ -81,7 +81,7 @@ artist_meta <- function(artist_id) {
   })
 
   # isolate unique pairs
-  return(unique(track_info))
+  return(unique(artist_info))
 
 }
 
@@ -122,5 +122,8 @@ album_meta <- function(album_id) {
       artist_id = art$id
     )
   })
+
+  # isolate unique pairs
+  return(unique(album_info))
 
 }

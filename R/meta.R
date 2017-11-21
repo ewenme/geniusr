@@ -43,3 +43,12 @@ song_meta <- function(song_id) {
   return(unique(track_info))
 
 }
+
+album_meta <- function(album_id) {
+
+  # base URL
+  base_url <- "api.genius.com/albums/"
+
+}
+
+

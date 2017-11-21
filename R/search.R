@@ -77,7 +77,7 @@ search_song <- function(search_term, n_results=10) {
     list(
       song_id = trk$id,
       song_name = trk$title_with_featured,
-      lyrics_url = trk$path,
+      song_url = trk$url,
       artist_id = tmp$id
     )
   })

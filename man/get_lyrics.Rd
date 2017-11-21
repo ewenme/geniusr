@@ -4,14 +4,14 @@
 \alias{get_lyrics}
 \title{Retrieve lyrics from a Genius lyrics URL}
 \usage{
-get_lyrics(lyrics_url)
+get_lyrics(song_url)
 }
 \arguments{
-\item{lyrics_url}{lyric page URL (like in \code{lyrics_url} returned by \code{\link{search_song}})}
+\item{song_url}{song lyric page URL (like in \code{song_url} returned by \code{\link{search_song}})}
 }
 \description{
 Get lyrics from Genius' lyric pages.
 }
 \examples{
-get_lyrics(lyrics_url = "/Mike-will-made-it-california-rari-lyrics")
+get_lyrics(song_url = "https://genius.com/Mike-will-made-it-california-rari-lyrics")
 }

@@ -1,14 +1,14 @@
 #' Retrieve lyrics from a Genius lyrics URL
 #'
 #' Get lyrics from Genius' lyric pages.
-#' @param lyrics_url lyric page URL (like in \code{lyrics_url} returned by \code{\link{search_song}})
+#' @param song_url song lyric page URL (like in \code{song_url} returned by \code{\link{search_song}})
 #' @examples
-#' get_lyrics(lyrics_url = "/Mike-will-made-it-california-rari-lyrics")
+#' get_lyrics(song_url = "https://genius.com/Mike-will-made-it-california-rari-lyrics")
 #' @export
-get_lyrics <- function(lyrics_url) {
+get_lyrics <- function(song_url) {
 
   # start session
-  session <- rvest::html_session(paste0("https://genius.com", lyrics_url))
+  session <- rvest::html_session(song_url)
 
   # read lyrics
   lyrics <- gsub(pattern = "<.*?>",

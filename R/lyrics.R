@@ -1,7 +1,7 @@
 #' Retrieve lyrics from a Genius lyrics URL
 #'
 #' Get lyrics from Genius' lyric pages.
-#' @param lyrics_url lyric page URL (like in \code{lyrics_url} returned by \code{\link{search_track}})
+#' @param lyrics_url lyric page URL (like in \code{lyrics_url} returned by \code{\link{search_song}})
 #' @examples
 #' get_lyrics(lyrics_url = "/Mike-will-made-it-california-rari-lyrics")
 #' @export

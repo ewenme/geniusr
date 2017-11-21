@@ -42,17 +42,17 @@ search_artist <- function(search_term, n_results=10) {
 
 
 
-#' Retrieve track info for a search term
+#' Retrieve song info for a search term
 #'
-#' The Genius API lets you search hosted content (all songs). Use \code{search_track} to
-#' return \code{track_id}, \code{track_name}, \code{lyrics_url} and
+#' The Genius API lets you search hosted content (all songs). Use \code{search_song} to
+#' return \code{song_id}, \code{song_name}, \code{lyrics_url} and
 #' \code{artist_id} for all matches to a search.
 #' @param search_term A character string to search for track matches.
 #' @param n_results Number of results to return.
 #' @examples
-#' search_track(search_term = "Ferrari")
+#' search_song(search_term = "Ferrari")
 #' @export
-search_track <- function(search_term, n_results=10) {
+search_song <- function(search_term, n_results=10) {
 
   # base URL
   base_url <- "api.genius.com/search?q="
@@ -70,19 +70,19 @@ search_track <- function(search_term, n_results=10) {
   # drill down
   res <- res$response$hits
 
-  # extract track and artist info from returned results
-  track_info <- purrr::map_df(1:length(res), function(x) {
+  # extract song and artist info from returned results
+  song_info <- purrr::map_df(1:length(res), function(x) {
     trk <- res[[x]]$result
     tmp <- res[[x]]$result$primary_artist
     list(
-      track_id = trk$id,
-      track_name = trk$title_with_featured,
+      song_id = trk$id,
+      song_name = trk$title_with_featured,
       lyrics_url = trk$path,
       artist_id = tmp$id
     )
   })
 
   # isolate unique pairs
-  return(unique(track_info))
+  return(unique(song_info))
 
 }

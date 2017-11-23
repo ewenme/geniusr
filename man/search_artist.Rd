@@ -4,17 +4,19 @@
 \alias{search_artist}
 \title{Retrieve artist identifiers for associated search terms}
 \usage{
-search_artist(search_term, access_token = genius_token())
+search_artist(search_term, n_results = 10, access_token = genius_token())
 }
 \arguments{
 \item{search_term}{A character string to search for artist matches.}
+
+\item{n_results}{Maximum no. of search results to return}
 
 \item{access_token}{Genius' client access token. Defaults to \code{genius_token()}}
 }
 \description{
 The Genius API lets you search hosted content (all songs). Use \code{search_artist} to
-return \code{artist_id}, \code{artist_name} and \code{artist_url} for all matches to a search.
+return \code{artist_id}, \code{artist_name} and \code{artist_url} for all unique artist matches to a search.
 }
 \examples{
-search_artist(search_term = "Gucci")
+search_artist(search_term = "Lil")
 }

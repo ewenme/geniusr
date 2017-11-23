@@ -1,4 +1,4 @@
-#' Retrieve artist identifiers for a search term
+#' Retrieve artist identifiers for associated search terms
 #'
 #' The Genius API lets you search hosted content (all songs). Use \code{search_artist} to
 #' return \code{artist_id}, \code{artist_name} and \code{artist_url} for all matches to a search.
@@ -41,7 +41,7 @@ search_artist <- function(search_term, n_results=10) {
 }
 
 
-#' Retrieve song identifiers for a search term
+#' Retrieve song identifiers for associated search terms
 #'
 #' The Genius API lets you search hosted content (all songs). Use \code{search_song} to
 #' return \code{song_id}, \code{song_name}, \code{lyrics_url} and

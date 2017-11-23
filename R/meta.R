@@ -5,7 +5,7 @@
 #' @examples
 #' song_meta(song_id = 2290596)
 #' @export
-song_meta <- function(song_id) {
+get_song_meta <- function(song_id) {
 
   # base URL
   base_url <- "api.genius.com/songs/"
@@ -52,7 +52,7 @@ song_meta <- function(song_id) {
 #' @examples
 #' artist_meta(artist_id = 129372)
 #' @export
-artist_meta <- function(artist_id) {
+get_artist_meta <- function(artist_id) {
 
   # base URL
   base_url <- "api.genius.com/artists/"
@@ -93,7 +93,7 @@ artist_meta <- function(artist_id) {
 #' @examples
 #' album_meta(album_id = 129372)
 #' @export
-album_meta <- function(album_id) {
+get_album_meta <- function(album_id) {
 
   # base URL
   base_url <- "api.genius.com/albums/"

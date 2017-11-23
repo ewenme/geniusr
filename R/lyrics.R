@@ -1,4 +1,4 @@
-#' Retrieve lyrics from a Genius lyrics URL
+#' Retrieve lyrics assoicated with a Genius song ID
 #'
 #' Get lyrics from Genius' lyric pages.
 #' @param song_id song ID (like in \code{song_id} returned by \code{\link{search_song}})

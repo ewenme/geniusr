@@ -2,14 +2,14 @@
 % Please edit documentation in R/search.R
 \name{search_song}
 \alias{search_song}
-\title{Retrieve song identifiers for a search term}
+\title{Retrieve song identifiers for associated search terms}
 \usage{
-search_song(search_term, n_results = 10)
+search_song(search_term, n_results = 20, access_token = genius_token())
 }
 \arguments{
-\item{search_term}{A character string to search for song matches.}
+\item{search_term}{A character string to search for song matches}
 
-\item{n_results}{Number of results to return.}
+\item{n_results}{Maximum no. results to return}
 }
 \description{
 The Genius API lets you search hosted content (all songs). Use \code{search_song} to
@@ -17,5 +17,5 @@ return \code{song_id}, \code{song_name}, \code{lyrics_url} and
 \code{artist_id} for all matches to a search.
 }
 \examples{
-search_song(search_term = "Ferrari")
+search_song(search_term = "Gucci", n_results=50)
 }

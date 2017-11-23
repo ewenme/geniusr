@@ -2,16 +2,16 @@
 % Please edit documentation in R/lyrics.R
 \name{get_lyrics}
 \alias{get_lyrics}
-\title{Retrieve lyrics from a Genius lyrics URL}
+\title{Retrieve lyrics assoicated with a Genius song ID}
 \usage{
-get_lyrics(song_url)
+get_lyrics(song_id)
 }
 \arguments{
-\item{song_url}{song lyric page URL (like in \code{song_url} returned by \code{\link{search_song}})}
+\item{song_id}{song ID (like in \code{song_id} returned by \code{\link{search_song}})}
 }
 \description{
 Get lyrics from Genius' lyric pages.
 }
 \examples{
-get_lyrics(song_url = "https://genius.com/Mike-will-made-it-california-rari-lyrics")
+get_lyrics(song_id = 3214267)
 }

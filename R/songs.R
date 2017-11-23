@@ -12,9 +12,6 @@ get_artist_songs <- function(artist_id) {
   req <- httr::GET(url = paste0(base_url, artist_id, "/songs", '?per_page=', 50, '&page=', i),
                    httr::add_headers(Authorization=paste0("Bearer ", genius_token())))
 
-    # req <- httr::GET(url = paste0(base_url, artist_id, "/songs", '?per_page=', 50, '&page=', 1),
-    #                  httr::add_headers(Authorization=paste0("Bearer ", genius_token())))
-
   # extract request content
   res <- httr::content(req)
 

@@ -3,11 +3,11 @@
 #' The Genius API lets you search hosted content (all songs). Use \code{search_artist} to
 #' return \code{artist_id}, \code{artist_name} and \code{artist_url} for all matches to a search.
 #' @param search_term A character string to search for artist matches.
-#' @param n_results Number of results to return.
+#' @param access_token Genius' client access token. Defaults to \code{genius_token()}
 #' @examples
-#' search_artist(search_term = "Kanye")
+#' search_artist(search_term = "Gucci")
 #' @export
-search_artist <- function(search_term, n_results=10) {
+search_artist <- function(search_term, access_token=genius_token()) {
 
   # base URL
   base_url <- "api.genius.com/search?q="
@@ -16,8 +16,7 @@ search_artist <- function(search_term, n_results=10) {
   search_term <- gsub(" ", "%20", search_term)
 
   # search for term
-  req <- httr::GET(url = paste0(base_url, search_term, '&per_page=',
-                          n_results, '&access_token=', genius_token()))
+  req <- httr::GET(url = paste0(base_url, search_term, '&access_token=', access_token))
 
   # extract request content
   res <- httr::content(req)
@@ -46,12 +45,12 @@ search_artist <- function(search_term, n_results=10) {
 #' The Genius API lets you search hosted content (all songs). Use \code{search_song} to
 #' return \code{song_id}, \code{song_name}, \code{lyrics_url} and
 #' \code{artist_id} for all matches to a search.
-#' @param search_term A character string to search for song matches.
-#' @param n_results Number of results to return.
+#' @param search_term A character string to search for song matches
+#' @param n_results Maximum no. results to return
 #' @examples
-#' search_song(search_term = "Gucci")
+#' search_song(search_term = "Gucci", n_results=50)
 #' @export
-search_song <- function(search_term, n_results=10) {
+search_song <- function(search_term, n_results=20, access_token=genius_token()) {
 
   # base URL
   base_url <- "api.genius.com/search?q="
@@ -59,12 +58,31 @@ search_song <- function(search_term, n_results=10) {
   # replace spaces with %20
   search_term <- gsub(" ", "%20", search_term)
 
-  # search for term
-  req <- httr::GET(url = paste0(base_url, search_term, '&per_page=',
-                                n_results, '&access_token=', genius_token()))
+  # initiate empty list
+  song_results <- list()
+
+  # set max pages to loop through
+  n_pages <- n_results / 10
+
+  # initiate page counter
+  i <- 1
+
+  # while loop for retrieving results
+  while (i > 0 & i <= n_pages) {
+
+  # search for artists related to search term
+  req <- httr::GET(url = paste0(base_url, search_term, '&per_page=', 10, '&page=', i,
+                                '&access_token=', access_token))
 
   # extract request content
   res <- httr::content(req)
+
+  # check if there are any results
+  if (length(res$response$hits) > 0) {
+    i <- i + 1
+  } else {
+    break
+  }
 
   # drill down
   res <- res$response$hits
@@ -81,7 +99,15 @@ search_song <- function(search_term, n_results=10) {
     )
   })
 
+  # add results to list item
+  song_results[[i]] <- song_info
+
+  }
+
+  # bind rows of results
+  song_results <- bind_rows(song_results)
+
   # isolate unique pairs
-  return(unique(song_info))
+  return(unique(song_results))
 
 }

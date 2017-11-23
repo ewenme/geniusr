@@ -4,7 +4,7 @@
 #' return \code{artist_id}, \code{artist_name} and \code{artist_url} for all unique artist matches to a search.
 #' @param search_term A character string to search for artist matches
 #' @param n_results Maximum no. of search results to return
-#' @param access_token Genius' client access token. Defaults to \code{genius_token}
+#' @param access_token Genius' client access token, defaults to \code{genius_token}
 #' @examples
 #' search_artist(search_term = "Lil")
 #' @export
@@ -76,14 +76,22 @@ search_artist <- function(search_term, n_results=10, access_token=genius_token()
 #' \code{artist_id} for all unique song matches to a search.
 #' @param search_term A character string to search for song matches
 #' @param n_results Maximum no. of search results to return
-#' @param access_token Genius' client access token. Defaults to \code{genius_token}
+#' @param access_token Genius' client access token, defaults to \code{genius_token}
 #' @examples
 #' search_song(search_term = "Gucci", n_results=50)
 #' @export
-search_song <- function(search_term, n_results=10, access_token=genius_token()) {
+search_song <- function(search_term, n_results=10, lyrics_only=FALSE, access_token=genius_token()) {
 
   # base URL
-  base_url <- "api.genius.com/search?q="
+  if (lyrics_only == FALSE) {
+
+    base_url <- "api.genius.com/search?q="
+
+  } else {
+
+    base_url <- "api.genius.com/search/lyrics?q="
+
+  }
 
   # replace spaces with %20
   search_term <- gsub(" ", "%20", search_term)

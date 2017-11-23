@@ -9,7 +9,7 @@ get_album_meta(album_id, access_token = genius_token())
 \arguments{
 \item{album_id}{An album ID (\code{album_id} returned in \code{\link{get_song_meta}})}
 
-\item{access_token}{Genius' client access token. Defaults to \code{genius_token}}
+\item{access_token}{Genius' client access token, defaults to \code{genius_token}}
 }
 \description{
 The Genius API lets you search for an album's meta data, given an album ID.

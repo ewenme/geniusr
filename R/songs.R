@@ -1,9 +1,9 @@
-#' Retrieve meta data for a song
+#' Retrieve meta data for an artist's discography
 #'
-#' The Genius API lets you search for meta data for a song, given a song ID.
+#' Return song meta data for all appearances (features optional) of an artist on Genius.
 #' @param artist_id An artist ID (\code{artist_id} returned in \code{\link{search_artist}})
 #' @param include_features Return results where artist isn't the primary artist (logical, defaults to FALSE)
-#' @param access_token Genius' client access token. Defaults to \code{genius_token}
+#' @param access_token Genius' client access token, defaults to \code{genius_token}
 #' @examples
 #' get_artist_songs(artist_id = 1421)
 #' @export
@@ -19,7 +19,7 @@ get_artist_songs <- function(artist_id, include_features=FALSE, access_token=gen
   i <- 1
 
   while (i > 0) {
-  # search for artist
+  # search for artist's songs
   req <- httr::GET(url = paste0(base_url, artist_id, "/songs", '?per_page=', 10, '&page=', i),
                    httr::add_headers(Authorization=paste0("Bearer ", access_token)))
 

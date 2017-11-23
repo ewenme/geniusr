@@ -2,9 +2,9 @@
 #'
 #' The Genius API lets you search for meta data for a song, given a song ID.
 #' @param song_id A song ID (\code{song_id} returned in \code{\link{search_song}})
-#' @param access_token Genius' client access token. Defaults to \code{genius_token}
+#' @param access_token Genius' client access token, defaults to \code{genius_token}
 #' @examples
-#' get_song_meta(song_id = 3214267)
+#' get_song_meta(song_id = 3039923)
 #' @export
 get_song_meta <- function(song_id, access_token=genius_token()) {
 
@@ -50,7 +50,7 @@ get_song_meta <- function(song_id, access_token=genius_token()) {
 #'
 #' The Genius API lets you search for meta data for an artist, given an artist ID.
 #' @param artist_id An artist ID (\code{artist_id} returned in \code{\link{search_song}})
-#' @param access_token Genius' client access token. Defaults to \code{genius_token}
+#' @param access_token Genius' client access token, defaults to \code{genius_token}
 #' @examples
 #' get_artist_meta(artist_id = 16751)
 #' @export
@@ -92,9 +92,9 @@ get_artist_meta <- function(artist_id, access_token=genius_token()) {
 #'
 #' The Genius API lets you search for an album's meta data, given an album ID.
 #' @param album_id An album ID (\code{album_id} returned in \code{\link{get_song_meta}})
-#' @param access_token Genius' client access token. Defaults to \code{genius_token}
+#' @param access_token Genius' client access token, defaults to \code{genius_token}
 #' @examples
-#' get_album_meta(album_id = 129372)
+#' get_album_meta(album_id = 337082)
 #' @export
 get_album_meta <- function(album_id, access_token=genius_token()) {
 

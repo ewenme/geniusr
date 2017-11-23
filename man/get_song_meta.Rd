@@ -4,10 +4,12 @@
 \alias{get_song_meta}
 \title{Retrieve meta data for a song}
 \usage{
-get_song_meta(song_id)
+get_song_meta(song_id, access_token = genius_token())
 }
 \arguments{
-\item{song_id}{A song ID (\code{song_id} returned in \code{\link{search_song}}).}
+\item{song_id}{A song ID (\code{song_id} returned in \code{\link{search_song}})}
+
+\item{access_token}{Genius' client access token. Defaults to \code{genius_token}}
 }
 \description{
 The Genius API lets you search for meta data for a song, given a song ID.

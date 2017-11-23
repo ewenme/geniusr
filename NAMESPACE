@@ -3,6 +3,7 @@
 export(genius_token)
 export(get_album_meta)
 export(get_artist_meta)
+export(get_artist_songs)
 export(get_lyrics)
 export(get_song_meta)
 export(search_artist)

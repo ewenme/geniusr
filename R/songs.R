@@ -1,4 +1,15 @@
-get_artist_songs <- function(artist_id) {
+#' Retrieve meta data for a song
+#'
+#' The Genius API lets you search for meta data for a song, given a song ID.
+#' @param artist_id An artist ID (\code{artist_id} returned in \code{\link{search_artist}})
+#' @param include_features Return results where artist isn't the primary artist (logical, defaults to FALSE)
+#' @param access_token Genius' client access token. Defaults to \code{genius_token}
+#' @examples
+#' get_artist_songs(artist_id = 1421)
+#' @export
+get_artist_songs <- function(artist_id, include_features=FALSE, access_token=genius_token()) {
+
+  pri_artist_id <- artist_id
 
   # base URL
   base_url <- "api.genius.com/artists/"
@@ -9,8 +20,8 @@ get_artist_songs <- function(artist_id) {
 
   while (i > 0) {
   # search for artist
-  req <- httr::GET(url = paste0(base_url, artist_id, "/songs", '?per_page=', 50, '&page=', i),
-                   httr::add_headers(Authorization=paste0("Bearer ", genius_token())))
+  req <- httr::GET(url = paste0(base_url, artist_id, "/songs", '?per_page=', 10, '&page=', i),
+                   httr::add_headers(Authorization=paste0("Bearer ", access_token)))
 
   # extract request content
   res <- httr::content(req)
@@ -45,6 +56,15 @@ get_artist_songs <- function(artist_id) {
   }
 
   # bind rows of results
-  foo <- bind_rows(track_lyric_urls)
+  track_lyrics <- bind_rows(track_lyric_urls)
+
+  # keep / discard features
+  if (include_features == FALSE) {
+
+    track_lyrics <- dplyr::filter(track_lyrics, `artist_id` == pri_artist_id)
+
+  } else NULL
+
+  return(dplyr::as_tibble(track_lyrics))
 
 }

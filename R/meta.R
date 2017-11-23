@@ -1,18 +1,19 @@
 #' Retrieve meta data for a song
 #'
 #' The Genius API lets you search for meta data for a song, given a song ID.
-#' @param song_id A song ID (\code{song_id} returned in \code{\link{search_song}}).
+#' @param song_id A song ID (\code{song_id} returned in \code{\link{search_song}})
+#' @param access_token Genius' client access token. Defaults to \code{genius_token}
 #' @examples
 #' get_song_meta(song_id = 3214267)
 #' @export
-get_song_meta <- function(song_id) {
+get_song_meta <- function(song_id, access_token=genius_token()) {
 
   # base URL
   base_url <- "api.genius.com/songs/"
 
   # search for track
   req <- httr::GET(url = paste0(base_url, song_id),
-                   httr::add_headers(Authorization=paste0("Bearer ", genius_token())))
+                   httr::add_headers(Authorization=paste0("Bearer ", access_token)))
 
   # extract request content
   res <- httr::content(req)
@@ -48,18 +49,19 @@ get_song_meta <- function(song_id) {
 #' Retrieve meta data for an artist
 #'
 #' The Genius API lets you search for meta data for an artist, given an artist ID.
-#' @param artist_id An artist ID (\code{artist_id} returned in \code{\link{search_song}}).
+#' @param artist_id An artist ID (\code{artist_id} returned in \code{\link{search_song}})
+#' @param access_token Genius' client access token. Defaults to \code{genius_token}
 #' @examples
 #' get_artist_meta(artist_id = 16751)
 #' @export
-get_artist_meta <- function(artist_id) {
+get_artist_meta <- function(artist_id, access_token=genius_token()) {
 
   # base URL
   base_url <- "api.genius.com/artists/"
 
   # search for artist
   req <- httr::GET(url = paste0(base_url, artist_id),
-                   httr::add_headers(Authorization=paste0("Bearer ", genius_token())))
+                   httr::add_headers(Authorization=paste0("Bearer ", access_token)))
 
   # extract request content
   res <- httr::content(req)
@@ -89,18 +91,19 @@ get_artist_meta <- function(artist_id) {
 #' Retrieve meta data for an album
 #'
 #' The Genius API lets you search for an album's meta data, given an album ID.
-#' @param album_id An album ID (\code{album_id} returned in \code{\link{get_song_meta}}).
+#' @param album_id An album ID (\code{album_id} returned in \code{\link{get_song_meta}})
+#' @param access_token Genius' client access token. Defaults to \code{genius_token}
 #' @examples
 #' get_album_meta(album_id = 129372)
 #' @export
-get_album_meta <- function(album_id) {
+get_album_meta <- function(album_id, access_token=genius_token()) {
 
   # base URL
   base_url <- "api.genius.com/albums/"
 
   # search for album
   req <- httr::GET(url = paste0(base_url, album_id),
-                   httr::add_headers(Authorization=paste0("Bearer ", genius_token())))
+                   httr::add_headers(Authorization=paste0("Bearer ", access_token)))
 
   # extract request content
   res <- httr::content(req)

@@ -3,7 +3,7 @@
 #' The Genius API lets you search for meta data for a song, given a song ID.
 #' @param song_id A song ID (\code{song_id} returned in \code{\link{search_song}}).
 #' @examples
-#' song_meta(song_id = 2290596)
+#' get_song_meta(song_id = 3214267)
 #' @export
 get_song_meta <- function(song_id) {
 
@@ -40,7 +40,7 @@ get_song_meta <- function(song_id) {
   })
 
   # isolate unique pairs
-  return(unique(song_info))
+  return(dplyr::as_tibble(dplyr::distinct(song_info)))
 
 }
 
@@ -50,7 +50,7 @@ get_song_meta <- function(song_id) {
 #' The Genius API lets you search for meta data for an artist, given an artist ID.
 #' @param artist_id An artist ID (\code{artist_id} returned in \code{\link{search_song}}).
 #' @examples
-#' artist_meta(artist_id = 129372)
+#' get_artist_meta(artist_id = 16751)
 #' @export
 get_artist_meta <- function(artist_id) {
 
@@ -81,17 +81,17 @@ get_artist_meta <- function(artist_id) {
   })
 
   # isolate unique pairs
-  return(unique(artist_info))
+  return(dplyr::as_tibble(dplyr::distinct(artist_info)))
 
 }
 
 
 #' Retrieve meta data for an album
 #'
-#' The Genius API lets you search for meta data for an album, given an album ID.
-#' @param album_id An album ID (\code{album_id} returned in \code{\link{song_meta}}).
+#' The Genius API lets you search for an album's meta data, given an album ID.
+#' @param album_id An album ID (\code{album_id} returned in \code{\link{get_song_meta}}).
 #' @examples
-#' album_meta(album_id = 129372)
+#' get_album_meta(album_id = 129372)
 #' @export
 get_album_meta <- function(album_id) {
 
@@ -124,6 +124,6 @@ get_album_meta <- function(album_id) {
   })
 
   # isolate unique pairs
-  return(unique(album_info))
+  return(dplyr::as_tibble(dplyr::distinct(album_info)))
 
 }

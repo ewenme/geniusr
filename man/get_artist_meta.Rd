@@ -13,5 +13,5 @@ get_artist_meta(artist_id)
 The Genius API lets you search for meta data for an artist, given an artist ID.
 }
 \examples{
-artist_meta(artist_id = 129372)
+get_artist_meta(artist_id = 16751)
 }

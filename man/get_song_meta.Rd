@@ -13,5 +13,5 @@ get_song_meta(song_id)
 The Genius API lets you search for meta data for a song, given a song ID.
 }
 \examples{
-song_meta(song_id = 2290596)
+get_song_meta(song_id = 3214267)
 }

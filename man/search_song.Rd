@@ -11,7 +11,7 @@ search_song(search_term, n_results = 10, access_token = genius_token())
 
 \item{n_results}{Maximum no. of search results to return}
 
-\item{access_token}{Genius' client access token. Defaults to \code{genius_token()}}
+\item{access_token}{Genius' client access token. Defaults to \code{genius_token}}
 }
 \description{
 The Genius API lets you search hosted content (all songs). Use \code{search_song} to

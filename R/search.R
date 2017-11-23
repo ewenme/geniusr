@@ -2,9 +2,9 @@
 #'
 #' The Genius API lets you search hosted content (all songs). Use \code{search_artist} to
 #' return \code{artist_id}, \code{artist_name} and \code{artist_url} for all unique artist matches to a search.
-#' @param search_term A character string to search for artist matches.
+#' @param search_term A character string to search for artist matches
 #' @param n_results Maximum no. of search results to return
-#' @param access_token Genius' client access token. Defaults to \code{genius_token()}
+#' @param access_token Genius' client access token. Defaults to \code{genius_token}
 #' @examples
 #' search_artist(search_term = "Lil")
 #' @export
@@ -76,7 +76,7 @@ search_artist <- function(search_term, n_results=10, access_token=genius_token()
 #' \code{artist_id} for all unique song matches to a search.
 #' @param search_term A character string to search for song matches
 #' @param n_results Maximum no. of search results to return
-#' @param access_token Genius' client access token. Defaults to \code{genius_token()}
+#' @param access_token Genius' client access token. Defaults to \code{genius_token}
 #' @examples
 #' search_song(search_term = "Gucci", n_results=50)
 #' @export
@@ -138,6 +138,6 @@ search_song <- function(search_term, n_results=10, access_token=genius_token()) 
   song_results <- bind_rows(song_results)
 
   # isolate unique pairs
-  return(dplyr::as_tibble(unique(song_results)))
+  return(dplyr::as_tibble(dplyr::distinct(song_results)))
 
 }

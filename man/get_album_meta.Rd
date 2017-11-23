@@ -7,11 +7,11 @@
 get_album_meta(album_id)
 }
 \arguments{
-\item{album_id}{An album ID (\code{album_id} returned in \code{\link{song_meta}}).}
+\item{album_id}{An album ID (\code{album_id} returned in \code{\link{get_song_meta}}).}
 }
 \description{
-The Genius API lets you search for meta data for an album, given an album ID.
+The Genius API lets you search for an album's meta data, given an album ID.
 }
 \examples{
-album_meta(album_id = 129372)
+get_album_meta(album_id = 129372)
 }

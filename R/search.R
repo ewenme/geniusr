@@ -41,7 +41,6 @@ search_artist <- function(search_term, n_results=10) {
 }
 
 
-
 #' Retrieve song identifiers for a search term
 #'
 #' The Genius API lets you search hosted content (all songs). Use \code{search_song} to
@@ -50,7 +49,7 @@ search_artist <- function(search_term, n_results=10) {
 #' @param search_term A character string to search for song matches.
 #' @param n_results Number of results to return.
 #' @examples
-#' search_song(search_term = "Ferrari")
+#' search_song(search_term = "Gucci")
 #' @export
 search_song <- function(search_term, n_results=10) {
 

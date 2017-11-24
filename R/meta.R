@@ -98,6 +98,8 @@ get_artist_meta <- function(artist_id, access_token=genius_token()) {
 #' @export
 get_album_meta <- function(album_id, access_token=genius_token()) {
 
+  # API ----------------------
+
   # base URL
   base_url <- "api.genius.com/albums/"
 
@@ -125,6 +127,27 @@ get_album_meta <- function(album_id, access_token=genius_token()) {
       artist_id = art$id
     )
   })
+
+  # SCRAPE -------------------------
+
+  # start session
+  session <- rvest::html(album_info$album_url)
+
+  # get track titles
+  song_titles <- rvest::html_nodes(session, ".chart_row-content-title") %>%
+    rvest::html_text(trim = TRUE)
+
+  # remove everything after (and including) line break
+  song_titles <- gsub("\n.*", "", song_titles)
+
+  # get lyric links
+  song_lyric_urls <- rvest::html_nodes(session, ".chart_row-content")
+
+  # match url part
+  song_lyric_urls <- stringr::str_match_all(song_lyric_urls, "<a href=\"(.*?)\"")
+
+  # choose list element containing url
+  song_lyric_urls <- sapply(song_lyric_urls,`[`,2)
 
   # isolate unique pairs
   return(dplyr::as_tibble(dplyr::distinct(album_info)))

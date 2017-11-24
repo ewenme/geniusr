@@ -51,9 +51,8 @@ get_tracklist <- function(album_id, access_token=genius_token()) {
   album_meta <- dplyr::filter(album_meta, !is.na(song_number))
 
   # reorder cols
-  album_meta <- dplyr::select(album_meta, song_number, song_title, album_name, song_lyric_url,
-                              album_id, album_release_date, album_url,
-                              artist_id)
+  album_meta <- dplyr::select(album_meta, song_number, song_title, song_lyric_url,
+                              album_name, album_id, artist_id)
 
   return(dplyr::as_tibble(album_meta))
 

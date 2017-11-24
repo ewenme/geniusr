@@ -4,7 +4,8 @@
 \alias{search_song}
 \title{Retrieve song identifiers for associated search terms}
 \usage{
-search_song(search_term, n_results = 10, access_token = genius_token())
+search_song(search_term, n_results = 10, lyrics_only = FALSE,
+  access_token = genius_token())
 }
 \arguments{
 \item{search_term}{A character string to search for song matches}

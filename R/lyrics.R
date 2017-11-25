@@ -4,9 +4,9 @@
 #' @param song_id song ID (like in \code{song_id} returned by \code{\link{search_song}})
 #' @param access_token Genius' client access token, defaults to \code{genius_token}
 #' @examples
-#' scrape_lyrics_id(song_id = 3214267)
+#' scrape_lyrics(song_id = 3214267)
 #' @export
-scrape_lyrics_id <- function(song_id, access_token=genius_token()) {
+scrape_lyrics <- function(song_id, access_token=genius_token()) {
 
   # get song meta data
   meta <- get_song_meta(song_id)

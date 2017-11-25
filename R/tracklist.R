@@ -4,9 +4,9 @@
 #' @param album_id An album ID (\code{album_id} returned in \code{\link{get_song_meta}})
 #' @param access_token Genius' client access token, defaults to \code{genius_token}
 #' @examples
-#' get_tracklist(album_id = 337082)
+#' scrape_tracklist(album_id = 337082)
 #' @export
-get_tracklist <- function(album_id, access_token=genius_token()) {
+scrape_tracklist <- function(album_id, access_token=genius_token()) {
 
   # get album meta data
   album_info <- get_album_meta(album_id)

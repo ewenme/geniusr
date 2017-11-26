@@ -1,30 +1,59 @@
 ---
-title: "Untitled"
+title: "geniusr"
 output: github_document
 ---
+
+Tools for working with the Genius API.
+
+- Genius Developers Site: [https://genius.com/developers](https://genius.com/developers)
+- Genius API Docs: [https://docs.genius.com/](https://docs.genius.com/)
+
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## GitHub Documents
+## Install
 
-This is an R Markdown format used for publishing markdown documents to GitHub. When you click the **Knit** button all R code chunks are run and a markdown file (.md) suitable for publishing to GitHub is generated.
+Development version
 
-## Including Code
-
-You can include R code in the document as follows:
-
-```{r cars}
-summary(cars)
+```{r install_dev}
+devtools::install_github('ewenme/geniusr')
 ```
 
-## Including Plots
+## Authenticate
 
-You can also embed plots, for example:
+1. [Create a Genius API client](https://genius.com/api-clients/new)
+2. Generate a client access token from your [API Clients page](https://genius.com/api-clients)
+3. Set your credentials in the System Environment variable `GENIUS_API_TOKEN` by calling the `genius_token()` function and entering your Genius Client Access Token when prompted.
 
-```{r pressure, echo=FALSE}
-plot(pressure)
+## Use
+
+```{r load_pkg}
+library(geniusr)
+library(dplyr)
+library(tidytext)
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+### How many times did Kanye West say "good morning", on the track "Good Morning"?
+
+```{r good_morning_count}
+# Get song search results for the term 'good morning'
+gm_search <- search_song(search_term = "good morning") %>%
+  # look for Kanye as the primary artist
+  filter(artist_name == "Kanye West")
+
+# get lyrics
+gm_lyrics <- scrape_lyrics(song_id = gm_search$song_id)
+
+# tokenization of the lyrics
+gm_lyrics %>%
+  # get bigrams
+  unnest_tokens(bigram, line, token = "ngrams", n = 2) %>%
+  # count bigram frequency
+  count(bigram) %>%
+  # look for good morning
+  filter(bigram == "good morning")
+```
+
+

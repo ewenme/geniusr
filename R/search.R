@@ -133,7 +133,8 @@ search_song <- function(search_term, n_results=10, lyrics_only=FALSE, access_tok
       song_id = trk$id,
       song_name = trk$title_with_featured,
       lyrics_url = trk$path,
-      artist_id = tmp$id
+      artist_id = tmp$id,
+      artist_name = tmp$name
     )
   })
 

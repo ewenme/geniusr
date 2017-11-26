@@ -56,5 +56,4 @@ scrape_tracklist <- function(album_id, access_token=genius_token()) {
 
   return(dplyr::as_tibble(album_meta))
 
-
 }

@@ -66,3 +66,9 @@ lil_artists <- search_artist(search_term = "Lil", n_results = 1000)
 stringr::str_subset(lil_artists$artist_name, "Lil")
 ```
 
+```{r}
+
+# get tracklist for damn
+damn_tracklist <- scrape_tracklist(album_id = 337082)
+```
+

@@ -56,4 +56,13 @@ gm_lyrics %>%
   filter(bigram == "good morning")
 ```
 
+### What artist's have 'Lil' in their name?
+
+```{r lil_names}
+# return artist matches for term 'lil'
+lil_artists <- search_artist(search_term = "Lil", n_results = 1000)
+
+# subset artist names with 'lil'
+stringr::str_subset(lil_artists$artist_name, "Lil")
+```
 

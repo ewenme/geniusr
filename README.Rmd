@@ -10,14 +10,14 @@ Tools for working with the Genius API.
 
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
 ```
 
 ## Install
 
 Development version
 
-```{r install_dev}
+```{r install_dev, eval=FALSE}
 devtools::install_github('ewenme/geniusr')
 ```
 

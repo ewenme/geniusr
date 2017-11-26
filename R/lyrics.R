@@ -3,6 +3,7 @@
 #' Scrape lyrics from Genius' lyric pages.
 #' @param song_id song ID (like in \code{song_id} returned by \code{\link{search_song}})
 #' @param access_token Genius' client access token, defaults to \code{genius_token}
+#' @importFrom magrittr "%>%"
 #' @examples
 #' scrape_lyrics(song_id = 3214267)
 #' @export

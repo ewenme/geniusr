@@ -56,7 +56,7 @@ get_artist_songs <- function(artist_id, include_features=FALSE, access_token=gen
   }
 
   # bind rows of results
-  track_lyrics <- bind_rows(track_lyric_urls)
+  track_lyrics <- dplyr::bind_rows(track_lyric_urls)
 
   # keep / discard features
   if (include_features == FALSE) {

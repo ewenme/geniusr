@@ -61,7 +61,7 @@ search_artist <- function(search_term, n_results=10, access_token=genius_token()
   }
 
   # bind rows of results
-  artist_results <- bind_rows(artist_results)
+  artist_results <- dplyr::bind_rows(artist_results)
 
   # isolate unique pairs
   return(dplyr::as_tibble(dplyr::distinct(artist_results)))
@@ -76,6 +76,7 @@ search_artist <- function(search_term, n_results=10, access_token=genius_token()
 #' \code{artist_id} for all unique song matches to a search.
 #' @param search_term A character string to search for song matches
 #' @param n_results Maximum no. of search results to return
+#' @param lyrics_only Search lyric content only (i.e. ignore song title matches)
 #' @param access_token Genius' client access token, defaults to \code{genius_token}
 #' @examples
 #' search_song(search_term = "Gucci", n_results=50)
@@ -144,7 +145,7 @@ search_song <- function(search_term, n_results=10, lyrics_only=FALSE, access_tok
   }
 
   # bind rows of results
-  song_results <- bind_rows(song_results)
+  song_results <- dplyr::bind_rows(song_results)
 
   # isolate unique pairs
   return(dplyr::as_tibble(dplyr::distinct(song_results)))

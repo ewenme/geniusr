@@ -44,7 +44,7 @@ gm_search <- search_song(search_term = "good morning") %>%
   filter(artist_name == "Kanye West")
 
 # get lyrics
-gm_lyrics <- scrape_lyrics(song_id = gm_search$song_id)
+gm_lyrics <- scrape_lyrics_id(song_id = gm_search$song_id)
 
 # tokenization of the lyrics
 gm_lyrics %>%
@@ -56,46 +56,29 @@ gm_lyrics %>%
   filter(bigram == "good morning")
 ```
 
-### What artist's have 'Lil' in their name?
+### Gimme artist's with 'Lil' in their name.
 
 ```{r lil_names}
 # return artist matches for term 'lil'
-lil_artists <- search_artist(search_term = "Lil", n_results = 500)
+search_artist(search_term = "Lil", n_results = 500) %>% 
+  distinct(artist_name)
 
-# subset artist names with 'lil'
-stringr::str_subset(lil_artists$artist_name, "Lil")
 ```
 
-### 
+### Which artist's has Kendrick Lamar done the most features for?
 
-```{r}
+```{r kendrick_features}
+# get kendricks discography INCLUDING features
+kendrick_discog <- get_artist_songs(artist_id = 1421, include_features = TRUE)
 
-# get tracklist for damn
-damn_tracklist <- scrape_tracklist(album_id = 337082)
+kendrick_discog %>%
+  # isolate features
+  filter(artist_id != 1421) %>%
+  # count features
+  count(artist_id, artist_name) %>%
+  # get top ten
+  top_n(10, wt=n) %>%
+  # sort descding
+  arrange(desc(n))
 
-# get lyrics for tracks
-damn_lyrics <- purrr::map_df(damn_tracklist$song_lyric_url, scrape_lyrics_url)
-
-# tokenization of the lyrics
-tf_idf <- damn_lyrics %>%
-  # get indiv. words
-  unnest_tokens(word, line) %>%
-  # remove stop words
-  anti_join(stop_words) %>%
-  count(song_lyric_url, word, sort = TRUE) %>%
-  ungroup() %>%
-  bind_tf_idf(word, song_lyric_url, n) %>%
-  arrange(desc(tf_idf))
-
-tf_idf %>%
-  group_by(song_lyric_url) %>%
-  top_n(5, tf_idf) %>%
-  ungroup() %>%
-  mutate(word = reorder(word, tf_idf)) %>%
-  ggplot(aes(word, tf_idf, fill = song_lyric_url)) +
-  geom_col(show.legend = FALSE) +
-  facet_wrap(~ song_lyric_url, scales = "free") +
-  ylab("tf-idf") +
-  coord_flip()
 ```
-

@@ -2,7 +2,7 @@
 % Please edit documentation in R/lyrics.R
 \name{scrape_lyrics_id}
 \alias{scrape_lyrics_id}
-\title{Retrieve lyrics assoicated with a Genius song ID}
+\title{Retrieve lyrics associated with a Genius song ID}
 \usage{
 scrape_lyrics_id(song_id, access_token = genius_token())
 }

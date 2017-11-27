@@ -22,5 +22,7 @@ return \code{song_id}, \code{song_name}, \code{lyrics_url} and
 \code{artist_id} for all unique song matches to a search.
 }
 \examples{
+\dontrun{
 search_song(search_term = "Gucci", n_results=50)
+}
 }

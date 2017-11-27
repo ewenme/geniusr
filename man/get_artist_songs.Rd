@@ -18,5 +18,7 @@ get_artist_songs(artist_id, include_features = FALSE,
 Return meta data for all appearances (features optional) of an artist on Genius.
 }
 \examples{
+\dontrun{
 get_artist_songs(artist_id = 1421)
+}
 }

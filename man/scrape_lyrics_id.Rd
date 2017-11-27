@@ -15,5 +15,7 @@ scrape_lyrics_id(song_id, access_token = genius_token())
 Scrape lyrics from Genius' lyric pages using an associated song ID.
 }
 \examples{
+\dontrun{
 scrape_lyrics_id(song_id = 3214267)
+}
 }

@@ -15,5 +15,7 @@ get_artist_meta(artist_id, access_token = genius_token())
 The Genius API lets you search for meta data for an artist, given an artist ID.
 }
 \examples{
+\dontrun{
 get_artist_meta(artist_id = 16751)
+}
 }

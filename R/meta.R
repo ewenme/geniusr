@@ -4,7 +4,9 @@
 #' @param song_id A song ID (\code{song_id} returned in \code{\link{search_song}})
 #' @param access_token Genius' client access token, defaults to \code{genius_token}
 #' @examples
+#' \dontrun{
 #' get_song_meta(song_id = 3039923)
+#' }
 #' @export
 get_song_meta <- function(song_id, access_token=genius_token()) {
 
@@ -56,7 +58,9 @@ get_song_meta <- function(song_id, access_token=genius_token()) {
 #' @param artist_id An artist ID (\code{artist_id} returned in \code{\link{search_artist}})
 #' @param access_token Genius' client access token, defaults to \code{genius_token}
 #' @examples
+#' \dontrun{
 #' get_artist_meta(artist_id = 16751)
+#' }
 #' @export
 get_artist_meta <- function(artist_id, access_token=genius_token()) {
 
@@ -98,7 +102,9 @@ get_artist_meta <- function(artist_id, access_token=genius_token()) {
 #' @param album_id An album ID (\code{album_id} returned in \code{\link{get_song_meta}})
 #' @param access_token Genius' client access token, defaults to \code{genius_token}
 #' @examples
+#' \dontrun{
 #' get_album_meta(album_id = 337082)
+#' }
 #' @export
 get_album_meta <- function(album_id, access_token=genius_token()) {
 

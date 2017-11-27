@@ -21,5 +21,7 @@ The Genius API lets you search hosted content (all songs). Use \code{search_arti
 return \code{artist_id}, \code{artist_name} and \code{artist_url} for all unique artist matches to a search.
 }
 \examples{
+\dontrun{
 search_artist(search_term = "Lil")
+}
 }

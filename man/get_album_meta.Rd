@@ -15,5 +15,7 @@ get_album_meta(album_id, access_token = genius_token())
 The Genius API lets you search for an album's meta data, given an album ID.
 }
 \examples{
+\dontrun{
 get_album_meta(album_id = 337082)
+}
 }

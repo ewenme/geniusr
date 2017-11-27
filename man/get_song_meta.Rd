@@ -15,5 +15,7 @@ get_song_meta(song_id, access_token = genius_token())
 The Genius API lets you search for meta data for a song, given a song ID.
 }
 \examples{
+\dontrun{
 get_song_meta(song_id = 3039923)
+}
 }

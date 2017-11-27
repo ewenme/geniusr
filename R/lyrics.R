@@ -5,7 +5,9 @@
 #' @param access_token Genius' client access token, defaults to \code{genius_token}
 #' @importFrom magrittr "%>%"
 #' @examples
+#' \dontrun{
 #' scrape_lyrics_id(song_id = 3214267)
+#' }
 #' @export
 scrape_lyrics_id <- function(song_id, access_token=genius_token()) {
 
@@ -59,7 +61,9 @@ scrape_lyrics_id <- function(song_id, access_token=genius_token()) {
 #' @param access_token Genius' client access token, defaults to \code{genius_token}
 #' @importFrom magrittr "%>%"
 #' @examples
+#' \dontrun{
 #' scrape_lyrics_url(song_lyrics_url = "https://genius.com/Kendrick-lamar-dna-lyrics")
+#' }
 #' @export
 scrape_lyrics_url <- function(song_lyrics_url, access_token=genius_token()) {
 

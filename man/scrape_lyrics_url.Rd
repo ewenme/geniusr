@@ -15,5 +15,7 @@ scrape_lyrics_url(song_lyrics_url, access_token = genius_token())
 Scrape lyrics from a Genius' lyric page using it's associated URL. Best used with \code{\link{scrape_tracklist}}, when song IDs aren't returned - otherwise, \code{\link{scrape_lyrics_id}} is recommended.
 }
 \examples{
+\dontrun{
 scrape_lyrics_url(song_lyrics_url = "https://genius.com/Kendrick-lamar-dna-lyrics")
+}
 }

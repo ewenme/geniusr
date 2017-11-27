@@ -5,7 +5,9 @@
 #' @param include_features Whether to return results where artist isn't the primary artist (logical, defaults to FALSE)
 #' @param access_token Genius' client access token, defaults to \code{genius_token}
 #' @examples
+#' \dontrun{
 #' get_artist_songs(artist_id = 1421)
+#' }
 #' @export
 get_artist_songs <- function(artist_id, include_features=FALSE, access_token=genius_token()) {
 

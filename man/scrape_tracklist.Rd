@@ -15,5 +15,7 @@ scrape_tracklist(album_id, access_token = genius_token())
 Scrape an album's tracklisting, and song meta data, given an album ID.
 }
 \examples{
+\dontrun{
 scrape_tracklist(album_id = 337082)
+}
 }

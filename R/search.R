@@ -7,7 +7,9 @@
 #' @param artist_name_only Search artist names only (i.e. ignore song title search matches)
 #' @param access_token Genius' client access token, defaults to \code{genius_token}
 #' @examples
+#' \dontrun{
 #' search_artist(search_term = "Lil")
+#' }
 #' @export
 search_artist <- function(search_term, n_results=10, artist_name_only=TRUE, access_token=genius_token()) {
 
@@ -88,7 +90,9 @@ search_artist <- function(search_term, n_results=10, artist_name_only=TRUE, acce
 #' @param lyric_content_only Search lyric content only (i.e. ignore song title matches)
 #' @param access_token Genius' client access token, defaults to \code{genius_token}
 #' @examples
+#' \dontrun{
 #' search_song(search_term = "Gucci", n_results=50)
+#' }
 #' @export
 search_song <- function(search_term, n_results=10, lyric_content_only=FALSE, access_token=genius_token()) {
 

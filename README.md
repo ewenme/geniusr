@@ -1,6 +1,8 @@
 geniusr
 ================
 
+[![Build Status](https://travis-ci.org/ewenme/geniusr.png)](https://travis-ci.org/ewenme/geniusr)
+
 Tools for working with the Genius API.
 
 -   Genius Developers Site: <https://genius.com/developers>

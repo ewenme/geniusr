@@ -3,15 +3,16 @@ title: "geniusr"
 output: github_document
 ---
 
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+```
+
+[![Build Status](https://travis-ci.org/ewenme/geniusr.png)](https://travis-ci.org/ewenme/geniusr) 
+
 Tools for working with the Genius API.
 
 - Genius Developers Site: [https://genius.com/developers](https://genius.com/developers)
 - Genius API Docs: [https://docs.genius.com/](https://docs.genius.com/)
-
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
-```
 
 ## Install
 

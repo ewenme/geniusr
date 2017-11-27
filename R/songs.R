@@ -1,8 +1,8 @@
-#' Retrieve meta data for an artist's discography
+#' Retrieve meta data for all of an artist's appearances on Genius
 #'
-#' Return song meta data for all appearances (features optional) of an artist on Genius.
+#' Return meta data for all appearances (features optional) of an artist on Genius.
 #' @param artist_id An artist ID (\code{artist_id} returned in \code{\link{search_artist}})
-#' @param include_features Return results where artist isn't the primary artist (logical, defaults to FALSE)
+#' @param include_features Whether to return results where artist isn't the primary artist (logical, defaults to FALSE)
 #' @param access_token Genius' client access token, defaults to \code{genius_token}
 #' @examples
 #' get_artist_songs(artist_id = 1421)
@@ -33,15 +33,14 @@ get_artist_songs <- function(artist_id, include_features=FALSE, access_token=gen
   song_info <- purrr::map_df(1:length(res$songs), function(x) {
     tmp <- res$songs[[x]]
     art <- res$songs[[x]]$primary_artist
-    stat <- res$songs[[x]]$stats
     list(
       song_id = tmp$id,
       song_name = tmp$title_with_featured,
-      song_url = tmp$url,
+      song_lyrics_url = tmp$url,
       annotation_count = tmp$annotation_count,
-      # pageviews = stat$pageviews,
       artist_id = art$id,
-      artist_name = art$name
+      artist_name = art$name,
+      artist_url = art$url
     )
   })
 
@@ -63,7 +62,7 @@ get_artist_songs <- function(artist_id, include_features=FALSE, access_token=gen
 
     track_lyrics <- dplyr::filter(track_lyrics, `artist_id` == pri_artist_id)
 
-  } else NULL
+  } else if (include_features == TRUE) NULL
 
   return(dplyr::as_tibble(track_lyrics))
 

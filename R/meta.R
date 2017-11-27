@@ -30,13 +30,17 @@ get_song_meta <- function(song_id, access_token=genius_token()) {
     list(
       song_id = trk$id,
       song_name = trk$title_with_featured,
-      song_url = trk$url,
+      song_lyrics_url = trk$url,
       song_art_image_url = trk$song_art_image_url,
       release_date = trk$release_date,
       pageviews = stat$pageviews,
       annotation_count = trk$annotation_count,
       artist_id = art$id,
-      album_id = alb$id
+      artist_name = art$name,
+      artist_url = art$url,
+      album_id = alb$id,
+      album_name = alb$name,
+      album_url = alb$url
     )
   })
 
@@ -49,7 +53,7 @@ get_song_meta <- function(song_id, access_token=genius_token()) {
 #' Retrieve meta data for an artist
 #'
 #' The Genius API lets you search for meta data for an artist, given an artist ID.
-#' @param artist_id An artist ID (\code{artist_id} returned in \code{\link{search_song}})
+#' @param artist_id An artist ID (\code{artist_id} returned in \code{\link{search_artist}})
 #' @param access_token Genius' client access token, defaults to \code{genius_token}
 #' @examples
 #' get_artist_meta(artist_id = 16751)
@@ -124,7 +128,9 @@ get_album_meta <- function(album_id, access_token=genius_token()) {
       album_cover_art_url = tmp$cover_art_url,
       album_release_date = tmp$release_date,
       pageviews = tmp$song_pageviews,
-      artist_id = art$id
+      artist_id = art$id,
+      artist_name = art$name,
+      artist_url = art$url
     )
   })
 

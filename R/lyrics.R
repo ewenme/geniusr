@@ -1,6 +1,6 @@
 #' Retrieve lyrics assoicated with a Genius song ID
 #'
-#' Scrape lyrics from Genius' lyric pages.
+#' Scrape lyrics from Genius' lyric pages using an associated song ID.
 #' @param song_id song ID (like in \code{song_id} returned by \code{\link{search_song}})
 #' @param access_token Genius' client access token, defaults to \code{genius_token}
 #' @importFrom magrittr "%>%"
@@ -13,7 +13,7 @@ scrape_lyrics_id <- function(song_id, access_token=genius_token()) {
   meta <- get_song_meta(song_id)
 
   # start session
-  session <-suppressWarnings(rvest::html(meta$song_url))
+  session <-suppressWarnings(rvest::html(meta$song_lyrics_url))
 
   # read lyrics
   lyrics <- rvest::html_nodes(session, ".lyrics p")
@@ -44,26 +44,27 @@ scrape_lyrics_id <- function(song_id, access_token=genius_token()) {
   lyrics <- dplyr::mutate(lyrics,
                           song_id=meta$song_id,
                           song_name=meta$song_name,
-                          artist_id=meta$artist_id)
+                          artist_id=meta$artist_id,
+                          artist_name=meta$artist_name)
 
   # Remove lines with things such as [Intro: person & so and so]
   return(dplyr::as_tibble(lyrics))
 
 }
 
-#' Retrieve lyrics assoicated with a Genius song ID
+#' Retrieve lyrics assoicated with a Genius lyrics page URL
 #'
-#' Scrape lyrics from Genius' lyric pages.
-#' @param lyrics_url song lyrics url (like in \code{url} returned by \code{\link{get_song_meta}})
+#' Scrape lyrics from a Genius' lyric page using it's associated URL. Best used with \code{\link{scrape_tracklist}}, when song IDs aren't returned - otherwise, \code{\link{scrape_lyrics_id}} is recommended.
+#' @param song_lyrics_url song lyrics url (like in \code{song_lyrics_url} returned by \code{\link{get_song_meta}})
 #' @param access_token Genius' client access token, defaults to \code{genius_token}
 #' @importFrom magrittr "%>%"
 #' @examples
-#' scrape_lyrics_url(lyrics_url = "https://genius.com/Kendrick-lamar-dna-lyrics")
+#' scrape_lyrics_url(song_lyrics_url = "https://genius.com/Kendrick-lamar-dna-lyrics")
 #' @export
-scrape_lyrics_url <- function(lyrics_url, access_token=genius_token()) {
+scrape_lyrics_url <- function(song_lyrics_url, access_token=genius_token()) {
 
   # start session
-  session <-suppressWarnings(rvest::html(lyrics_url))
+  session <-suppressWarnings(rvest::html(song_lyrics_url))
 
   # read lyrics
   lyrics <- rvest::html_nodes(session, ".lyrics p")
@@ -92,9 +93,7 @@ scrape_lyrics_url <- function(lyrics_url, access_token=genius_token()) {
 
   # add song metadata
   lyrics <- dplyr::mutate(lyrics,
-                          song_id=meta$song_id,
-                          song_name=meta$song_name,
-                          artist_id=meta$artist_id)
+                          song_lyrics_url=song_lyrics_url)
 
   # Remove lines with things such as [Intro: person & so and so]
   return(dplyr::as_tibble(lyrics))

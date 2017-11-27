@@ -4,12 +4,15 @@
 \alias{search_artist}
 \title{Retrieve artist identifiers for associated search terms}
 \usage{
-search_artist(search_term, n_results = 10, access_token = genius_token())
+search_artist(search_term, n_results = 10, artist_name_only = TRUE,
+  access_token = genius_token())
 }
 \arguments{
 \item{search_term}{A character string to search for artist matches}
 
-\item{n_results}{Maximum no. of search results to return}
+\item{n_results}{Maximum no. of search results to return (this is the number of hosted content search results, unique artist matches will be smaller)}
+
+\item{artist_name_only}{Search artist names only (i.e. ignore song title search matches)}
 
 \item{access_token}{Genius' client access token, defaults to \code{genius_token}}
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/songs.R
 \name{get_artist_songs}
 \alias{get_artist_songs}
-\title{Retrieve meta data for an artist's discography}
+\title{Retrieve meta data for all of an artist's appearances on Genius}
 \usage{
 get_artist_songs(artist_id, include_features = FALSE,
   access_token = genius_token())
@@ -10,12 +10,12 @@ get_artist_songs(artist_id, include_features = FALSE,
 \arguments{
 \item{artist_id}{An artist ID (\code{artist_id} returned in \code{\link{search_artist}})}
 
-\item{include_features}{Return results where artist isn't the primary artist (logical, defaults to FALSE)}
+\item{include_features}{Whether to return results where artist isn't the primary artist (logical, defaults to FALSE)}
 
 \item{access_token}{Genius' client access token, defaults to \code{genius_token}}
 }
 \description{
-Return song meta data for all appearances (features optional) of an artist on Genius.
+Return meta data for all appearances (features optional) of an artist on Genius.
 }
 \examples{
 get_artist_songs(artist_id = 1421)

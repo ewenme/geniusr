@@ -4,7 +4,7 @@
 \alias{search_song}
 \title{Retrieve song identifiers for associated search terms}
 \usage{
-search_song(search_term, n_results = 10, lyrics_only = FALSE,
+search_song(search_term, n_results = 10, lyric_content_only = FALSE,
   access_token = genius_token())
 }
 \arguments{
@@ -12,7 +12,7 @@ search_song(search_term, n_results = 10, lyrics_only = FALSE,
 
 \item{n_results}{Maximum no. of search results to return}
 
-\item{lyrics_only}{Search lyric content only (i.e. ignore song title matches)}
+\item{lyric_content_only}{Search lyric content only (i.e. ignore song title matches)}
 
 \item{access_token}{Genius' client access token, defaults to \code{genius_token}}
 }

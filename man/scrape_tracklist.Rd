@@ -2,7 +2,7 @@
 % Please edit documentation in R/tracklist.R
 \name{scrape_tracklist}
 \alias{scrape_tracklist}
-\title{Retrieve an album tracklisting}
+\title{Retrieve an album's tracklisting}
 \usage{
 scrape_tracklist(album_id, access_token = genius_token())
 }

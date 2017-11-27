@@ -7,7 +7,7 @@
 get_artist_meta(artist_id, access_token = genius_token())
 }
 \arguments{
-\item{artist_id}{An artist ID (\code{artist_id} returned in \code{\link{search_song}})}
+\item{artist_id}{An artist ID (\code{artist_id} returned in \code{\link{search_artist}})}
 
 \item{access_token}{Genius' client access token, defaults to \code{genius_token}}
 }

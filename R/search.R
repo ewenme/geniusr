@@ -3,12 +3,13 @@
 #' The Genius API lets you search hosted content (all songs). Use \code{search_artist} to
 #' return \code{artist_id}, \code{artist_name} and \code{artist_url} for all unique artist matches to a search.
 #' @param search_term A character string to search for artist matches
-#' @param n_results Maximum no. of search results to return
+#' @param n_results Maximum no. of search results to return (this is the number of hosted content search results, unique artist matches will be smaller)
+#' @param artist_name_only Search artist names only (i.e. ignore song title search matches)
 #' @param access_token Genius' client access token, defaults to \code{genius_token}
 #' @examples
 #' search_artist(search_term = "Lil")
 #' @export
-search_artist <- function(search_term, n_results=10, access_token=genius_token()) {
+search_artist <- function(search_term, n_results=10, artist_name_only=TRUE, access_token=genius_token()) {
 
   # base URL
   base_url <- "api.genius.com/search?q="
@@ -63,6 +64,13 @@ search_artist <- function(search_term, n_results=10, access_token=genius_token()
   # bind rows of results
   artist_results <- dplyr::bind_rows(artist_results)
 
+  if (artist_name_only == TRUE) {
+
+    artist_results <- dplyr::filter(artist_results,
+                                    stringr::str_detect(tolower(artist_name), tolower(search_term)))
+
+  } else if (artist_name_only == FALSE) NULL
+
   # isolate unique pairs
   return(dplyr::as_tibble(dplyr::distinct(artist_results)))
 
@@ -76,19 +84,19 @@ search_artist <- function(search_term, n_results=10, access_token=genius_token()
 #' \code{artist_id} for all unique song matches to a search.
 #' @param search_term A character string to search for song matches
 #' @param n_results Maximum no. of search results to return
-#' @param lyrics_only Search lyric content only (i.e. ignore song title matches)
+#' @param lyric_content_only Search lyric content only (i.e. ignore song title matches)
 #' @param access_token Genius' client access token, defaults to \code{genius_token}
 #' @examples
 #' search_song(search_term = "Gucci", n_results=50)
 #' @export
-search_song <- function(search_term, n_results=10, lyrics_only=FALSE, access_token=genius_token()) {
+search_song <- function(search_term, n_results=10, lyric_content_only=FALSE, access_token=genius_token()) {
 
   # base URL
-  if (lyrics_only == FALSE) {
+  if (lyric_content_only == FALSE) {
 
     base_url <- "api.genius.com/search?q="
 
-  } else {
+  } else if (lyric_content_only == TRUE)  {
 
     base_url <- "api.genius.com/search/lyrics?q="
 
@@ -133,7 +141,7 @@ search_song <- function(search_term, n_results=10, lyrics_only=FALSE, access_tok
     list(
       song_id = trk$id,
       song_name = trk$title_with_featured,
-      lyrics_url = trk$path,
+      song_lyrics_url = trk$url,
       artist_id = tmp$id,
       artist_name = tmp$name
     )

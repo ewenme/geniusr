@@ -60,15 +60,42 @@ gm_lyrics %>%
 
 ```{r lil_names}
 # return artist matches for term 'lil'
-lil_artists <- search_artist(search_term = "Lil", n_results = 1000)
+lil_artists <- search_artist(search_term = "Lil", n_results = 500)
 
 # subset artist names with 'lil'
 stringr::str_subset(lil_artists$artist_name, "Lil")
 ```
 
+### 
+
 ```{r}
 
 # get tracklist for damn
 damn_tracklist <- scrape_tracklist(album_id = 337082)
+
+# get lyrics for tracks
+damn_lyrics <- purrr::map_df(damn_tracklist$song_lyric_url, scrape_lyrics_url)
+
+# tokenization of the lyrics
+tf_idf <- damn_lyrics %>%
+  # get indiv. words
+  unnest_tokens(word, line) %>%
+  # remove stop words
+  anti_join(stop_words) %>%
+  count(song_lyric_url, word, sort = TRUE) %>%
+  ungroup() %>%
+  bind_tf_idf(word, song_lyric_url, n) %>%
+  arrange(desc(tf_idf))
+
+tf_idf %>%
+  group_by(song_lyric_url) %>%
+  top_n(5, tf_idf) %>%
+  ungroup() %>%
+  mutate(word = reorder(word, tf_idf)) %>%
+  ggplot(aes(word, tf_idf, fill = song_lyric_url)) +
+  geom_col(show.legend = FALSE) +
+  facet_wrap(~ song_lyric_url, scales = "free") +
+  ylab("tf-idf") +
+  coord_flip()
 ```
 

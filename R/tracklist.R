@@ -1,4 +1,4 @@
-#' Retrieve an album tracklisting
+#' Retrieve an album's tracklisting
 #'
 #' Scrape an album's tracklisting, and song meta data, given an album ID.
 #' @param album_id An album ID (\code{album_id} returned in \code{\link{get_song_meta}})
@@ -27,16 +27,16 @@ scrape_tracklist <- function(album_id, access_token=genius_token()) {
   song_title <- gsub("\n.*", "", song_title)
 
   # get lyric links
-  song_lyric_url <- rvest::html_nodes(session, ".chart_row-content")
+  song_lyrics_url <- rvest::html_nodes(session, ".chart_row-content")
 
   # match url part
-  song_lyric_url <- stringr::str_match_all(song_lyric_url, "<a href=\"(.*?)\"")
+  song_lyrics_url <- stringr::str_match_all(song_lyrics_url, "<a href=\"(.*?)\"")
 
   # choose list element containing url
-  song_lyric_url <- sapply(song_lyric_url,`[`,2)
+  song_lyrics_url <- sapply(song_lyrics_url,`[`,2)
 
   # combine album elements into dataframe
-  album_meta <- data.frame(song_number, song_title, song_lyric_url)
+  album_meta <- data.frame(song_number, song_title, song_lyrics_url)
 
   # add album meta data
   album_meta <- dplyr::mutate(album_meta,
@@ -45,14 +45,19 @@ scrape_tracklist <- function(album_id, access_token=genius_token()) {
                               album_url=album_info$album_url,
                               album_cover_art_url=album_info$album_cover_art_url,
                               album_release_date=album_info$album_release_date,
-                              artist_id=album_info$artist_id)
+                              artist_id=album_info$artist_id,
+                              artist_name = album_info$artist_name,
+                              artist_url = album_info$artist_url)
 
   # remove missing song nos
   album_meta <- dplyr::filter(album_meta, !is.na(song_number))
 
   # reorder cols
-  album_meta <- dplyr::select(album_meta, song_number, song_title, song_lyric_url,
-                              album_name, album_id, artist_id)
+  album_meta <- dplyr::select(album_meta, song_number, song_title, song_lyrics_url,
+                              album_name, album_id, artist_id, artist_name, artist_url)
+
+  # return character variables
+  album_meta <- dplyr::mutate_at(album_meta, c("song_title", "song_lyrics_url"), as.character)
 
   return(dplyr::as_tibble(album_meta))
 

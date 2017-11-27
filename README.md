@@ -90,11 +90,9 @@ kendrick_discog %>%
   # isolate features
   filter(artist_id != 1421) %>%
   # count features
-  count(artist_id, artist_name) %>%
+  count(artist_id, artist_name, sort = T) %>%
   # get top ten
-  top_n(10, wt=n) %>%
-  # sort descding
-  arrange(desc(n))
+  top_n(10, wt=n)
 ```
 
     ## # A tibble: 11 x 3

@@ -11,6 +11,9 @@
 #' @export
 search_artist <- function(search_term, n_results=10, artist_name_only=TRUE, access_token=genius_token()) {
 
+  # get past cmd check
+  artist_name <- NULL
+
   # base URL
   base_url <- "api.genius.com/search?q="
 
@@ -64,6 +67,7 @@ search_artist <- function(search_term, n_results=10, artist_name_only=TRUE, acce
   # bind rows of results
   artist_results <- dplyr::bind_rows(artist_results)
 
+  # filter artist name match
   if (artist_name_only == TRUE) {
 
     artist_results <- dplyr::filter(artist_results,

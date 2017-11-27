@@ -8,6 +8,9 @@
 #' @export
 scrape_tracklist <- function(album_id, access_token=genius_token()) {
 
+  # get past cmd check
+  album_name <- artist_id <- artist_name <- artist_url <- NULL
+
   # get album meta data
   album_info <- get_album_meta(album_id)
 

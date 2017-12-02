@@ -36,9 +36,7 @@ search_artist <- function(search_term, n_results=10, artist_name_only=TRUE, acce
                                 '&access_token=', access_token))
 
   # stop if unexpected request status returned
-  if (req$status_code != 200) {
-    stop(paste0(req$headers$status, ' (', req$status_code, ')'))
-  }
+  httr::stop_for_status(req)
 
   # extract request content
   res <- httr::content(req)
@@ -132,9 +130,7 @@ search_song <- function(search_term, n_results=10, lyric_content_only=FALSE, acc
                                 '&access_token=', access_token))
 
   # stop if unexpected request status returned
-  if (req$status_code != 200) {
-    stop(paste0(req$headers$status, ' (', req$status_code, ')'))
-  }
+  httr::stop_for_status(req)
 
   # extract request content
   res <- httr::content(req)

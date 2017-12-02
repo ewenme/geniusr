@@ -70,6 +70,13 @@ scrape_lyrics_url <- function(song_lyrics_url, access_token=genius_token()) {
   # start session
   session <-suppressWarnings(rvest::html(song_lyrics_url))
 
+  # get meta data
+  song <- rvest::html_nodes(session, ".header_with_cover_art-primary_info-title") %>%
+    rvest::html_text()
+
+  artist <- rvest::html_nodes(session, ".header_with_cover_art-primary_info-primary_artist") %>%
+    rvest::html_text()
+
   # read lyrics
   lyrics <- rvest::html_nodes(session, ".lyrics p")
 
@@ -97,7 +104,9 @@ scrape_lyrics_url <- function(song_lyrics_url, access_token=genius_token()) {
 
   # add song metadata
   lyrics <- dplyr::mutate(lyrics,
-                          song_lyrics_url=song_lyrics_url)
+                          song_lyrics_url=song_lyrics_url,
+                          song_title=song,
+                          artist_name=artist)
 
   # Remove lines with things such as [Intro: person & so and so]
   return(dplyr::as_tibble(lyrics))

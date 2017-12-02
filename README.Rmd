@@ -34,6 +34,7 @@ devtools::install_github('ewenme/geniusr')
 library(geniusr)
 library(dplyr)
 library(tidytext)
+library(purrr)
 ```
 
 ### How many times did Kanye West say "good morning", on the track "Good Morning"?
@@ -85,8 +86,16 @@ kendrick_discog %>%
 ### Sentiment Analysis of Illmatic
 
 ```{r illmatic_sentiment}
+# search for Nas
+search_song(search_term = "Nas")
 
+# search track on illmatic
+get_song_meta(song_id = 89)
 
+# scrape album tracklist
+illmatic_tracklist <- scrape_tracklist(album_id = 7013)
 
+# scrape album lyrics
+illmatic_lyrics <- map_df(illmatic_tracklist$song_lyrics_url, scrape_lyrics_url)
 ```
 

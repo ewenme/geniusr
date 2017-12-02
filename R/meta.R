@@ -17,6 +17,11 @@ get_song_meta <- function(song_id, access_token=genius_token()) {
   req <- httr::GET(url = paste0(base_url, song_id),
                    httr::add_headers(Authorization=paste0("Bearer ", access_token)))
 
+  # stop if unexpected request status returned
+  if (req$status_code != 200) {
+    stop(paste0(req$headers$status, ' (', req$status_code, ')'))
+  }
+
   # extract request content
   res <- httr::content(req)
 
@@ -71,6 +76,11 @@ get_artist_meta <- function(artist_id, access_token=genius_token()) {
   req <- httr::GET(url = paste0(base_url, artist_id),
                    httr::add_headers(Authorization=paste0("Bearer ", access_token)))
 
+  # stop if unexpected request status returned
+  if (req$status_code != 200) {
+    stop(paste0(req$headers$status, ' (', req$status_code, ')'))
+  }
+
   # extract request content
   res <- httr::content(req)
 
@@ -116,6 +126,11 @@ get_album_meta <- function(album_id, access_token=genius_token()) {
   # search for album
   req <- httr::GET(url = paste0(base_url, album_id),
                    httr::add_headers(Authorization=paste0("Bearer ", access_token)))
+
+  # stop if unexpected request status returned
+  if (req$status_code != 200) {
+    stop(paste0(req$headers$status, ' (', req$status_code, ')'))
+  }
 
   # extract request content
   res <- httr::content(req)

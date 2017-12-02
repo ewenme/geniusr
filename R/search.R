@@ -35,6 +35,11 @@ search_artist <- function(search_term, n_results=10, artist_name_only=TRUE, acce
   req <- httr::GET(url = paste0(base_url, search_term, '&per_page=', 10, '&page=', i,
                                 '&access_token=', access_token))
 
+  # stop if unexpected request status returned
+  if (req$status_code != 200) {
+    stop(paste0(req$headers$status, ' (', req$status_code, ')'))
+  }
+
   # extract request content
   res <- httr::content(req)
 
@@ -125,6 +130,11 @@ search_song <- function(search_term, n_results=10, lyric_content_only=FALSE, acc
   # search for artists related to search term
   req <- httr::GET(url = paste0(base_url, search_term, '&per_page=', 10, '&page=', i,
                                 '&access_token=', access_token))
+
+  # stop if unexpected request status returned
+  if (req$status_code != 200) {
+    stop(paste0(req$headers$status, ' (', req$status_code, ')'))
+  }
 
   # extract request content
   res <- httr::content(req)

@@ -66,7 +66,7 @@ search_artist(search_term = "Lil", n_results = 500) %>%
 
 ```
 
-### Which artist's has Kendrick Lamar done the most features for?
+### Which artist's has Kendrick Lamar featured with the most?
 
 ```{r kendrick_features}
 # get kendricks discography INCLUDING features
@@ -81,3 +81,12 @@ kendrick_discog %>%
   top_n(10, wt=n)
 
 ```
+
+### Sentiment Analysis of Illmatic
+
+```{r illmatic_sentiment}
+
+
+
+```
+

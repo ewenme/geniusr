@@ -38,7 +38,6 @@ get_song_meta <- function(song_id, access_token=genius_token()) {
       song_lyrics_url = trk$url,
       song_art_image_url = trk$song_art_image_url,
       release_date = trk$release_date,
-      pageviews = stat$pageviews,
       annotation_count = trk$annotation_count,
       artist_id = art$id,
       artist_name = art$name,

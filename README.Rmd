@@ -30,16 +30,14 @@ devtools::install_github('ewenme/geniusr')
 
 ## Use
 
-```{r load_pkg}
-library(geniusr)
-library(dplyr)
-library(tidytext)
-library(purrr)
-```
-
 ### How many times did Kanye West say "good morning", on the track "Good Morning"?
 
 ```{r good_morning_count}
+
+library(geniusr)
+library(dplyr)
+library(tidytext)
+
 # Get song search results for the term 'good morning'
 gm_search <- search_song(search_term = "good morning") %>%
   # look for Kanye as the primary artist
@@ -83,19 +81,51 @@ kendrick_discog %>%
 
 ```
 
-### Sentiment Analysis of Illmatic
+### Positive / Negative Sentiment in Coloring Book, by Chance the Rapper
 
-```{r illmatic_sentiment}
-# search for Nas
-search_song(search_term = "Nas")
+```{r coloring_sentiment}
 
-# search track on illmatic
-get_song_meta(song_id = 89)
+library(purrr)
+library(ggplot2)
+
+# set lexicon
+bing <- get_sentiments("bing")
+
+# search for Chance
+search_song(search_term = "Chance")
+
+# search track on Coloring Book
+get_song_meta(song_id = 2471960)
 
 # scrape album tracklist
-illmatic_tracklist <- scrape_tracklist(album_id = 7013)
+tracklist <- scrape_tracklist(album_id = 150853)
 
 # scrape album lyrics
-illmatic_lyrics <- map_df(illmatic_tracklist$song_lyrics_url, scrape_lyrics_url)
+lyrics <- map_df(tracklist$song_lyrics_url, scrape_lyrics_url)
+
+# counting negative / positive words
+sentiment <- lyrics %>%
+  unnest_tokens(word, line) %>%
+  # remove stop words
+  anti_join(stop_words) %>%
+  # join afinn score
+  inner_join(bing) %>%
+  # count negative / positive words
+  count(word, sentiment, sort = TRUE) %>%
+  ungroup()
+
+# plotting top contributors
+sentiment %>%
+  group_by(sentiment) %>%
+  top_n(10) %>%
+  ungroup() %>%
+  mutate(word = reorder(word, n)) %>%
+  ggplot(aes(word, n, fill = sentiment)) +
+  geom_col(show.legend = FALSE) +
+  facet_wrap(~sentiment, scales = "free_y") +
+  labs(y = "Coloring Book: Words that contribute the most to positive and negative sentiment",
+       x = NULL) +
+  coord_flip() +
+  theme_minimal()
 ```
 

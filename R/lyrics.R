@@ -105,7 +105,7 @@ scrape_lyrics_url <- function(song_lyrics_url, access_token=genius_token()) {
   # add song metadata
   lyrics <- dplyr::mutate(lyrics,
                           song_lyrics_url=song_lyrics_url,
-                          song_title=song,
+                          song_name=song,
                           artist_name=artist)
 
   # Remove lines with things such as [Intro: person & so and so]

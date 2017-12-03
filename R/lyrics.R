@@ -3,7 +3,7 @@
 #' Scrape lyrics from Genius' lyric pages using an associated song ID.
 #' @param song_id song ID (like in \code{song_id} returned by \code{\link{search_song}})
 #' @param access_token Genius' client access token, defaults to \code{genius_token}
-#' @importFrom magrittr "%>%"
+#' @importFrom purrr "%>%"
 #' @examples
 #' \dontrun{
 #' scrape_lyrics_id(song_id = 3214267)
@@ -40,17 +40,16 @@ scrape_lyrics_id <- function(song_id, access_token=genius_token()) {
   lyrics <- lyrics[!stringr::str_detect(lyrics, pattern = "\\[|\\]")]
 
   # Convert to tibble
-  lyrics <- dplyr::tibble(line = lyrics)
+  lyrics <- tibble::as_tibble(line = lyrics)
 
   # add song metadata
-  lyrics <- dplyr::mutate(lyrics,
-                          song_id=meta$song_id,
-                          song_name=meta$song_name,
-                          artist_id=meta$artist_id,
-                          artist_name=meta$artist_name)
+  lyrics$song_id <- meta$song_id
+  lyrics$song_name <- meta$song_name
+  lyrics$artist_id <- meta$artist_id
+  lyrics$artist_name <- meta$artist_name
 
   # Remove lines with things such as [Intro: person & so and so]
-  return(dplyr::as_tibble(lyrics))
+  return(tibble::as_tibble(lyrics))
 
 }
 
@@ -59,7 +58,7 @@ scrape_lyrics_id <- function(song_id, access_token=genius_token()) {
 #' Scrape lyrics from a Genius' lyric page using it's associated URL. Best used with \code{\link{scrape_tracklist}}, when song IDs aren't returned - otherwise, \code{\link{scrape_lyrics_id}} is recommended.
 #' @param song_lyrics_url song lyrics url (like in \code{song_lyrics_url} returned by \code{\link{get_song_meta}})
 #' @param access_token Genius' client access token, defaults to \code{genius_token}
-#' @importFrom magrittr "%>%"
+#' @importFrom purrr "%>%"
 #' @examples
 #' \dontrun{
 #' scrape_lyrics_url(song_lyrics_url = "https://genius.com/Kendrick-lamar-dna-lyrics")
@@ -100,15 +99,14 @@ scrape_lyrics_url <- function(song_lyrics_url, access_token=genius_token()) {
   lyrics <- lyrics[!stringr::str_detect(lyrics, pattern = "\\[|\\]")]
 
   # Convert to tibble
-  lyrics <- dplyr::tibble(line = lyrics)
+  lyrics <- tibble::tibble(line = lyrics)
 
   # add song metadata
-  lyrics <- dplyr::mutate(lyrics,
-                          song_lyrics_url=song_lyrics_url,
-                          song_name=song,
-                          artist_name=artist)
+  lyrics$song_lyrics_url <- song_lyrics_url
+  lyrics$song_name <- song
+  lyrics$artist_name <- artist
 
   # Remove lines with things such as [Intro: person & so and so]
-  return(dplyr::as_tibble(lyrics))
+  return(tibble::as_tibble(lyrics))
 
 }

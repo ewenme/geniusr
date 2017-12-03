@@ -67,18 +67,18 @@ search_artist <- function(search_term, n_results=10, artist_name_only=TRUE, acce
   }
 
   # bind rows of results
-  artist_results <- dplyr::bind_rows(artist_results)
+  artist_results <- do.call("rbind", artist_results)
 
   # filter artist name match
   if (artist_name_only == TRUE) {
 
-    artist_results <- dplyr::filter(artist_results,
+    artist_results <- subset(artist_results,
                                     stringr::str_detect(tolower(artist_name), tolower(search_term)))
 
   } else if (artist_name_only == FALSE) NULL
 
   # isolate unique pairs
-  return(dplyr::as_tibble(dplyr::distinct(artist_results)))
+  return(tibble::as_tibble(unique(artist_results)))
 
 }
 
@@ -164,9 +164,9 @@ search_song <- function(search_term, n_results=10, lyric_content_only=FALSE, acc
   }
 
   # bind rows of results
-  song_results <- dplyr::bind_rows(song_results)
+  song_results <- do.call("rbind", song_results)
 
   # isolate unique pairs
-  return(dplyr::as_tibble(dplyr::distinct(song_results)))
+  return(tibble::as_tibble(unique(song_results)))
 
 }

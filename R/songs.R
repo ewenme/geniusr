@@ -60,15 +60,15 @@ get_artist_songs <- function(artist_id, include_features=FALSE, access_token=gen
   }
 
   # bind rows of results
-  track_lyrics <- dplyr::bind_rows(track_lyric_urls)
+  track_lyrics <- do.call("rbind", track_lyric_urls)
 
   # keep / discard features
   if (include_features == FALSE) {
 
-    track_lyrics <- dplyr::filter(track_lyrics, `artist_id` == pri_artist_id)
+    track_lyrics <- subset(track_lyrics, `artist_id` == pri_artist_id)
 
   } else if (include_features == TRUE) NULL
 
-  return(dplyr::as_tibble(track_lyrics))
+  return(tibble::as_tibble(track_lyrics))
 
 }

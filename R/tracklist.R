@@ -44,26 +44,26 @@ scrape_tracklist <- function(album_id, access_token=genius_token()) {
   album_meta <- data.frame(song_number, song_title, song_lyrics_url)
 
   # add album meta data
-  album_meta <- dplyr::mutate(album_meta,
-                              album_id=album_info$album_id,
-                              album_name=album_info$album_name,
-                              album_url=album_info$album_url,
-                              album_cover_art_url=album_info$album_cover_art_url,
-                              album_release_date=album_info$album_release_date,
-                              artist_id=album_info$artist_id,
-                              artist_name = album_info$artist_name,
-                              artist_url = album_info$artist_url)
+  album_meta$album_id <- album_info$album_id
+  album_meta$album_name <- album_info$album_name
+  album_meta$album_url <- album_info$album_url
+  album_meta$album_cover_art_url <- album_info$album_cover_art_url
+  album_meta$album_release_date <- album_info$album_release_date
+  album_meta$artist_id <- album_info$artist_id
+  album_meta$artist_name <- album_info$artist_name
+  album_meta$artist_url <- album_info$artist_url
 
   # remove missing song nos
-  album_meta <- dplyr::filter(album_meta, !is.na(song_number))
+  album_meta <- subset(album_meta, !is.na(song_number))
 
   # reorder cols
-  album_meta <- dplyr::select(album_meta, song_number, song_title, song_lyrics_url,
-                              album_name, album_id, artist_id, artist_name, artist_url)
+  album_meta <- subset(album_meta, select=c(song_number, song_title, song_lyrics_url,
+                              album_name, album_id, artist_id, artist_name, artist_url))
 
   # return character variables
-  album_meta <- dplyr::mutate_at(album_meta, c("song_title", "song_lyrics_url"), as.character)
+  album_meta$song_title <- as.character(album_meta$song_title)
+  album_meta$song_lyrics_url <- as.character(album_meta$song_lyrics_url)
 
-  return(dplyr::as_tibble(album_meta))
+  return(tibble::as_tibble(album_meta))
 
 }

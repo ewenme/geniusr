@@ -50,7 +50,7 @@ get_song_meta <- function(song_id, access_token=genius_token()) {
   })
 
   # isolate unique pairs
-  return(dplyr::as_tibble(dplyr::distinct(song_info)))
+  return(tibble::as_tibble(unique(song_info)))
 
 }
 
@@ -97,7 +97,7 @@ get_artist_meta <- function(artist_id, access_token=genius_token()) {
   })
 
   # isolate unique pairs
-  return(dplyr::as_tibble(dplyr::distinct(artist_info)))
+  return(tibble::as_tibble(unique(artist_info)))
 
 }
 
@@ -150,6 +150,6 @@ get_album_meta <- function(album_id, access_token=genius_token()) {
   })
 
   # isolate unique pairs
-  return(dplyr::as_tibble(dplyr::distinct(album_info)))
+  return(tibble::as_tibble(unique(album_info)))
 
 }

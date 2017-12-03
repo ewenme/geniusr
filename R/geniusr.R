@@ -9,10 +9,16 @@
 #' @name geniusr
 NULL
 
-globalVars <- c("artist_name",
-                "album_name",
-                "artist_id",
+globalVars <- c("artist_id",
+                "artist_name",
                 "artist_url",
+                "song_id",
+                "song_name",
+                "song_lyrics_url",
+                "song_art_image_url",
+                "album_id",
+                "album_name",
+                "album_url",
                 ".")
 
 ## quiets concerns of R CMD check re: the .'s that appear in pipelines

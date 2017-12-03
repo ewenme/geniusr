@@ -80,36 +80,6 @@ search_artist(search_term = "Lil", n_results = 500) %>%
     ## 10   Lil Jon & The East Side Boyz
     ## # ... with 30 more rows
 
-### Which artist's has Kendrick Lamar featured with the most?
-
-``` r
-# get kendricks discography INCLUDING features
-kendrick_discog <- get_artist_songs(artist_id = 1421, include_features = TRUE)
-
-kendrick_discog %>%
-  # isolate features
-  filter(artist_id != 1421) %>%
-  # count features
-  count(artist_id, artist_name, sort = T) %>%
-  # get top ten
-  top_n(10, wt=n)
-```
-
-    ## # A tibble: 11 x 3
-    ##    artist_id            artist_name     n
-    ##        <int>                  <chr> <int>
-    ##  1      1403               Jay Rock    34
-    ##  2     17985            Black Hippy    16
-    ##  3      2049                Ab-Soul    14
-    ##  4     11353            ScHoolboy Q    14
-    ##  5    140856 RG France Translations    13
-    ##  6     13291         Terrace Martin     8
-    ##  7        42               The Game     7
-    ##  8       123                Dr. Dre     7
-    ##  9        72             Kanye West     5
-    ## 10      1955     BJ The Chicago Kid     5
-    ## 11    161407   RGPolska Tłumaczenia     5
-
 ### Positive / Negative Sentiment in Coloring Book, by Chance the Rapper
 
 ``` r

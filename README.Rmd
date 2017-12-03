@@ -65,22 +65,6 @@ search_artist(search_term = "Lil", n_results = 500) %>%
 
 ```
 
-### Which artist's has Kendrick Lamar featured with the most?
-
-```{r kendrick_features}
-# get kendricks discography INCLUDING features
-kendrick_discog <- get_artist_songs(artist_id = 1421, include_features = TRUE)
-
-kendrick_discog %>%
-  # isolate features
-  filter(artist_id != 1421) %>%
-  # count features
-  count(artist_id, artist_name, sort = T) %>%
-  # get top ten
-  top_n(10, wt=n)
-
-```
-
 ### Positive / Negative Sentiment in Coloring Book, by Chance the Rapper
 
 ```{r coloring_sentiment}

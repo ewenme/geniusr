@@ -30,6 +30,7 @@ Use
 ### How many times did Kanye West say "good morning", on the track "Good Morning"?
 
 ``` r
+
 library(geniusr)
 library(dplyr)
 library(tidytext)
@@ -50,12 +51,11 @@ gm_lyrics %>%
   count(bigram) %>%
   # look for good morning
   filter(bigram == "good morning")
+#> # A tibble: 1 x 2
+#>         bigram     n
+#>          <chr> <int>
+#> 1 good morning    18
 ```
-
-    ## # A tibble: 1 x 2
-    ##         bigram     n
-    ##          <chr> <int>
-    ## 1 good morning    18
 
 ### Gimme artist's with 'Lil' in their name.
 
@@ -63,26 +63,26 @@ gm_lyrics %>%
 # return artist matches for term 'lil'
 search_artist(search_term = "Lil", n_results = 500) %>% 
   distinct(artist_name)
+#> # A tibble: 40 x 1
+#>                       artist_name
+#>                             <chr>
+#>  1                   Lil Uzi Vert
+#>  2                       Lil Pump
+#>  3                      Lil Wayne
+#>  4 Nicki Minaj, Drake & Lil Wayne
+#>  5                      Lil Dicky
+#>  6                       Lil Durk
+#>  7                        Lil Xan
+#>  8      Lil' Kleine & Ronnie Flex
+#>  9                     Lil Yachty
+#> 10   Lil Jon & The East Side Boyz
+#> # ... with 30 more rows
 ```
-
-    ## # A tibble: 40 x 1
-    ##                       artist_name
-    ##                             <chr>
-    ##  1                   Lil Uzi Vert
-    ##  2                       Lil Pump
-    ##  3                      Lil Wayne
-    ##  4 Nicki Minaj, Drake & Lil Wayne
-    ##  5                      Lil Dicky
-    ##  6                       Lil Durk
-    ##  7                        Lil Xan
-    ##  8      Lil' Kleine & Ronnie Flex
-    ##  9                     Lil Yachty
-    ## 10   Lil Jon & The East Side Boyz
-    ## # ... with 30 more rows
 
 ### Positive / Negative Sentiment in Coloring Book, by Chance the Rapper
 
 ``` r
+
 library(purrr)
 library(ggplot2)
 
@@ -91,39 +91,33 @@ bing <- get_sentiments("bing")
 
 # search for Chance
 search_song(search_term = "Chance")
-```
+#> # A tibble: 10 x 5
+#>    song_id                                    song_name
+#>      <int>                                        <chr>
+#>  1 2471960        No Problem (Ft. 2 Chainz & Lil Wayne)
+#>  2  146864 Cocoa Butter Kisses (Ft. Twista & Vic Mensa)
+#>  3  146855         Favorite Song (Ft. Childish Gambino)
+#>  4  146865  Pusha Man/Paranoia (Ft. Lili K. & Nate Fox)
+#>  5  113663                                        Juice
+#>  6 2468090                 Blessings (Ft. Jamila Woods)
+#>  7  146915                            Lost (Ft. Noname)
+#>  8  119999                                    Acid Rain
+#>  9 2339009                            Angels (Ft. Saba)
+#> 10  145995                    Smoke Again (Ft. Ab-Soul)
+#> # ... with 3 more variables: song_lyrics_url <chr>, artist_id <int>,
+#> #   artist_name <chr>
 
-    ## # A tibble: 10 x 5
-    ##    song_id                                    song_name
-    ##      <int>                                        <chr>
-    ##  1 2471960        No Problem (Ft. 2 Chainz & Lil Wayne)
-    ##  2  146864 Cocoa Butter Kisses (Ft. Twista & Vic Mensa)
-    ##  3  146855         Favorite Song (Ft. Childish Gambino)
-    ##  4  146865  Pusha Man/Paranoia (Ft. Lili K. & Nate Fox)
-    ##  5  113663                                        Juice
-    ##  6 2468090                 Blessings (Ft. Jamila Woods)
-    ##  7  146915                            Lost (Ft. Noname)
-    ##  8  119999                                    Acid Rain
-    ##  9 2339009                            Angels (Ft. Saba)
-    ## 10  145995                    Smoke Again (Ft. Ab-Soul)
-    ## # ... with 3 more variables: song_lyrics_url <chr>, artist_id <int>,
-    ## #   artist_name <chr>
-
-``` r
 # search track on Coloring Book
 get_song_meta(song_id = 2471960)
-```
+#> # A tibble: 1 x 13
+#>   song_id                             song_name
+#>     <int>                                 <chr>
+#> 1 2471960 No Problem (Ft. 2 Chainz & Lil Wayne)
+#> # ... with 11 more variables: song_lyrics_url <chr>,
+#> #   song_art_image_url <chr>, release_date <chr>, pageviews <int>,
+#> #   annotation_count <int>, artist_id <int>, artist_name <chr>,
+#> #   artist_url <chr>, album_id <int>, album_name <chr>, album_url <chr>
 
-    ## # A tibble: 1 x 12
-    ##   song_id                             song_name
-    ##     <int>                                 <chr>
-    ## 1 2471960 No Problem (Ft. 2 Chainz & Lil Wayne)
-    ## # ... with 10 more variables: song_lyrics_url <chr>,
-    ## #   song_art_image_url <chr>, release_date <chr>, annotation_count <int>,
-    ## #   artist_id <int>, artist_name <chr>, artist_url <chr>, album_id <int>,
-    ## #   album_name <chr>, album_url <chr>
-
-``` r
 # scrape album tracklist
 tracklist <- scrape_tracklist(album_id = 150853)
 
@@ -156,4 +150,4 @@ sentiment %>%
   theme_minimal()
 ```
 
-![](README_files/figure-markdown_github/coloring_sentiment-1.png)
+![](man/figures/README-coloring_sentiment-1.png)

@@ -40,7 +40,7 @@ scrape_lyrics_id <- function(song_id, access_token=genius_token()) {
   lyrics <- lyrics[!stringr::str_detect(lyrics, pattern = "\\[|\\]")]
 
   # Convert to tibble
-  lyrics <- tibble::as_tibble(line = lyrics)
+  lyrics <- tibble::tibble(line = lyrics)
 
   # add song metadata
   lyrics$song_id <- meta$song_id

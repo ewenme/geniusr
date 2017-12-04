@@ -2,8 +2,7 @@ Package: geniusr
 Title: Tools for Working with the Genius API
 Version: 1.0.0
 Authors@R: person("Ewen", "Henderson", email = "ewenhenderson@gmail.com", role = c("aut", "cre"))
-Description: Provides tools for R to interact nicely with the Genius API <https://docs.genius.com/>. 
-Search Genius' hosted content, extract different types of associated metadata and retrieve lyrics with ease.
+Description: Provides tools for R to interact nicely with the Genius API <https://docs.genius.com/>. Search Genius' hosted content, extract different types of associated metadata and retrieve lyrics with ease.
 URL: https://github.com/ewenme/geniusr
 Depends: R (>= 3.2.0)
 License: MIT + file LICENSE

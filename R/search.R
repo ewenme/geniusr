@@ -81,7 +81,6 @@ search_artist <- function(search_term, n_results=10, access_token=genius_token()
 #' \code{artist_id} for all unique song matches to a search.
 #' @param search_term A character string to search for song matches
 #' @param n_results Maximum no. of search results to return
-#' @param lyric_content_only Search lyric content only (i.e. ignore song title matches)
 #' @param access_token Genius' client access token, defaults to \code{genius_token}
 #' @examples
 #' \dontrun{

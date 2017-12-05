@@ -1,7 +1,7 @@
 ## Resubmission
 This is a resubmission. In this version I have:
 
-* Converted the LICENSE file to CRAN MIT format.
+* Removed redundant words and included proper quotation marks in the DESCRIPTION file.
 
 ## Test environments
 * local OS X install, R 3.4.1

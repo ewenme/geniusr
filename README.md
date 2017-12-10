@@ -1,7 +1,7 @@
 geniusr
 ================
 
-[![Build Status](https://travis-ci.org/ewenme/geniusr.png)](https://travis-ci.org/ewenme/geniusr)
+[![Build Status](https://travis-ci.org/ewenme/geniusr.png)](https://travis-ci.org/ewenme/geniusr) [![CRAN status](http://www.r-pkg.org/badges/version/geniusr)](http://www.r-pkg.org/badges/version/geniusr) [![DLs](http://cranlogs.r-pkg.org/badges/geniusr)](http://cran.rstudio.com/web/packages/geniusr/index.html)
 
 Tools for working with the Genius API.
 
@@ -63,20 +63,20 @@ gm_lyrics %>%
 # return artist matches for term 'lil'
 search_artist(search_term = "Lil", n_results = 500) %>% 
   distinct(artist_name)
-#> # A tibble: 40 x 1
+#> # A tibble: 63 x 1
 #>                       artist_name
 #>                             <chr>
 #>  1                   Lil Uzi Vert
 #>  2                       Lil Pump
 #>  3                      Lil Wayne
-#>  4 Nicki Minaj, Drake & Lil Wayne
-#>  5                      Lil Dicky
-#>  6                       Lil Durk
-#>  7                        Lil Xan
-#>  8      Lil' Kleine & Ronnie Flex
-#>  9                     Lil Yachty
-#> 10   Lil Jon & The East Side Boyz
-#> # ... with 30 more rows
+#>  4              Chance The Rapper
+#>  5 Nicki Minaj, Drake & Lil Wayne
+#>  6                      Lil Dicky
+#>  7                       Lil Durk
+#>  8                        Lil Xan
+#>  9   Lil Jon & The East Side Boyz
+#> 10      Lil' Kleine & Ronnie Flex
+#> # ... with 53 more rows
 ```
 
 ### Positive / Negative Sentiment in Coloring Book, by Chance the Rapper

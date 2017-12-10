@@ -8,7 +8,9 @@ knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE,
                       collapse = TRUE, comment = "#>", fig.path = "man/figures/README-")
 ```
 
-[![Build Status](https://travis-ci.org/ewenme/geniusr.png)](https://travis-ci.org/ewenme/geniusr) 
+[![Build Status](https://travis-ci.org/ewenme/geniusr.png)](https://travis-ci.org/ewenme/geniusr)
+[![CRAN status](http://www.r-pkg.org/badges/version/geniusr)](http://www.r-pkg.org/badges/version/geniusr)
+[![DLs](http://cranlogs.r-pkg.org/badges/geniusr)](http://cran.rstudio.com/web/packages/geniusr/index.html)
 
 Tools for working with the Genius API.
 

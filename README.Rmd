@@ -19,6 +19,12 @@ Tools for working with the Genius API.
 
 ## Install
 
+Latest stable version on CRAN
+
+```{r, eval = FALSE}
+install.packages('geniusr')
+```
+
 Development version
 
 ```{r install_dev, eval=FALSE}

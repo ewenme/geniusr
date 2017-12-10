@@ -11,6 +11,12 @@ Tools for working with the Genius API.
 Install
 -------
 
+Latest stable version on CRAN
+
+``` r
+install.packages('geniusr')
+```
+
 Development version
 
 ``` r

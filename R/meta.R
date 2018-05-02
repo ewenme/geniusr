@@ -27,7 +27,7 @@ get_song_meta <- function(song_id, access_token=genius_token()) {
   res <- res$response
 
   # extract track info from returned results
-  song_info <- purrr::map_df(1:length(res), function(x) {
+  song_info <- purrr::map_df(seq_along(res), function(x) {
     trk <- res[[x]]
     alb <- res[[x]]$album
     art <- res[[x]]$primary_artist
@@ -84,7 +84,7 @@ get_artist_meta <- function(artist_id, access_token=genius_token()) {
   res <- res$response
 
   # extract artist info from returned results
-  artist_info <- purrr::map_df(1:length(res), function(x) {
+  artist_info <- purrr::map_df(seq_along(res), function(x) {
     tmp <- res[[x]]
     list(
       artist_id = tmp$id,
@@ -133,7 +133,7 @@ get_album_meta <- function(album_id, access_token=genius_token()) {
   res <- res$response
 
   # extract album info from returned results
-  album_info <- purrr::map_df(1:length(res), function(x) {
+  album_info <- purrr::map_df(seq_along(res), function(x) {
     tmp <- res[[x]]
     art <- res[[x]]$artist
     list(

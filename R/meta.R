@@ -23,35 +23,37 @@ get_song_meta <- function(song_id, access_token=genius_token()) {
   # extract request content
   res <- httr::content(req)
 
-  # drill down
-  res <- res$response
+  # pull song meta without request meta
+    song_meta <- res$response$song
 
-  # extract track info from returned results
-  song_info <- purrr::map_df(1:length(res), function(x) {
-    trk <- res[[x]]
-    alb <- res[[x]]$album
-    art <- res[[x]]$primary_artist
-    stat <- res[[x]]$stats
-    list(
-      song_id = trk$id,
-      song_name = trk$title_with_featured,
-      song_lyrics_url = trk$url,
-      song_art_image_url = trk$song_art_image_url,
-      release_date = trk$release_date,
-      pageviews = stat$pageviews,
-      annotation_count = trk$annotation_count,
-      artist_id = art$id,
-      artist_name = art$name,
-      artist_url = art$url,
-      album_id = alb$id,
-      album_name = alb$name,
-      album_url = alb$url
-    )
-  })
+  # grab album, artist, stat data
+  alb <- song_meta$album
+  art <- song_meta$primary_artist
+  stat <- song_meta$stats
 
-  # isolate unique pairs
-  return(tibble::as_tibble(unique(song_info)))
+  # make list for song_info
+  song_info <- list(song_meta$id,
+        song_meta$title_with_featured,
+        song_meta$url,
+        song_meta$song_art_image_url,
+        song_meta$release_date,
+        stat$pageviews,
+        song_meta$annotation_count,
+        art$id,
+        art$name, art$url,
+        alb$id,
+        alb$name,
+        alb$url)
 
+  # find list indices of NULL values, change to NA
+  ndxNULL <- which(unlist(lapply(song_info, is.null)))
+  for(i in ndxNULL){ song_info[[i]] <- NA }
+
+  # name song_info list
+  names(song_info) <- c('song_id', 'song_name', 'song_lyrics_url', 'song_art_image_url', 'release_date',
+        'pageviews','annotation_count','artist_id', 'artist_name','artist_url','album_id','album_name','album_url')
+
+  return(tibble::as_tibble(song_info))
 }
 
 

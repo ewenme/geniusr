@@ -27,9 +27,6 @@ scrape_lyrics_id <- function(song_id, access_token=genius_token()) {
   # get plain text lyrics
   lyrics <- rvest::html_text(lyrics)
 
-  # keep first element
-  lyrics <- lyrics[1]
-
   # split on line break
   lyrics <- unlist(stringr::str_split(lyrics, pattern = "\n"))
 
@@ -85,9 +82,6 @@ scrape_lyrics_url <- function(song_lyrics_url, access_token=genius_token()) {
 
   # get plain text lyrics
   lyrics <- rvest::html_text(lyrics)
-
-  # keep first element
-  lyrics <- lyrics[1]
 
   # split on line break
   lyrics <- unlist(stringr::str_split(lyrics, pattern = "\n"))

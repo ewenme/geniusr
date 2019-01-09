@@ -4,7 +4,8 @@
 \alias{search_artist}
 \title{Retrieve artist identifiers for associated search terms}
 \usage{
-search_artist(search_term, n_results = 10, access_token = genius_token())
+search_artist(search_term, n_results = 10,
+  access_token = genius_token())
 }
 \arguments{
 \item{search_term}{A character string to search for artist matches}

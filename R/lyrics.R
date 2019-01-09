@@ -98,6 +98,11 @@ scrape_lyrics_url <- function(song_lyrics_url, access_token=genius_token()) {
   # remove lines with square brackets
   lyrics <- lyrics[!stringr::str_detect(lyrics, pattern = "\\[|\\]")]
 
+  # error handling for instrumental songs, writes NA if there are no lyrics
+  if (is_empty(lyrics)) {
+    lyrics[1] <- NA
+  }
+
   # Convert to tibble
   lyrics <- tibble::tibble(line = lyrics)
 

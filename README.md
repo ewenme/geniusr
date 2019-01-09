@@ -3,7 +3,8 @@ geniusr
 
 [![Build
 Status](https://travis-ci.org/ewenme/geniusr.png)](https://travis-ci.org/ewenme/geniusr)
-<http://www.r-pkg.org/badges/version/geniusr>
+[![CRAN
+status](https://www.r-pkg.org/badges/version/geniusr)](https://cran.r-project.org/package=geniusr)
 [![DLs](http://cranlogs.r-pkg.org/badges/geniusr)](http://cran.rstudio.com/web/packages/geniusr/index.html)
 
 Tools for working with the Genius API.

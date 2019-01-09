@@ -19,16 +19,16 @@ Tools for working with the Genius API.
 
 ## Install
 
+Development version (recommended)
+
+```{r install_dev, eval=FALSE}
+devtools::install_github('ewenme/geniusr')
+```
+
 Latest stable version on CRAN
 
 ```{r, eval = FALSE}
 install.packages('geniusr')
-```
-
-Development version
-
-```{r install_dev, eval=FALSE}
-devtools::install_github('ewenme/geniusr')
 ```
 
 ## Authenticate
@@ -122,3 +122,6 @@ sentiment %>%
   theme_minimal()
 ```
 
+## Other options
+
+- the [geniusR](https://github.com/JosiahParry/geniusR) package provides a similar API interface.

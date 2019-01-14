@@ -11,6 +11,9 @@
 #' @export
 get_artist_songs <- function(artist_id, include_features=FALSE, access_token=genius_token()) {
 
+  # check for internet
+  check_internet()
+
   pri_artist_id <- artist_id
 
   # base URL

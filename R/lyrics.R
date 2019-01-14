@@ -15,7 +15,7 @@ scrape_lyrics_id <- function(song_id, access_token=genius_token()) {
   meta <- get_song_meta(song_id)
 
   # start session
-  session <-suppressWarnings(rvest::html(meta$song_lyrics_url))
+  session <- xml2::read_html(meta$song_lyrics_url)
 
   # read lyrics
   lyrics <- rvest::html_nodes(session, ".lyrics p")
@@ -63,8 +63,11 @@ scrape_lyrics_id <- function(song_id, access_token=genius_token()) {
 #' @export
 scrape_lyrics_url <- function(song_lyrics_url, access_token=genius_token()) {
 
+  # check for internet
+  check_internet()
+
   # start session
-  session <-suppressWarnings(rvest::html(song_lyrics_url))
+  session <- xml2::read_html(song_lyrics_url)
 
   # get meta data
   song <- rvest::html_nodes(session, ".header_with_cover_art-primary_info-title") %>%

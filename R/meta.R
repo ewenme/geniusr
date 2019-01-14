@@ -10,6 +10,9 @@
 #' @export
 get_song_meta <- function(song_id, access_token=genius_token()) {
 
+  # check for internet
+  check_internet()
+
   # base URL
   base_url <- "api.genius.com/songs/"
 
@@ -69,6 +72,9 @@ get_song_meta <- function(song_id, access_token=genius_token()) {
 #' @export
 get_artist_meta <- function(artist_id, access_token=genius_token()) {
 
+  # check for internet
+  check_internet()
+
   # base URL
   base_url <- "api.genius.com/artists/"
 
@@ -116,7 +122,8 @@ get_artist_meta <- function(artist_id, access_token=genius_token()) {
 #' @export
 get_album_meta <- function(album_id, access_token=genius_token()) {
 
-  # API ----------------------
+  # check for internet
+  check_internet()
 
   # base URL
   base_url <- "api.genius.com/albums/"

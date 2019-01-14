@@ -12,11 +12,14 @@
 #' @export
 search_artist <- function(search_term, n_results=10, access_token=genius_token()) {
 
+  # check for internet
+  check_internet()
+
   # base URL
-  base_url <- "api.genius.com/search?q="
+  base_url <- "https://api.genius.com/search"
 
   # replace spaces with %20
-  search_term <- gsub(" ", "%20", search_term)
+  search_term <- replace_space(search_term)
 
   # initiate empty list
   artist_results <- list()
@@ -31,8 +34,10 @@ search_artist <- function(search_term, n_results=10, access_token=genius_token()
   while (i > 0 & i <= n_pages) {
 
   # search for term
-  req <- httr::GET(url = paste0(base_url, search_term, '&per_page=', 10, '&page=', i,
-                                '&access_token=', access_token))
+  req <- httr::GET(url = base_url, query = list(
+    q = search_term,
+    page = i,
+    access_token = access_token))
 
   # stop if unexpected request status returned
   httr::stop_for_status(req)
@@ -89,11 +94,14 @@ search_artist <- function(search_term, n_results=10, access_token=genius_token()
 #' @export
 search_song <- function(search_term, n_results=10, access_token=genius_token()) {
 
+  # check for internet
+  check_internet()
+
   # base URL
   base_url <- "api.genius.com/search?q="
 
-  # replace spaces with %20
-  search_term <- gsub(" ", "%20", search_term)
+  # replace spaces
+  search_term <- replace_space(search_term)
 
   # initiate empty list
   song_results <- list()

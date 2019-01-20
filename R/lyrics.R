@@ -96,7 +96,7 @@ scrape_lyrics_url <- function(song_lyrics_url, access_token=genius_token()) {
   lyrics <- lyrics[!stringr::str_detect(lyrics, pattern = "\\[|\\]")]
 
   # error handling for instrumental songs, writes NA if there are no lyrics
-  if (is_empty(lyrics)) {
+  if (purrr::is_empty(lyrics)) {
     lyrics[1] <- NA
   }
 

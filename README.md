@@ -1,6 +1,8 @@
 geniusr
 ================
 
+# geniusr
+
 [![Build
 Status](https://travis-ci.org/ewenme/geniusr.png)](https://travis-ci.org/ewenme/geniusr)
 [![CRAN
@@ -74,7 +76,7 @@ gm_lyrics %>%
 # return artist matches for term 'lil'
 search_artist(search_term = "Lil", n_results = 500) %>% 
   distinct(artist_name)
-#> # A tibble: 68 x 1
+#> # A tibble: 73 x 1
 #>    artist_name           
 #>    <chr>                 
 #>  1 Lil Uzi Vert          
@@ -87,7 +89,7 @@ search_artist(search_term = "Lil", n_results = 500) %>%
 #>  8 Lil Baby & Drake      
 #>  9 Tay-K                 
 #> 10 Ski Mask the Slump God
-#> # ... with 58 more rows
+#> # … with 63 more rows
 ```
 
 ### Positive / Negative Sentiment in Coloring Book, by Chance the Rapper
@@ -121,8 +123,8 @@ get_song_meta(song_id = 2471960)
 #> # A tibble: 1 x 13
 #>   song_id song_name song_lyrics_url song_art_image_… release_date pageviews
 #>     <int> <chr>     <chr>           <chr>            <chr>            <int>
-#> 1 2471960 No Probl… https://genius… https://images.… 2016-05-12     2287948
-#> # ... with 7 more variables: annotation_count <int>, artist_id <int>,
+#> 1 2471960 No Probl… https://genius… https://images.… 2016-05-12     2294713
+#> # … with 7 more variables: annotation_count <int>, artist_id <int>,
 #> #   artist_name <chr>, artist_url <chr>, album_id <int>, album_name <chr>,
 #> #   album_url <chr>
 

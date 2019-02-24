@@ -1,5 +1,4 @@
 ---
-title: "geniusr"
 output: github_document
 ---
 
@@ -7,6 +6,8 @@ output: github_document
 knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE,
                       collapse = TRUE, comment = "#>", fig.path = "man/figures/README-")
 ```
+
+# geniusr 
 
 [![Build Status](https://travis-ci.org/ewenme/geniusr.png)](https://travis-ci.org/ewenme/geniusr)
 [![CRAN status](https://www.r-pkg.org/badges/version/geniusr)](https://cran.r-project.org/package=geniusr)

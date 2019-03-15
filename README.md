@@ -69,25 +69,6 @@ gm_lyrics %>%
 #> 1 good morning    18
 ```
 
-### Gimme artist’s with ‘Lil’ in their name.
-
-``` r
-# return artist matches for term 'lil'
-search_artist(search_term = "Lil") %>% 
-  distinct(artist_name)
-#> # A tibble: 8 x 1
-#>   artist_name          
-#>   <chr>                
-#> 1 Lil Uzi Vert         
-#> 2 Lil Pump             
-#> 3 Kanye West & Lil Pump
-#> 4 Lil Wayne            
-#> 5 Lil Peep             
-#> 6 Chance the Rapper    
-#> 7 Kodak Black          
-#> 8 Lil Baby & Drake
-```
-
 ### Positive / Negative Sentiment in Coloring Book, by Chance the Rapper
 
 ``` r

@@ -67,15 +67,6 @@ gm_lyrics %>%
   filter(bigram == "good morning")
 ```
 
-### Gimme artist's with 'Lil' in their name.
-
-```{r lil_names}
-# return artist matches for term 'lil'
-search_artist(search_term = "Lil") %>% 
-  distinct(artist_name)
-
-```
-
 ### Positive / Negative Sentiment in Coloring Book, by Chance the Rapper
 
 ```{r coloring_sentiment}

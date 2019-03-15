@@ -9,6 +9,7 @@ knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE,
 
 # geniusr 
 
+[![lifecycle](https://img.shields.io/badge/lifecycle-stable-green.svg)](https://www.tidyverse.org/lifecycle/#stable)
 [![Build Status](https://travis-ci.org/ewenme/geniusr.png)](https://travis-ci.org/ewenme/geniusr)
 [![CRAN status](https://www.r-pkg.org/badges/version/geniusr)](https://cran.r-project.org/package=geniusr)
 [![DLs](http://cranlogs.r-pkg.org/badges/geniusr)](http://cran.rstudio.com/web/packages/geniusr/index.html)
@@ -70,7 +71,7 @@ gm_lyrics %>%
 
 ```{r lil_names}
 # return artist matches for term 'lil'
-search_artist(search_term = "Lil", n_results = 500) %>% 
+search_artist(search_term = "Lil") %>% 
   distinct(artist_name)
 
 ```

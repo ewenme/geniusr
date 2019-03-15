@@ -1,8 +1,7 @@
-geniusr
-================
 
 # geniusr
 
+[![lifecycle](https://img.shields.io/badge/lifecycle-stable-green.svg)](https://www.tidyverse.org/lifecycle/#stable)
 [![Build
 Status](https://travis-ci.org/ewenme/geniusr.png)](https://travis-ci.org/ewenme/geniusr)
 [![CRAN
@@ -74,22 +73,19 @@ gm_lyrics %>%
 
 ``` r
 # return artist matches for term 'lil'
-search_artist(search_term = "Lil", n_results = 500) %>% 
+search_artist(search_term = "Lil") %>% 
   distinct(artist_name)
-#> # A tibble: 73 x 1
-#>    artist_name           
-#>    <chr>                 
-#>  1 Lil Uzi Vert          
-#>  2 Lil Pump              
-#>  3 Kanye West & Lil Pump 
-#>  4 Lil Wayne             
-#>  5 Chance the Rapper     
-#>  6 Kodak Black           
-#>  7 Lil Peep              
-#>  8 Lil Baby & Drake      
-#>  9 Tay-K                 
-#> 10 Ski Mask the Slump God
-#> # … with 63 more rows
+#> # A tibble: 8 x 1
+#>   artist_name          
+#>   <chr>                
+#> 1 Lil Uzi Vert         
+#> 2 Lil Pump             
+#> 3 Kanye West & Lil Pump
+#> 4 Lil Wayne            
+#> 5 Lil Peep             
+#> 6 Chance the Rapper    
+#> 7 Kodak Black          
+#> 8 Lil Baby & Drake
 ```
 
 ### Positive / Negative Sentiment in Coloring Book, by Chance the Rapper
@@ -123,7 +119,7 @@ get_song_meta(song_id = 2471960)
 #> # A tibble: 1 x 13
 #>   song_id song_name song_lyrics_url song_art_image_… release_date pageviews
 #>     <int> <chr>     <chr>           <chr>            <chr>            <int>
-#> 1 2471960 No Probl… https://genius… https://images.… 2016-05-12     2294713
+#> 1 2471960 No Probl… https://genius… https://images.… 2016-05-12     2297562
 #> # … with 7 more variables: annotation_count <int>, artist_id <int>,
 #> #   artist_name <chr>, artist_url <chr>, album_id <int>, album_name <chr>,
 #> #   album_url <chr>

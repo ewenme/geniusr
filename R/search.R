@@ -34,16 +34,16 @@ search_artist <- function(search_term, n_results=10, access_token=genius_token()
   while (i > 0 & i <= n_pages) {
 
   # search for term
-  req <- httr::GET(url = base_url, query = list(
+  req <- GET(url = base_url, query = list(
     q = search_term,
     page = i,
     access_token = access_token))
 
   # stop if unexpected request status returned
-  httr::stop_for_status(req)
+  stop_for_status(req)
 
   # extract request content
-  res <- httr::content(req)
+  res <- content(req)
 
   # check if there are any results
   if (length(res$response$hits) > 0) {
@@ -56,7 +56,7 @@ search_artist <- function(search_term, n_results=10, access_token=genius_token()
   res <- res$response$hits
 
   # extract artist info from returned results
-  artist_info <- purrr::map_df(1:length(res), function(x) {
+  artist_info <- map_df(1:length(res), function(x) {
     tmp <- res[[x]]$result$primary_artist
     list(
       artist_id = tmp$id,
@@ -74,7 +74,7 @@ search_artist <- function(search_term, n_results=10, access_token=genius_token()
   artist_results <- do.call("rbind", artist_results)
 
   # isolate unique pairs
-  return(tibble::as_tibble(unique(artist_results)))
+  return(as_tibble(unique(artist_results)))
 
 }
 
@@ -116,14 +116,14 @@ search_song <- function(search_term, n_results=10, access_token=genius_token()) 
   while (i > 0 & i <= n_pages) {
 
   # search for artists related to search term
-  req <- httr::GET(url = paste0(base_url, search_term, '&per_page=', 10, '&page=', i,
-                                '&access_token=', access_token))
+  req <- GET(url = paste0(base_url, search_term, '&per_page=', 10, '&page=', i,
+                          '&access_token=', access_token))
 
   # stop if unexpected request status returned
-  httr::stop_for_status(req)
+  stop_for_status(req)
 
   # extract request content
-  res <- httr::content(req)
+  res <- content(req)
 
   # check if there are any results
   if (length(res$response$hits) > 0) {
@@ -136,7 +136,7 @@ search_song <- function(search_term, n_results=10, access_token=genius_token()) 
   res <- res$response$hits
 
   # extract song and artist info from returned results
-  song_info <- purrr::map_df(1:length(res), function(x) {
+  song_info <- map_df(1:length(res), function(x) {
     trk <- res[[x]]$result
     tmp <- res[[x]]$result$primary_artist
     list(
@@ -157,6 +157,6 @@ search_song <- function(search_term, n_results=10, access_token=genius_token()) 
   song_results <- do.call("rbind", song_results)
 
   # isolate unique pairs
-  return(tibble::as_tibble(unique(song_results)))
+  return(as_tibble(unique(song_results)))
 
 }

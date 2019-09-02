@@ -20,24 +20,24 @@ scrape_tracklist <- function(album_id, access_token=genius_token()) {
   album_info <- get_album_meta(album_id)
 
   # start session
-  session <- xml2::read_html(album_info$album_url)
+  session <- read_html(album_info$album_url)
 
   # get track numbers
-  song_number <- rvest::html_nodes(session, ".chart_row-number_container-number") %>%
-    rvest::html_text(trim = TRUE) %>%
+  song_number <- html_nodes(session, ".chart_row-number_container-number") %>%
+    html_text(trim = TRUE) %>%
     as.numeric()
 
   # get track titles
-  song_title <- rvest::html_nodes(session, ".chart_row-content-title") %>%
-    rvest::html_text(trim = TRUE)
+  song_title <- html_nodes(session, ".chart_row-content-title") %>%
+    html_text(trim = TRUE)
 
   # remove everything after (and including) line break
   song_title <- gsub("\n.*", "", song_title)
 
   # get lyric links
-  song_lyrics_url <- rvest::html_nodes(session, ".chart_row-content") %>%
-    rvest::html_nodes("a") %>%
-    rvest::html_attr("href")
+  song_lyrics_url <- html_nodes(session, ".chart_row-content") %>%
+    html_nodes("a") %>%
+    html_attr("href")
 
   # combine album elements into dataframe
   album_meta <- data.frame(song_number, song_title, song_lyrics_url)
@@ -63,6 +63,6 @@ scrape_tracklist <- function(album_id, access_token=genius_token()) {
   album_meta$song_title <- as.character(album_meta$song_title)
   album_meta$song_lyrics_url <- as.character(album_meta$song_lyrics_url)
 
-  return(tibble::as_tibble(album_meta))
+  return(as_tibble(album_meta))
 
 }

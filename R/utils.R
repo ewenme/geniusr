@@ -1,14 +1,23 @@
-ua <- httr::user_agent("http://github.com/ewenme/geniusr")
+# set user agent
+ua <- user_agent("http://github.com/ewenme/geniusr")
 
-#' @importFrom attempt stop_if_not
-#' @importFrom curl has_internet
+# base url
+base_url <- "api.genius.com/"
+
+# check user internet connection
 check_internet <- function(){
-  attempt::stop_if_not(.x = curl::has_internet(), msg = "Please check your internet connection")
+  stop_if_not(.x = has_internet(), msg = "Please check your internet connection")
 }
 
+# simple GET wrapper
+genius_get <- function(url, access_token) {
+  GET(url = url, add_headers(
+    Authorization = paste0("Bearer ", access_token)
+    ))
+}
+
+# replace %20 w space
 replace_space <- function(x) {
 
-  no_spaces <- gsub(" ", "%20", x)
-
-  return(no_spaces)
+  gsub(" ", "%20", x)
 }

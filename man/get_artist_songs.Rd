@@ -2,7 +2,7 @@
 % Please edit documentation in R/songs.R
 \name{get_artist_songs}
 \alias{get_artist_songs}
-\title{Retrieve meta data for all of an artist's appearances on Genius}
+\title{Retrieve metadata for all of an artist's songs}
 \usage{
 get_artist_songs(artist_id, include_features = FALSE,
   access_token = genius_token())
@@ -15,7 +15,8 @@ get_artist_songs(artist_id, include_features = FALSE,
 \item{access_token}{Genius' client access token, defaults to \code{genius_token}}
 }
 \description{
-Return meta data for all appearances (features optional) of an artist on Genius.
+The Genius API lets you search for song metadata of an artist,
+given an artist ID. \code{get_artist_songs} returns this data in a stripped-back data frame.
 }
 \examples{
 \dontrun{

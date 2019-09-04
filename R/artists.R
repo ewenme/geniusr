@@ -88,21 +88,32 @@ get_artist_df <- get_artist_meta
 #' in a relatively untouched state.
 #'
 #' @inheritParams get_artist
+#' @param sort method to order results; by "title" (default) or by
+#' "popularity"
 #' @param include_features Whether to return results where artist
 #' isn't the primary artist (logical, defaults to FALSE)
 #'
 #' @examples
 #' \dontrun{
 #' get_artist_songs(artist_id = 1421)
+#' get_artist_songs(artist_id = 1421, sort = "popularity")
 #' get_artist_songs(artist_id = 1421, include_features = TRUE)
 #' }
 #' @export
-get_artist_songs <- function(artist_id, include_features = FALSE,
+get_artist_songs <- function(artist_id, sort = c("title", "popularity"),
+                             include_features = FALSE,
                              access_token = genius_token()) {
 
   check_internet()
 
-  path <- sprintf("api.genius.com/artists/%s/songs", artist_id)
+  sort_results <- match.arg(sort)
+
+  # sort results alpha or by pop
+  if (sort_results == "title") {
+    path <- sprintf("api.genius.com/artists/%s/songs?sort=title", artist_id)
+  } else if (sort_results == "popularity") {
+    path <- sprintf("api.genius.com/artists/%s/songs?sort=popularity", artist_id)
+  }
 
   songs <- list()
 
@@ -113,7 +124,7 @@ get_artist_songs <- function(artist_id, include_features = FALSE,
   while (i > 0) {
 
     req <- GET(
-      url = paste0(path, '?page=', i),
+      url = paste0(path, '&page=', i),
       add_headers(Authorization = paste0("Bearer ", access_token))
       )
 

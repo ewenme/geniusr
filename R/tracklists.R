@@ -1,6 +1,6 @@
 #' Retrieve an album's tracklisting
 #'
-#' Retirve an album's tracklisting, and song meta data, given an album ID.
+#' Get an album's tracklisting, and song meta data, given an album ID.
 #'
 #' @inheritParams get_album
 #'

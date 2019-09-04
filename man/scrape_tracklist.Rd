@@ -13,7 +13,7 @@ scrape_tracklist(album_id, access_token = genius_token())
 \item{access_token}{Genius' client access token, defaults to \code{genius_token}}
 }
 \description{
-Retirve an album's tracklisting, and song meta data, given an album ID.
+Get an album's tracklisting, and song meta data, given an album ID.
 }
 \examples{
 \dontrun{

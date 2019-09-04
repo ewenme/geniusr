@@ -3,7 +3,7 @@
 #' @importFrom rvest html_nodes html_text html_attr
 #' @importFrom stringr str_split str_detect
 #' @importFrom tibble tibble as_tibble
-#' @importFrom purrr is_empty map_df flatten
+#' @importFrom purrr is_empty map_df flatten "%>%"
 #' @importFrom attempt stop_if_not
 #' @importFrom curl has_internet
 #' @keywords internal

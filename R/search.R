@@ -1,3 +1,9 @@
+genius_search <- function(q, access_token = genius_token()) {
+
+  check_internet()
+
+}
+
 #' Retrieve artist identifiers for associated search terms
 #'
 #' The Genius API lets you search hosted content (all songs). Use \code{search_artist} to
@@ -10,9 +16,8 @@
 #' search_artist(search_term = "Lil")
 #' }
 #' @export
-search_artist <- function(search_term, n_results=10, access_token=genius_token()) {
+search_artist <- function(search_term, n_results=10, access_token = genius_token()) {
 
-  # check for internet
   check_internet()
 
   # base URL

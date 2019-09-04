@@ -1,4 +1,4 @@
-get_lyrics <- function(session) {
+genius_get_lyrics <- function(session) {
 
   # read lyrics
   lyrics <- html_nodes(session, ".lyrics p")
@@ -45,13 +45,13 @@ scrape_lyrics_id <- function(song_id, access_token = genius_token()) {
   check_internet()
 
   # get song meta data
-  song <- get_song(song_id, access_token)
+  song <- genius_get_song(song_id, access_token)
 
   # start session
   session <- read_html(song$url)
 
   # get song lyrics
-  lyrics <- get_lyrics(session)
+  lyrics <- genius_get_lyrics(session)
 
   tibble(
     line = lyrics,
@@ -97,7 +97,7 @@ scrape_lyrics_url <- function(song_lyrics_url, access_token = genius_token()) {
   session <- read_html(song_lyrics_url)
 
   # get song lyrics
-  lyrics <- get_lyrics(session)
+  lyrics <- genius_get_lyrics(session)
 
   # get meta data
   song <- html_nodes(session, ".header_with_cover_art-primary_info-title") %>%

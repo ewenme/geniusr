@@ -13,11 +13,10 @@ scrape_tracklist <- function(album_id, access_token = genius_token()) {
 
   .Deprecated("get_album_tracklist")
 
-  # check for internet
   check_internet()
 
   # get album data
-  album <- get_album(album_id)
+  album <- genius_get_album(album_id)
 
   # start session
   session <- read_html(album$url)
@@ -70,7 +69,7 @@ scrape_tracklist <- function(album_id, access_token = genius_token()) {
 
 #' Retrieve an album's tracklisting
 #'
-#' Retirve an album's tracklisting, and song meta data, given an album ID.
+#' Get an album's tracklisting, and song meta data, given an album ID.
 #'
 #' @inheritParams get_album
 #'
@@ -79,4 +78,4 @@ scrape_tracklist <- function(album_id, access_token = genius_token()) {
 #' get_album_tracklist(album_id = 337082)
 #' }
 #' @export
-get_album_tracklist <- scrape_tracklist
+genius_get_album_tracklist <- scrape_tracklist

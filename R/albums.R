@@ -12,7 +12,7 @@
 #' get_album(album_id = 337082)
 #' }
 #' @export
-get_album <- function(album_id, access_token = genius_token()) {
+genius_get_album <- function(album_id, access_token = genius_token()) {
 
   check_internet()
 
@@ -44,10 +44,10 @@ get_album <- function(album_id, access_token = genius_token()) {
 #' @export
 get_album_meta <- function(album_id, access_token = genius_token()) {
 
-  .Deprecated("get_album_df")
+  .Deprecated("genius_get_album_df")
 
   # pull album meta
-  album <- get_album(album_id, access_token)
+  album <- genius_get_album(album_id, access_token)
 
   artist <- album$artist
 
@@ -86,4 +86,4 @@ get_album_meta <- function(album_id, access_token = genius_token()) {
 #' get_album_df(album_id = 337082)
 #' }
 #' @export
-get_album_df <- get_album_meta
+genius_get_album_df <- get_album_meta

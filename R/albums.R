@@ -41,6 +41,8 @@ get_album <- function(album_id, access_token = genius_token()) {
 #' @export
 get_album_meta <- function(album_id, access_token = genius_token()) {
 
+  .Deprecated("get_album_df")
+
   # pull album meta
   album <- get_album(album_id, access_token)
 
@@ -66,3 +68,15 @@ get_album_meta <- function(album_id, access_token = genius_token()) {
   as_tibble(album_info)
 
 }
+
+#' Retrieve meta data for an album
+#'
+#' The Genius API lets you search for an album's meta data, given an album ID.
+#' @param album_id An album ID (\code{album_id} returned in \code{\link{get_song_meta}})
+#' @param access_token Genius' client access token, defaults to \code{genius_token}
+#' @examples
+#' \dontrun{
+#' get_album_meta(album_id = 337082)
+#' }
+#' @export
+get_album_df <- get_album_meta

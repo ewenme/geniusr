@@ -7,15 +7,18 @@
 get_album_df(album_id, access_token = genius_token())
 }
 \arguments{
-\item{album_id}{An album ID (\code{album_id} returned in \code{\link{get_song_meta}})}
+\item{album_id}{ID of the album (\code{album_id} within an object returned by
+\code{\link{get_song_meta}})}
 
 \item{access_token}{Genius' client access token, defaults to \code{genius_token}}
 }
 \description{
-The Genius API lets you search for an album's meta data, given an album ID.
+The Genius API lets you return data for a specific album, given an album ID.
+\code{get_album_meta} returns this data in a reduced data frame
+(see \code{get_album} to return extended metadata).
 }
 \examples{
 \dontrun{
-get_album_meta(album_id = 337082)
+get_album_df(album_id = 337082)
 }
 }

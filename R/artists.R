@@ -42,7 +42,7 @@ get_artist <- function(artist_id, access_token = genius_token()) {
 #' get_artist_meta(artist_id = 16751)
 #' }
 #' @export
-get_artist_meta <- function(artist_id, access_token=genius_token()) {
+get_artist_meta <- function(artist_id, access_token = genius_token()) {
 
   .Deprecated("get_artist_df")
 
@@ -55,7 +55,8 @@ get_artist_meta <- function(artist_id, access_token=genius_token()) {
     artist_name = artist$name,
     artist_url = artist$url,
     artist_image_url = artist$image_url,
-    followers_count = artist$followers_count
+    artist_followers_count = artist$followers_count,
+    artist_twitter_name = artist$twitter_name
     )
 
   # find list indices of NULL values, change to NA
@@ -75,7 +76,7 @@ get_artist_meta <- function(artist_id, access_token=genius_token()) {
 #'
 #' @examples
 #' \dontrun{
-#' get_artist_meta(artist_id = 16751)
+#' get_artist_df(artist_id = 16751)
 #' }
 #' @export
 get_artist_df <- get_artist_meta

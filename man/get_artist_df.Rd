@@ -19,6 +19,6 @@ artist ID. \code{get_artist_meta} returns this data in a reduced data frame
 }
 \examples{
 \dontrun{
-get_artist_meta(artist_id = 16751)
+get_artist_df(artist_id = 16751)
 }
 }

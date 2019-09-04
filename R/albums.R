@@ -29,11 +29,14 @@ get_album <- function(album_id, access_token = genius_token()) {
   res$response$album
 }
 
-#' Retrieve meta data for an album
+#' Retrieve metadata for an album
 #'
-#' The Genius API lets you search for an album's meta data, given an album ID.
-#' @param album_id An album ID (\code{album_id} returned in \code{\link{get_song_meta}})
-#' @param access_token Genius' client access token, defaults to \code{genius_token}
+#' The Genius API lets you return data for a specific album, given an album ID.
+#' \code{get_album_meta} returns this data in a reduced data frame
+#' (see \code{get_album} to return extended metadata).
+#'
+#' @inheritParams get_album
+#'
 #' @examples
 #' \dontrun{
 #' get_album_meta(album_id = 337082)
@@ -55,7 +58,8 @@ get_album_meta <- function(album_id, access_token = genius_token()) {
     album_url = album$url,
     album_cover_art_url = album$cover_art_url,
     album_release_date = album$release_date,
-    pageviews = album$song_pageviews,
+    album_comment_count = album$comment_count,
+    song_pageviews = album$song_pageviews,
     artist_id = artist$id,
     artist_name = artist$name,
     artist_url = artist$url
@@ -71,12 +75,15 @@ get_album_meta <- function(album_id, access_token = genius_token()) {
 
 #' Retrieve meta data for an album
 #'
-#' The Genius API lets you search for an album's meta data, given an album ID.
-#' @param album_id An album ID (\code{album_id} returned in \code{\link{get_song_meta}})
-#' @param access_token Genius' client access token, defaults to \code{genius_token}
+#' The Genius API lets you return data for a specific album, given an album ID.
+#' \code{get_album_meta} returns this data in a reduced data frame
+#' (see \code{get_album} to return extended metadata).
+#'
+#' @inheritParams get_album
+#'
 #' @examples
 #' \dontrun{
-#' get_album_meta(album_id = 337082)
+#' get_album_df(album_id = 337082)
 #' }
 #' @export
 get_album_df <- get_album_meta

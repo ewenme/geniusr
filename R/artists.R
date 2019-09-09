@@ -55,7 +55,7 @@ get_artist_meta <- function(artist_id, access_token = genius_token()) {
   .Deprecated("gen_get_artist_df")
 
   # pull artist meta
-  artist <- genius_get_artist(artist_id, access_token)
+  artist <- gen_get_artist(artist_id, access_token)
 
   # make list for artist_info
   artist_info <- list(
@@ -198,17 +198,19 @@ gen_get_artist_songs <- function(artist_id,
 #'
 #' @examples
 #' \dontrun{
-#' get_artist_songs_df(artist_id = 1421)
+#' get_artist_songs(artist_id = 1421)
 #' }
 #' @export
-get_artist_songs <- function(artist_id, include_features = FALSE,
-                                access_token = genius_token()) {
+get_artist_songs <- function(artist_id,
+                             sort = c("title", "popularity"),
+                             include_features = FALSE,
+                             access_token = genius_token()) {
 
   .Deprecated("gen_get_artist_songs_df")
 
   # pull artist discography
-  songs <- genius_get_artist_songs(artist_id, include_features,
-                                   access_token)
+  songs <- gen_get_artist_songs(artist_id, sort,
+                                include_features, access_token)
 
   # extract track info from returned results
   song_info <- map_df(seq_along(songs), function(x) {

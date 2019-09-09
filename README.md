@@ -15,16 +15,16 @@ Tools for working with the Genius API.
 
 ## Install
 
-Development version (recommended)
+Development version (recommended):
 
 ``` r
-devtools::install_github('ewenme/geniusr')
+devtools::install_github("ewenme/geniusr")
 ```
 
-Latest stable version on CRAN
+Latest stable version on CRAN:
 
 ``` r
-install.packages('geniusr')
+install.packages("geniusr")
 ```
 
 ## Authenticate
@@ -48,12 +48,12 @@ library(dplyr)
 library(tidytext)
 
 # Get song search results for the term 'good morning'
-gm_search <- search_song(search_term = "good morning") %>%
+gm_search <- gen_search_song(search_term = "good morning") %>%
   # look for Kanye as the primary artist
   filter(artist_name == "Kanye West")
 
 # get lyrics
-gm_lyrics <- scrape_lyrics_id(song_id = gm_search$song_id)
+gm_lyrics <- gen_get_lyrics_id(song_id = gm_search$song_id)
 
 # tokenization of the lyrics
 gm_lyrics %>%
@@ -79,37 +79,11 @@ library(ggplot2)
 # set lexicon
 bing <- get_sentiments("bing")
 
-# search for Chance
-search_song(search_term = "Chance")
-#> # A tibble: 10 x 5
-#>    song_id song_name        song_lyrics_url          artist_id artist_name 
-#>      <int> <chr>            <chr>                        <int> <chr>       
-#>  1 2471960 No Problem (Ft.… https://genius.com/Chan…     16751 Chance the …
-#>  2  146864 Cocoa Butter Ki… https://genius.com/Chan…     16751 Chance the …
-#>  3  146855 Favorite Song (… https://genius.com/Chan…     16751 Chance the …
-#>  4  113663 Juice            https://genius.com/Chan…     16751 Chance the …
-#>  5  146865 Pusha Man/Paran… https://genius.com/Chan…     16751 Chance the …
-#>  6 2472248 Same Drugs       https://genius.com/Chan…     16751 Chance the …
-#>  7 2468090 Blessings (Ft. … https://genius.com/Chan…     16751 Chance the …
-#>  8  146915 Lost (Ft. Nonam… https://genius.com/Chan…     16751 Chance the …
-#>  9 2339009 Angels (Ft. Sab… https://genius.com/Chan…     16751 Chance the …
-#> 10  119999 Acid Rain        https://genius.com/Chan…     16751 Chance the …
-
-# search track on Coloring Book
-get_song_meta(song_id = 2471960)
-#> # A tibble: 1 x 13
-#>   song_id song_name song_lyrics_url song_art_image_… release_date pageviews
-#>     <int> <chr>     <chr>           <chr>            <chr>            <int>
-#> 1 2471960 No Probl… https://genius… https://images.… 2016-05-12     2297562
-#> # … with 7 more variables: annotation_count <int>, artist_id <int>,
-#> #   artist_name <chr>, artist_url <chr>, album_id <int>, album_name <chr>,
-#> #   album_url <chr>
-
 # scrape album tracklist
-tracklist <- scrape_tracklist(album_id = 150853)
+tracklist <- gen_get_album_tracklist(album_id = 150853)
 
 # scrape album lyrics
-lyrics <- map_df(tracklist$song_lyrics_url, scrape_lyrics_url)
+lyrics <- map_df(tracklist$song_lyrics_url, gen_get_lyrics_url)
 
 # counting negative / positive words
 sentiment <- lyrics %>%
@@ -141,5 +115,5 @@ sentiment %>%
 
 ## Other options
 
-  - the [geniusR](https://github.com/JosiahParry/geniusR) package
-    provides a similar API interface.
+  - the [genius](https://github.com/JosiahParry/genius) package
+    specialises in lyrics retrieval from Genius.

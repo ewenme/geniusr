@@ -54,7 +54,7 @@ get_song_meta <- function(song_id, access_token = genius_token()) {
   .Deprecated("gen_get_song_df")
 
   # pull song meta
-  song <- get_song(song_id, access_token)
+  song <- gen_get_song(song_id, access_token)
 
   # grab album, artist, stat data
   album <- song$album

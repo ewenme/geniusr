@@ -21,16 +21,16 @@ Tools for working with the Genius API.
 
 ## Install
 
-Development version (recommended)
+Development version (recommended):
 
 ```{r install_dev, eval=FALSE}
-devtools::install_github('ewenme/geniusr')
+devtools::install_github("ewenme/geniusr")
 ```
 
-Latest stable version on CRAN
+Latest stable version on CRAN:
 
 ```{r, eval = FALSE}
-install.packages('geniusr')
+install.packages("geniusr")
 ```
 
 ## Authenticate
@@ -50,12 +50,12 @@ library(dplyr)
 library(tidytext)
 
 # Get song search results for the term 'good morning'
-gm_search <- search_song(search_term = "good morning") %>%
+gm_search <- gen_search_song(search_term = "good morning") %>%
   # look for Kanye as the primary artist
   filter(artist_name == "Kanye West")
 
 # get lyrics
-gm_lyrics <- scrape_lyrics_id(song_id = gm_search$song_id)
+gm_lyrics <- gen_get_lyrics_id(song_id = gm_search$song_id)
 
 # tokenization of the lyrics
 gm_lyrics %>%
@@ -77,17 +77,11 @@ library(ggplot2)
 # set lexicon
 bing <- get_sentiments("bing")
 
-# search for Chance
-search_song(search_term = "Chance")
-
-# search track on Coloring Book
-get_song_meta(song_id = 2471960)
-
 # scrape album tracklist
-tracklist <- scrape_tracklist(album_id = 150853)
+tracklist <- gen_get_album_tracklist(album_id = 150853)
 
 # scrape album lyrics
-lyrics <- map_df(tracklist$song_lyrics_url, scrape_lyrics_url)
+lyrics <- map_df(tracklist$song_lyrics_url, gen_get_lyrics_url)
 
 # counting negative / positive words
 sentiment <- lyrics %>%
@@ -117,4 +111,4 @@ sentiment %>%
 
 ## Other options
 
-- the [geniusR](https://github.com/JosiahParry/geniusR) package provides a similar API interface.
+- the [genius](https://github.com/JosiahParry/genius) package specialises in lyrics retrieval from Genius.

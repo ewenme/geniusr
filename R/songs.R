@@ -1,18 +1,22 @@
 #' Retrieve metadata for a song
 #'
 #' The Genius API lets you return data for a specific song, given a song ID.
-#' \code{get_song} returns this data in a relatively untouched state.
+#' \code{gen_get_song} returns this data in full.
+#'
+#' @seealso [gen_get_song_df()] to return a tidy data frame.
 #'
 #' @param song_id ID of the song (\code{song_id} within an object returned by
 #' \code{\link{search_song}})
 #' @param access_token Genius' client access token, defaults to \code{genius_token}
 #'
+#' @return a list
+#'
 #' @examples
 #' \dontrun{
-#' get_song(song_id = 3039923)
+#' gen_get_song(song_id = 3039923)
 #' }
 #' @export
-get_song <- function(song_id, access_token = genius_token()) {
+gen_get_song <- function(song_id, access_token = genius_token()) {
 
   check_internet()
 
@@ -32,10 +36,13 @@ get_song <- function(song_id, access_token = genius_token()) {
 #' Retrieve metadata for a song
 #'
 #' The Genius API lets you search for meta data for a song, given a song ID.
-#' \code{get_song_meta} returns this data in a reduced data frame
-#' (see \code{get_song} to return extended metadata).
+#' \code{get_song_meta} returns this data in a tidy, but reduced, format.
 #'
-#' @inheritParams get_song
+#' @seealso [gen_get_song()] to return data in full as a list.
+#'
+#' @inheritParams gen_get_song
+#'
+#' @return a tibble
 #'
 #' @examples
 #' \dontrun{
@@ -44,7 +51,7 @@ get_song <- function(song_id, access_token = genius_token()) {
 #' @export
 get_song_meta <- function(song_id, access_token = genius_token()) {
 
-  .Deprecated("get_song_df")
+  .Deprecated("gen_get_song_df")
 
   # pull song meta
   song <- get_song(song_id, access_token)
@@ -81,15 +88,18 @@ get_song_meta <- function(song_id, access_token = genius_token()) {
 #' Retrieve metadata for a song
 #'
 #' The Genius API lets you search for meta data for a song, given a song ID.
-#' \code{get_song_meta} returns this data in a reduced data frame
-#' (see \code{get_song} to return extended metadata).
+#' \code{get_song_meta} returns this data in a tidy, but reduced, format.
 #'
-#' @inheritParams get_song
+#' @seealso [gen_get_song()] to return data in full as a list.
+#'
+#' @inheritParams gen_get_song
+#'
+#' @return a tibble
 #'
 #' @examples
 #' \dontrun{
-#' get_song_df(song_id = 3039923)
+#' gen_get_song_df(song_id = 3039923)
 #' }
 #'
 #' @export
-get_song_df <- get_song_meta
+gen_get_song_df <- get_song_meta

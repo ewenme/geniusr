@@ -12,13 +12,19 @@ get_artist_meta(artist_id, access_token = genius_token())
 
 \item{access_token}{Genius' client access token, defaults to \code{genius_token}}
 }
+\value{
+a tibble
+}
 \description{
 The Genius API lets you search for meta data for an artist, given an
-artist ID. \code{get_artist_meta} returns this data in a reduced data frame
-(see \code{get_artist} to return extended metadata).
+artist ID. \code{get_artist_meta} returns this data in a tidy, but
+reduced, format.
 }
 \examples{
 \dontrun{
 get_artist_meta(artist_id = 16751)
 }
+}
+\seealso{
+[gen_get_artist()] to return data in full as a list.
 }

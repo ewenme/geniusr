@@ -2,24 +2,30 @@
 % Please edit documentation in R/search.R
 \name{search_artist}
 \alias{search_artist}
-\title{Retrieve artist identifiers for associated search terms}
+\title{Search artists on Genius}
 \usage{
 search_artist(search_term, n_results = 10,
   access_token = genius_token())
 }
 \arguments{
-\item{search_term}{A character string to search for artist matches}
+\item{search_term}{A character string to search for}
 
-\item{n_results}{Maximum no. of search results to return (this is the number of hosted content search results, unique artist matches will be smaller)}
+\item{n_results}{Maximum no. of search results to return
+(this is the number of hosted content search results, unique artist matches will
+be smaller)}
 
 \item{access_token}{Genius' client access token, defaults to \code{genius_token}}
 }
+\value{
+a tibble
+}
 \description{
-The Genius API lets you search hosted content (all songs). Use \code{search_artist} to
-return \code{artist_id}, \code{artist_name} and \code{artist_url} for all unique artist matches to a search.
+The Genius API lets you search hosted content (all songs). Use \code{search_artist()}
+to return \code{artist_id}, \code{artist_name} and \code{artist_url} for all unique
+artist matches found using a search term.
 }
 \examples{
 \dontrun{
-search_artist(search_term = "Lil")
+search_artist(search_term = "Lil", n_results = 100)
 }
 }

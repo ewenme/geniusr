@@ -1,18 +1,22 @@
 #' Retrieve metadata for an artist
 #'
 #' The Genius API lets you return data for a specific artist, given an artist ID.
-#' \code{get_artist} returns this data in a relatively untouched state.
+#' \code{gen_get_artist} returns this data in full.
+#'
+#' @seealso [gen_get_artist_df()] to return a tidy data frame.
 #'
 #' @param artist_id ID of the artist (\code{artist_id} within an object returned by
 #' \code{\link{search_artist}})
 #' @param access_token Genius' client access token, defaults to \code{genius_token}
 #'
+#' @return a list
+#'
 #' @examples
 #' \dontrun{
-#' get_artist(artist_id = 16775)
+#' gen_get_artist(artist_id = 16775)
 #' }
 #' @export
-genius_get_artist <- function(artist_id, access_token = genius_token()) {
+gen_get_artist <- function(artist_id, access_token = genius_token()) {
 
   check_internet()
 
@@ -32,10 +36,14 @@ genius_get_artist <- function(artist_id, access_token = genius_token()) {
 #' Retrieve metadata for an artist
 #'
 #' The Genius API lets you search for meta data for an artist, given an
-#' artist ID. \code{get_artist_meta} returns this data in a reduced data frame
-#' (see \code{get_artist} to return extended metadata).
+#' artist ID. \code{get_artist_meta} returns this data in a tidy, but
+#' reduced, format.
 #'
-#' @inheritParams get_artist
+#' @seealso [gen_get_artist()] to return data in full as a list.
+#'
+#' @inheritParams gen_get_artist
+#'
+#' @return a tibble
 #'
 #' @examples
 #' \dontrun{
@@ -44,7 +52,7 @@ genius_get_artist <- function(artist_id, access_token = genius_token()) {
 #' @export
 get_artist_meta <- function(artist_id, access_token = genius_token()) {
 
-  .Deprecated("genius_get_artist_df")
+  .Deprecated("gen_get_artist_df")
 
   # pull artist meta
   artist <- genius_get_artist(artist_id, access_token)
@@ -69,40 +77,49 @@ get_artist_meta <- function(artist_id, access_token = genius_token()) {
 #' Retrieve metadata for an artist
 #'
 #' The Genius API lets you search for meta data for an artist, given an
-#' artist ID. \code{get_artist_meta} returns this data in a reduced data frame
-#' (see \code{get_artist} to return extended metadata).
+#' artist ID. \code{gen_get_artist_df} returns this data in a tidy, but
+#' reduced, format.
 #'
-#' @inheritParams get_artist
+#' @seealso [gen_get_artist()] to return data in full as a list.
+#'
+#' @inheritParams gen_get_artist
+#'
+#' @return a tibble
 #'
 #' @examples
 #' \dontrun{
-#' get_artist_df(artist_id = 16751)
+#' gen_get_artist_df(artist_id = 16751)
 #' }
 #' @export
-genius_get_artist_df <- get_artist_meta
+gen_get_artist_df <- get_artist_meta
 
 #' Retrieve metadata for all of an artist's songs
 #'
 #' The Genius API lets you search for song metadata of an artist,
-#' given an artist ID. \code{get_artist_songs} returns this data
-#' in a relatively untouched state.
+#' given an artist ID. \code{gen_get_artist_songs} returns this data
+#' in full.
 #'
-#' @inheritParams get_artist
+#' @seealso [gen_get_artist_songs_df()] to return a tidy data frame.
+#'
+#' @inheritParams gen_get_artist
 #' @param sort method to order results; by "title" (default) or by
 #' "popularity"
 #' @param include_features Whether to return results where artist
 #' isn't the primary artist (logical, defaults to FALSE)
 #'
+#' @return a list
+#'
 #' @examples
 #' \dontrun{
-#' get_artist_songs(artist_id = 1421)
-#' get_artist_songs(artist_id = 1421, sort = "popularity")
-#' get_artist_songs(artist_id = 1421, include_features = TRUE)
+#' gen_get_artist_songs(artist_id = 1421)
+#' gen_get_artist_songs(artist_id = 1421, sort = "popularity")
+#' gen_get_artist_songs(artist_id = 1421, include_features = TRUE)
 #' }
 #' @export
-genius_get_artist_songs <- function(artist_id, sort = c("title", "popularity"),
-                             include_features = FALSE,
-                             access_token = genius_token()) {
+gen_get_artist_songs <- function(artist_id,
+                                 sort = c("title", "popularity"),
+                                 include_features = FALSE,
+                                 access_token = genius_token()) {
 
   check_internet()
 
@@ -168,12 +185,16 @@ genius_get_artist_songs <- function(artist_id, sort = c("title", "popularity"),
 #' Retrieve metadata for all of an artist's songs
 #'
 #' The Genius API lets you search for song metadata of an artist,
-#' given an artist ID. \code{get_artist_songs_df} returns this data
-#' in a stripped-back data frame (see \code{get_artist_songs} to
-#' return extended metadata).
+#' given an artist ID. \code{get_artist_songs} returns this data
+#' in a tidy, but reduced, format.
 #'
-#' @inheritParams get_artist
-#' @inheritParams get_artist_songs
+#' @seealso [gen_get_artist_songs()] to return data in full as a
+#' list.
+#'
+#' @inheritParams gen_get_artist
+#' @inheritParams gen_get_artist_songs
+#'
+#' @return a tibble
 #'
 #' @examples
 #' \dontrun{
@@ -183,7 +204,7 @@ genius_get_artist_songs <- function(artist_id, sort = c("title", "popularity"),
 get_artist_songs <- function(artist_id, include_features = FALSE,
                                 access_token = genius_token()) {
 
-  .Deprecated("genius_get_artist_songs_df")
+  .Deprecated("gen_get_artist_songs_df")
 
   # pull artist discography
   songs <- genius_get_artist_songs(artist_id, include_features,
@@ -210,16 +231,20 @@ get_artist_songs <- function(artist_id, include_features = FALSE,
 #' Retrieve metadata for all of an artist's songs
 #'
 #' The Genius API lets you search for song metadata of an artist,
-#' given an artist ID. \code{get_artist_songs_df} returns this data
-#' in a stripped-back data frame (see \code{get_artist_songs} to
-#' return extended metadata).
+#' given an artist ID. \code{get_artist_songs} returns this data
+#' in a tidy, but reduced, format.
 #'
-#' @inheritParams get_artist
-#' @inheritParams get_artist_songs
+#' @seealso [gen_get_artist_songs()] to return data in full as a
+#' list.
+#'
+#' @inheritParams gen_get_artist
+#' @inheritParams gen_get_artist_songs
+#'
+#' @return a tibble
 #'
 #' @examples
 #' \dontrun{
-#' get_artist_songs_df(artist_id = 1421)
+#' gen_get_artist_songs_df(artist_id = 1421)
 #' }
 #' @export
-genius_get_artist_songs_df <- get_artist_songs
+gen_get_artist_songs_df <- get_artist_songs

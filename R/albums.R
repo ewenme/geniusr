@@ -1,18 +1,22 @@
 #' Retrieve metadata for an album
 #'
-#' The Genius API lets you return data for a specific album, given an album ID.
-#' \code{get_album} returns this data in a relatively untouched state.
+#' The Genius API lets you request data for a specific album, given an album ID.
+#' \code{gen_get_album()} returns this data in full.
+#'
+#' @seealso [gen_get_album_df()] to return a tidy data frame.
 #'
 #' @param album_id ID of the album (\code{album_id} within an object returned by
-#' \code{\link{get_song_meta}})
+#' \code{\link{gen_get_song}})
 #' @param access_token Genius' client access token, defaults to \code{genius_token}
+#'
+#' @return a list
 #'
 #' @examples
 #' \dontrun{
-#' get_album(album_id = 337082)
+#' gen_get_album(album_id = 337082)
 #' }
 #' @export
-genius_get_album <- function(album_id, access_token = genius_token()) {
+gen_get_album <- function(album_id, access_token = genius_token()) {
 
   check_internet()
 
@@ -32,10 +36,13 @@ genius_get_album <- function(album_id, access_token = genius_token()) {
 #' Retrieve metadata for an album
 #'
 #' The Genius API lets you return data for a specific album, given an album ID.
-#' \code{get_album_meta} returns this data in a reduced data frame
-#' (see \code{get_album} to return extended metadata).
+#' \code{get_album_meta} returns this data in a tidy, but reduced, format.
 #'
-#' @inheritParams get_album
+#' @seealso [gen_get_album()] to return data in full as a list.
+#'
+#' @inheritParams gen_get_album
+#'
+#' @return a tibble
 #'
 #' @examples
 #' \dontrun{
@@ -44,7 +51,7 @@ genius_get_album <- function(album_id, access_token = genius_token()) {
 #' @export
 get_album_meta <- function(album_id, access_token = genius_token()) {
 
-  .Deprecated("genius_get_album_df")
+  .Deprecated("gen_get_album_df")
 
   # pull album meta
   album <- genius_get_album(album_id, access_token)
@@ -76,14 +83,17 @@ get_album_meta <- function(album_id, access_token = genius_token()) {
 #' Retrieve meta data for an album
 #'
 #' The Genius API lets you return data for a specific album, given an album ID.
-#' \code{get_album_meta} returns this data in a reduced data frame
-#' (see \code{get_album} to return extended metadata).
+#' \code{get_album_meta} returns this data in a tidy, but reduced, format.
 #'
-#' @inheritParams get_album
+#' @seealso [gen_get_album()] to return extended data as a list.
+#'
+#' @inheritParams gen_get_album
+#'
+#' @return a tibble
 #'
 #' @examples
 #' \dontrun{
-#' get_album_df(album_id = 337082)
+#' gen_get_album_df(album_id = 337082)
 #' }
 #' @export
-genius_get_album_df <- get_album_meta
+gen_get_album_df <- get_album_meta

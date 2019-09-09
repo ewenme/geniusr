@@ -12,13 +12,18 @@ get_song_meta(song_id, access_token = genius_token())
 
 \item{access_token}{Genius' client access token, defaults to \code{genius_token}}
 }
+\value{
+a tibble
+}
 \description{
 The Genius API lets you search for meta data for a song, given a song ID.
-\code{get_song_meta} returns this data in a reduced data frame
-(see \code{get_song} to return extended metadata).
+\code{get_song_meta} returns this data in a tidy, but reduced, format.
 }
 \examples{
 \dontrun{
 get_song_meta(song_id = 3039923)
 }
+}
+\seealso{
+[gen_get_song()] to return data in full as a list.
 }

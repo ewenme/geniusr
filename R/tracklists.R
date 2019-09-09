@@ -2,7 +2,9 @@
 #'
 #' Get an album's tracklisting, and song meta data, given an album ID.
 #'
-#' @inheritParams get_album
+#' @inheritParams gen_get_album
+#'
+#' @return a tibble
 #'
 #' @examples
 #' \dontrun{
@@ -71,11 +73,13 @@ scrape_tracklist <- function(album_id, access_token = genius_token()) {
 #'
 #' Get an album's tracklisting, and song meta data, given an album ID.
 #'
-#' @inheritParams get_album
+#' @inheritParams gen_get_album
+#'
+#' @return a tibble
 #'
 #' @examples
 #' \dontrun{
-#' get_album_tracklist(album_id = 337082)
+#' gen_get_album_tracklist(album_id = 337082)
 #' }
 #' @export
-genius_get_album_tracklist <- scrape_tracklist
+gen_get_album_tracklist <- scrape_tracklist

@@ -8,9 +8,12 @@ scrape_tracklist(album_id, access_token = genius_token())
 }
 \arguments{
 \item{album_id}{ID of the album (\code{album_id} within an object returned by
-\code{\link{get_song_meta}})}
+\code{\link{gen_get_song}})}
 
 \item{access_token}{Genius' client access token, defaults to \code{genius_token}}
+}
+\value{
+a tibble
 }
 \description{
 Get an album's tracklisting, and song meta data, given an album ID.

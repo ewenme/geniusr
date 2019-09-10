@@ -27,7 +27,6 @@ gen_get_album <- function(album_id, access_token = genius_token()) {
 
   stop_for_status(req)
 
-  # extract request content
   res <- content(req)
 
   res$response$album

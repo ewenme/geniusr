@@ -27,7 +27,6 @@ gen_get_song <- function(song_id, access_token = genius_token()) {
 
   stop_for_status(req)
 
-  # extract request content
   res <- content(req)
 
   res$response$song

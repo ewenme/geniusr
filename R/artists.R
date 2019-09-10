@@ -27,7 +27,6 @@ gen_get_artist <- function(artist_id, access_token = genius_token()) {
 
   stop_for_status(req)
 
-  # extract request content
   res <- content(req)
 
   res$response$artist
@@ -147,7 +146,6 @@ gen_get_artist_songs <- function(artist_id,
 
     stop_for_status(req)
 
-    # extract request content
     res <- content(req)
     res <- res$response
 

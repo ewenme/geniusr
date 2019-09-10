@@ -4,12 +4,15 @@
 \alias{gen_get_artist_songs_df}
 \title{Retrieve metadata for all of an artist's songs}
 \usage{
-gen_get_artist_songs_df(artist_id, include_features = FALSE,
-  access_token = genius_token())
+gen_get_artist_songs_df(artist_id, sort = c("title", "popularity"),
+  include_features = FALSE, access_token = genius_token())
 }
 \arguments{
 \item{artist_id}{ID of the artist (\code{artist_id} within an object returned by
 \code{\link{search_artist}})}
+
+\item{sort}{method to order results; by "title" (default) or by
+"popularity"}
 
 \item{include_features}{Whether to return results where artist
 isn't the primary artist (logical, defaults to FALSE)}

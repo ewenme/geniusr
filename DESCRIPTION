@@ -12,11 +12,11 @@ BugReports: https://github.com/ewenme/geniusr/issues
 Depends: R (>= 3.2.0)
 License: MIT + file LICENSE
 Imports: 
-    attempt,
     curl,
     httr,
     purrr,
     rvest,
+    stringr,
     tibble,
     xml2
 Encoding: UTF-8

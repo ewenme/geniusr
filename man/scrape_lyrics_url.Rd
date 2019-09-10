@@ -4,12 +4,10 @@
 \alias{scrape_lyrics_url}
 \title{Retrieve lyrics associated with a Genius lyrics page URL}
 \usage{
-scrape_lyrics_url(song_lyrics_url, access_token = genius_token())
+scrape_lyrics_url(song_lyrics_url)
 }
 \arguments{
 \item{song_lyrics_url}{song lyrics url (like in \code{song_lyrics_url} returned by \code{\link{get_song_meta}})}
-
-\item{access_token}{Genius' client access token, defaults to \code{genius_token}}
 }
 \description{
 Scrape lyrics from a Genius' lyric page using it's associated URL. Best used with \code{\link{scrape_tracklist}}, when song IDs aren't returned - otherwise, \code{\link{scrape_lyrics_id}} is recommended.

@@ -1,10 +1,10 @@
 #' @importFrom httr user_agent GET add_headers stop_for_status content
 #' @importFrom xml2 read_html xml_find_all xml_add_sibling xml_remove
 #' @importFrom rvest html_nodes html_text html_attr
+#' @importFrom curl has_internet
 #' @importFrom tibble tibble as_tibble
 #' @importFrom purrr is_empty map_df map_dfr flatten "%>%"
-#' @importFrom attempt stop_if_not
-#' @importFrom curl has_internet
+#' @importFrom stringr str_replace_all
 #' @keywords internal
 "_PACKAGE"
 

@@ -1,23 +1,21 @@
 #' Search documents hosted on Genius
 #'
-#' The Genius API lets you search hosted content (all songs). Use \code{gen_search()}
+#' The Genius API lets you search hosted content (all songs). Use \code{search_genius()}
 #' to return hits on for a given search term, in full.
 #'
 #' @param search_term A character string to search for
 #' @param n_results Maximum no. of search results to return
-#' (this is the number of hosted content search results, unique artist matches will
-#' be smaller)
 #' @param access_token Genius' client access token, defaults to \code{genius_token}
 #'
 #' @return a list
 #'
 #' @examples
 #' \dontrun{
-#' search_artist(search_term = "Lil", n_results = 100)
+#' search_genius(search_term = "Lil", n_results = 100)
 #' }
 #' @export
-gen_search <- function(search_term, n_results = 10,
-                       access_token = genius_token()) {
+search_genius <- function(search_term, n_results = 10,
+                          access_token = genius_token()) {
 
   check_internet()
 
@@ -79,7 +77,7 @@ gen_search <- function(search_term, n_results = 10,
 #' to return \code{artist_id}, \code{artist_name} and \code{artist_url} for all unique
 #' artist matches found using a search term.
 #'
-#' @inheritParams gen_search
+#' @inheritParams search_genius
 #'
 #' @return a tibble
 #'
@@ -91,11 +89,9 @@ gen_search <- function(search_term, n_results = 10,
 search_artist <- function(search_term, n_results = 10,
                           access_token = genius_token()) {
 
-  .Deprecated("gen_search_artist")
-
   check_internet()
 
-  results <- gen_search(search_term, n_results, access_token)
+  results <- search_genius(search_term, n_results, access_token)
 
   # extract artist info from returned results
   artist_info <- map_dfr(seq_along(results), function(x) {
@@ -113,23 +109,6 @@ search_artist <- function(search_term, n_results = 10,
 
 }
 
-#' Search artists on Genius
-#'
-#' The Genius API lets you search hosted content (all songs). Use \code{search_artist()}
-#' to return \code{artist_id}, \code{artist_name} and \code{artist_url} for all unique
-#' artist matches found using a search term.
-#'
-#' @inheritParams gen_search
-#'
-#' @return a tibble
-#'
-#' @examples
-#' \dontrun{
-#' search_artist(search_term = "Lil", n_results = 100)
-#' }
-#' @export
-gen_search_artist <- search_artist
-
 #' Search songs on Genius
 #'
 #' The Genius API lets you search hosted content (all songs). Use
@@ -137,7 +116,7 @@ gen_search_artist <- search_artist
 #' \code{lyrics_url} and \code{artist_id} for all unique song matches
 #' found using a search term.
 #'
-#' @inheritParams gen_search
+#' @inheritParams search_genius
 #'
 #' @return a tibble
 #'
@@ -149,11 +128,9 @@ gen_search_artist <- search_artist
 search_song <- function(search_term, n_results = 10,
                         access_token = genius_token()) {
 
-  .Deprecated("gen_search_song")
-
   check_internet()
 
-  results <- gen_search(search_term, n_results, access_token)
+  results <- search_genius(search_term, n_results, access_token)
 
   # extract song and artist info from returned results
   song_info <- map_dfr(seq_along(results), function(x) {
@@ -173,21 +150,3 @@ search_song <- function(search_term, n_results = 10,
   # isolate unique pairs
   as_tibble(unique(song_info))
 }
-
-#' Search songs on Genius
-#'
-#' The Genius API lets you search hosted content (all songs). Use
-#' \code{search_song()} to return \code{song_id}, \code{song_name},
-#' \code{lyrics_url} and \code{artist_id} for all unique song matches
-#' found using a search term.
-#'
-#' @inheritParams gen_search
-#'
-#' @return a tibble
-#'
-#' @examples
-#' \dontrun{
-#' search_song(search_term = "Gucci", n_results = 50)
-#' }
-#' @export
-gen_search_song <- search_song

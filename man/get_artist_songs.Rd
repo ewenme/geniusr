@@ -20,19 +20,20 @@ isn't the primary artist (logical, defaults to FALSE)}
 \item{access_token}{Genius' client access token, defaults to \code{genius_token}}
 }
 \value{
-a tibble
+a list
 }
 \description{
 The Genius API lets you search for song metadata of an artist,
 given an artist ID. \code{get_artist_songs} returns this data
-in a tidy, but reduced, format.
+in full.
 }
 \examples{
 \dontrun{
 get_artist_songs(artist_id = 1421)
+get_artist_songs(artist_id = 1421, sort = "popularity")
+get_artist_songs(artist_id = 1421, include_features = TRUE)
 }
 }
 \seealso{
-[gen_get_artist_songs()] to return data in full as a
-list.
+[get_artist_songs_df()] to return a tidy data frame.
 }

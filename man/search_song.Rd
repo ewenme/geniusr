@@ -9,9 +9,7 @@ search_song(search_term, n_results = 10, access_token = genius_token())
 \arguments{
 \item{search_term}{A character string to search for}
 
-\item{n_results}{Maximum no. of search results to return
-(this is the number of hosted content search results, unique artist matches will
-be smaller)}
+\item{n_results}{Maximum no. of search results to return}
 
 \item{access_token}{Genius' client access token, defaults to \code{genius_token}}
 }

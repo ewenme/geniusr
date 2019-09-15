@@ -1,4 +1,4 @@
-gen_get_lyrics <- function(session) {
+get_lyrics <- function(session) {
 
   # read lyrics
   lyrics <- html_nodes(session, ".lyrics p")
@@ -63,27 +63,25 @@ gen_get_lyrics <- function(session) {
 #'
 #' Get lyrics from Genius' lyric pages using an associated song ID.
 #'
-#' @inheritParams gen_get_song
+#' @inheritParams get_song
 #'
 #' @examples
 #' \dontrun{
-#' scrape_lyrics_id(song_id = 3214267)
+#' get_lyrics_id(song_id = 3214267)
 #' }
 #' @export
-scrape_lyrics_id <- function(song_id, access_token = genius_token()) {
-
-  .Deprecated("gen_get_lyrics_id")
+get_lyrics_id <- function(song_id, access_token = genius_token()) {
 
   check_internet()
 
   # get song meta data
-  song <- gen_get_song(song_id, access_token)
+  song <- get_song(song_id, access_token)
 
   # start session
   session <- read_html(song$url)
 
   # get song lyrics
-  lyrics <- gen_get_lyrics(session)
+  lyrics <- get_lyrics(session)
 
   # add fields
   lyrics$song_id <- song_id
@@ -91,19 +89,6 @@ scrape_lyrics_id <- function(song_id, access_token = genius_token()) {
   lyrics
 }
 
-#' Retrieve lyrics associated with a Genius song ID
-#'
-#' Get lyrics from Genius' lyric pages using an associated song ID.
-#'
-#' @inheritParams gen_get_song
-#'
-#' @examples
-#' \dontrun{
-#' gen_get_lyrics_id(song_id = 3214267)
-#' }
-#' @export
-gen_get_lyrics_id <- scrape_lyrics_id
-
 #' Retrieve lyrics associated with a Genius lyrics page URL
 #'
 #' Scrape lyrics from a Genius' lyric page using it's associated URL. Best used with \code{\link{scrape_tracklist}}, when song IDs aren't returned - otherwise, \code{\link{scrape_lyrics_id}} is recommended.
@@ -112,12 +97,10 @@ gen_get_lyrics_id <- scrape_lyrics_id
 #'
 #' @examples
 #' \dontrun{
-#' scrape_lyrics_url(song_lyrics_url = "https://genius.com/Kendrick-lamar-dna-lyrics")
+#' get_lyrics_url(song_lyrics_url = "https://genius.com/Kendrick-lamar-dna-lyrics")
 #' }
 #' @export
-scrape_lyrics_url <- function(song_lyrics_url) {
-
-  .Deprecated("gen_get_lyrics_url")
+get_lyrics_url <- function(song_lyrics_url) {
 
   check_internet()
 
@@ -125,27 +108,13 @@ scrape_lyrics_url <- function(song_lyrics_url) {
   session <- read_html(song_lyrics_url)
 
   # get song lyrics
-  lyrics <- gen_get_lyrics(session)
+  lyrics <- get_lyrics(session)
 
   lyrics$song_lyrics_url <- song_lyrics_url
 
   lyrics
 
 }
-
-#' Retrieve lyrics associated with a Genius lyrics page URL
-#'
-#' Scrape lyrics from a Genius' lyric page using it's associated URL. Best used with \code{\link{scrape_tracklist}}, when song IDs aren't returned - otherwise, \code{\link{scrape_lyrics_id}} is recommended.
-#'
-#' @param song_lyrics_url song lyrics url (like in \code{song_lyrics_url} returned by \code{\link{get_song_meta}})
-#'
-#' @examples
-#' \dontrun{
-#' gen_get_lyrics_url(song_lyrics_url = "https://genius.com/Kendrick-lamar-dna-lyrics")
-#' }
-#' @export
-gen_get_lyrics_url <- scrape_lyrics_url
-
 
 #' Retrieve lyrics associated with a Genius song
 #'
@@ -157,11 +126,11 @@ gen_get_lyrics_url <- scrape_lyrics_url
 #'
 #' @examples
 #' \dontrun{
-#' gen_get_lyrics_song(artist_name = "Anderson .Paak",
+#' get_lyrics_search(artist_name = "Anderson .Paak",
 #' song_title = "Come Home")
 #' }
 #' @export
-gen_get_lyrics_song <- function(artist_name, song_title) {
+get_lyrics_search <- function(artist_name, song_title) {
 
   # remove bad artist/song strings
   artist_name <- str_replace_all(artist_name, bad_lyric_strings)
@@ -177,7 +146,7 @@ gen_get_lyrics_song <- function(artist_name, song_title) {
   session <- read_html(path)
 
   # get song lyrics
-  gen_get_lyrics(session)
+  get_lyrics(session)
 
 }
 

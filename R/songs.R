@@ -1,9 +1,9 @@
 #' Retrieve metadata for a song
 #'
 #' The Genius API lets you return data for a specific song, given a song ID.
-#' \code{gen_get_song} returns this data in full.
+#' \code{get_song} returns this data in full.
 #'
-#' @seealso [gen_get_song_df()] to return a tidy data frame.
+#' @seealso [get_song_df()] to return a tidy data frame.
 #'
 #' @param song_id ID of the song (\code{song_id} within an object returned by
 #' \code{\link{search_song}})
@@ -13,10 +13,10 @@
 #'
 #' @examples
 #' \dontrun{
-#' gen_get_song(song_id = 3039923)
+#' get_song(song_id = 3039923)
 #' }
 #' @export
-gen_get_song <- function(song_id, access_token = genius_token()) {
+get_song <- function(song_id, access_token = genius_token()) {
 
   check_internet()
 
@@ -37,23 +37,22 @@ gen_get_song <- function(song_id, access_token = genius_token()) {
 #' The Genius API lets you search for meta data for a song, given a song ID.
 #' \code{get_song_meta} returns this data in a tidy, but reduced, format.
 #'
-#' @seealso [gen_get_song()] to return data in full as a list.
+#' @seealso [get_song()] to return data in full as a list.
 #'
-#' @inheritParams gen_get_song
+#' @inheritParams get_song
 #'
 #' @return a tibble
 #'
 #' @examples
 #' \dontrun{
-#' get_song_meta(song_id = 3039923)
+#' get_song_df(song_id = 3039923)
 #' }
+#'
 #' @export
-get_song_meta <- function(song_id, access_token = genius_token()) {
-
-  .Deprecated("gen_get_song_df")
+get_song_df <- function(song_id, access_token = genius_token()) {
 
   # pull song meta
-  song <- gen_get_song(song_id, access_token)
+  song <- get_song(song_id, access_token)
 
   # grab album, artist, stat data
   album <- song$album
@@ -75,7 +74,7 @@ get_song_meta <- function(song_id, access_token = genius_token()) {
     album_id = album$id,
     album_name = album$name,
     album_url = album$url
-    )
+  )
 
   # find list indices of NULL values, change to NA
   ndxNULL <- which(unlist(lapply(song_info, is.null)))
@@ -83,22 +82,3 @@ get_song_meta <- function(song_id, access_token = genius_token()) {
 
   as_tibble(song_info)
 }
-
-#' Retrieve metadata for a song
-#'
-#' The Genius API lets you search for meta data for a song, given a song ID.
-#' \code{get_song_meta} returns this data in a tidy, but reduced, format.
-#'
-#' @seealso [gen_get_song()] to return data in full as a list.
-#'
-#' @inheritParams gen_get_song
-#'
-#' @return a tibble
-#'
-#' @examples
-#' \dontrun{
-#' gen_get_song_df(song_id = 3039923)
-#' }
-#'
-#' @export
-gen_get_song_df <- get_song_meta

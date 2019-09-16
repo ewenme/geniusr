@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Retrieve metadata for an album — get_album_meta • geniusr</title>
+<title>Retrieve meta data for an album — get_album_df • geniusr</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -44,7 +44,7 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Retrieve metadata for an album — get_album_meta" />
+<meta property="og:title" content="Retrieve meta data for an album — get_album_df" />
 <meta property="og:description" content="The Genius API lets you return data for a specific album, given an album ID.
 get_album_meta returns this data in a tidy, but reduced, format." />
 <meta property="og:image" content="https://ewenme.github.io/geniusr/logo.png" />
@@ -119,9 +119,9 @@ get_album_meta returns this data in a tidy, but reduced, format." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Retrieve metadata for an album</h1>
-    <small class="dont-index">Source: <a href='https://github.com/ewenme/geniusr/blob/master/R/deprecated.R'><code>R/deprecated.R</code></a></small>
-    <div class="hidden name"><code>get_album_meta.Rd</code></div>
+    <h1>Retrieve meta data for an album</h1>
+    <small class="dont-index">Source: <a href='https://github.com/ewenme/geniusr/blob/master/R/albums.R'><code>R/albums.R</code></a></small>
+    <div class="hidden name"><code>get_album_df.Rd</code></div>
     </div>
 
     <div class="ref-description">
@@ -129,7 +129,7 @@ get_album_meta returns this data in a tidy, but reduced, format." />
 <code>get_album_meta</code> returns this data in a tidy, but reduced, format.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>get_album_meta</span>(<span class='no'>album_id</span>, <span class='kw'>access_token</span> <span class='kw'>=</span> <span class='fu'><a href='genius_token.html'>genius_token</a></span>())</pre>
+    <pre class="usage"><span class='fu'>get_album_df</span>(<span class='no'>album_id</span>, <span class='kw'>access_token</span> <span class='kw'>=</span> <span class='fu'><a href='genius_token.html'>genius_token</a></span>())</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -150,11 +150,11 @@ get_album_meta returns this data in a tidy, but reduced, format." />
     <p>a tibble</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>[get_album()] to return data in full as a list.</p></div>
+    <div class='dont-index'><p>[get_album()] to return extended data as a list.</p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='fu'>get_album_meta</span>(<span class='kw'>album_id</span> <span class='kw'>=</span> <span class='fl'>337082</span>)
+<span class='fu'>get_album_df</span>(<span class='kw'>album_id</span> <span class='kw'>=</span> <span class='fl'>337082</span>)
 }</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

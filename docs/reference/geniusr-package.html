@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Retrieve metadata for an album — get_album_meta • geniusr</title>
+<title>geniusr: Tools for Working with the 'Genius' API — geniusr-package • geniusr</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -44,9 +44,11 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Retrieve metadata for an album — get_album_meta" />
-<meta property="og:description" content="The Genius API lets you return data for a specific album, given an album ID.
-get_album_meta returns this data in a tidy, but reduced, format." />
+<meta property="og:title" content="geniusr: Tools for Working with the 'Genius' API — geniusr-package" />
+<meta property="og:description" content="
+Provides tools to interact nicely with the 'Genius' API &amp;lt;https://docs.genius.com/&amp;gt;. 
+    Search hosted content, extract different types of associated metadata and retrieve lyrics 
+    with ease." />
 <meta property="og:image" content="https://ewenme.github.io/geniusr/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -119,53 +121,39 @@ get_album_meta returns this data in a tidy, but reduced, format." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Retrieve metadata for an album</h1>
-    <small class="dont-index">Source: <a href='https://github.com/ewenme/geniusr/blob/master/R/deprecated.R'><code>R/deprecated.R</code></a></small>
-    <div class="hidden name"><code>get_album_meta.Rd</code></div>
+    <h1>geniusr: Tools for Working with the 'Genius' API</h1>
+    <small class="dont-index">Source: <a href='https://github.com/ewenme/geniusr/blob/master/R/geniusr-package.R'><code>R/geniusr-package.R</code></a></small>
+    <div class="hidden name"><code>geniusr-package.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>The Genius API lets you return data for a specific album, given an album ID.
-<code>get_album_meta</code> returns this data in a tidy, but reduced, format.</p>
+    <p><img src='figures/logo.png' align='right' /></p>
+<p>Provides tools to interact nicely with the 'Genius' API &lt;https://docs.genius.com/&gt;. 
+    Search hosted content, extract different types of associated metadata and retrieve lyrics 
+    with ease.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>get_album_meta</span>(<span class='no'>album_id</span>, <span class='kw'>access_token</span> <span class='kw'>=</span> <span class='fu'><a href='genius_token.html'>genius_token</a></span>())</pre>
 
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>album_id</th>
-      <td><p>ID of the album (<code>album_id</code> within an object returned by
-<code><a href='get_song.html'>get_song</a></code>)</p></td>
-    </tr>
-    <tr>
-      <th>access_token</th>
-      <td><p>Genius' client access token, defaults to <code>genius_token</code></p></td>
-    </tr>
-    </table>
 
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p>a tibble</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>[get_album()] to return data in full as a list.</p></div>
+    <div class='dont-index'><p>Useful links:</p><ul>
+<li><p><a href='https://github.com/ewenme/geniusr'>https://github.com/ewenme/geniusr</a></p></li>
+<li><p><a href='https://ewenme.github.io/geniusr/'>https://ewenme.github.io/geniusr/</a></p></li>
+<li><p>Report bugs at <a href='https://github.com/ewenme/geniusr/issues'>https://github.com/ewenme/geniusr/issues</a></p></li>
+</ul>
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='fu'>get_album_meta</span>(<span class='kw'>album_id</span> <span class='kw'>=</span> <span class='fl'>337082</span>)
-}</div></pre>
+</div>
+
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#value">Value</a></li>
       <li><a href="#see-also">See also</a></li>
-      <li><a href="#examples">Examples</a></li>
     </ul>
 
+    <h2>Author</h2>
+    <p><strong>Maintainer</strong>: Ewen Henderson <a href='mailto:ewenhenderson@gmail.com'>ewenhenderson@gmail.com</a> (0000-0002-4748-4693)</p>
   </div>
 </div>
 

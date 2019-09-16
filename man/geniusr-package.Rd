@@ -9,8 +9,7 @@
 \if{html}{\figure{logo.png}{options: align='right'}}
 
 Provides tools to interact nicely with the 'Genius' API <https://docs.genius.com/>. 
-    Search hosted content, extract different types of associated metadata and retrieve lyrics 
-    with ease.
+    Search hosted content, extract associated metadata and retrieve lyrics with ease.
 }
 \seealso{
 Useful links:

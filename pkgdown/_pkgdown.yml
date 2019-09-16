@@ -1,9 +1,38 @@
 url: https://ewenme.github.io/geniusr/
 
+template:
+  params:
+    bootswatch: lumen
+
+home:
+  strip_header: true
+
 authors:
   Ewen Henderson:
     href: https://ewen.io
-navbar:
-  right:
-  - icon: fa-github fa-lg
-    href: https://github.com/ewenme/geniusr
+
+reference:
+  - title: "Authorisation"
+    desc: "Authorise geniusr."
+    contents:
+      - genius_token
+  - title: "Album data"
+    desc: "Functions for working with album data."
+    contents:
+      - starts_with("get_album")
+  - title: "Artist data"
+    desc: "Functions for working with artist data."
+    contents:
+      - starts_with("get_artist")
+  - title: "Lyrics data"
+    desc: "Functions for working with lyrics data."
+    contents:
+      - starts_with("get_lyrics")
+  - title: "Song data"
+    desc: "Functions for working with song data."
+    contents:
+      - starts_with("get_song")
+  - title: "Search"
+    desc: "Functions for searching Genius content."
+    contents:
+      - starts_with("search")

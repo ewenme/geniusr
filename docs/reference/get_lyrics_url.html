@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Retrieve metadata for an album — get_album_meta • geniusr</title>
+<title>Retrieve lyrics associated with a Genius lyrics page URL — get_lyrics_url • geniusr</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -44,9 +44,8 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Retrieve metadata for an album — get_album_meta" />
-<meta property="og:description" content="The Genius API lets you return data for a specific album, given an album ID.
-get_album_meta returns this data in a tidy, but reduced, format." />
+<meta property="og:title" content="Retrieve lyrics associated with a Genius lyrics page URL — get_lyrics_url" />
+<meta property="og:description" content="Scrape lyrics from a Genius' lyric page using it's associated URL. Best used with scrape_tracklist, when song IDs aren't returned - otherwise, scrape_lyrics_id is recommended." />
 <meta property="og:image" content="https://ewenme.github.io/geniusr/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -119,50 +118,36 @@ get_album_meta returns this data in a tidy, but reduced, format." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Retrieve metadata for an album</h1>
-    <small class="dont-index">Source: <a href='https://github.com/ewenme/geniusr/blob/master/R/deprecated.R'><code>R/deprecated.R</code></a></small>
-    <div class="hidden name"><code>get_album_meta.Rd</code></div>
+    <h1>Retrieve lyrics associated with a Genius lyrics page URL</h1>
+    <small class="dont-index">Source: <a href='https://github.com/ewenme/geniusr/blob/master/R/lyrics.R'><code>R/lyrics.R</code></a></small>
+    <div class="hidden name"><code>get_lyrics_url.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>The Genius API lets you return data for a specific album, given an album ID.
-<code>get_album_meta</code> returns this data in a tidy, but reduced, format.</p>
+    <p>Scrape lyrics from a Genius' lyric page using it's associated URL. Best used with <code><a href='scrape_tracklist.html'>scrape_tracklist</a></code>, when song IDs aren't returned - otherwise, <code><a href='scrape_lyrics_id.html'>scrape_lyrics_id</a></code> is recommended.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>get_album_meta</span>(<span class='no'>album_id</span>, <span class='kw'>access_token</span> <span class='kw'>=</span> <span class='fu'><a href='genius_token.html'>genius_token</a></span>())</pre>
+    <pre class="usage"><span class='fu'>get_lyrics_url</span>(<span class='no'>song_lyrics_url</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>album_id</th>
-      <td><p>ID of the album (<code>album_id</code> within an object returned by
-<code><a href='get_song.html'>get_song</a></code>)</p></td>
-    </tr>
-    <tr>
-      <th>access_token</th>
-      <td><p>Genius' client access token, defaults to <code>genius_token</code></p></td>
+      <th>song_lyrics_url</th>
+      <td><p>song lyrics url (like in <code>song_lyrics_url</code> returned by <code><a href='get_song_meta.html'>get_song_meta</a></code>)</p></td>
     </tr>
     </table>
 
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p>a tibble</p>
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <div class='dont-index'><p>[get_album()] to return data in full as a list.</p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='fu'>get_album_meta</span>(<span class='kw'>album_id</span> <span class='kw'>=</span> <span class='fl'>337082</span>)
+<span class='fu'>get_lyrics_url</span>(<span class='kw'>song_lyrics_url</span> <span class='kw'>=</span> <span class='st'>"https://genius.com/Kendrick-lamar-dna-lyrics"</span>)
 }</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#value">Value</a></li>
-      <li><a href="#see-also">See also</a></li>
       <li><a href="#examples">Examples</a></li>
     </ul>
 

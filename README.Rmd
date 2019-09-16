@@ -14,6 +14,8 @@ knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE,
 [![CRAN status](https://www.r-pkg.org/badges/version/geniusr)](https://cran.r-project.org/package=geniusr)
 [![DLs](http://cranlogs.r-pkg.org/badges/geniusr)](http://cran.rstudio.com/web/packages/geniusr/index.html)
 
+## Overview
+
 Tools for working with the Genius API.
 
 - Genius Developers Site: [https://genius.com/developers](https://genius.com/developers)

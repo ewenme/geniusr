@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Retrieve metadata for an album — get_album_meta • geniusr</title>
+<title>Search documents hosted on Genius — search_genius • geniusr</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -44,9 +44,9 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Retrieve metadata for an album — get_album_meta" />
-<meta property="og:description" content="The Genius API lets you return data for a specific album, given an album ID.
-get_album_meta returns this data in a tidy, but reduced, format." />
+<meta property="og:title" content="Search documents hosted on Genius — search_genius" />
+<meta property="og:description" content="The Genius API lets you search hosted content (all songs). Use search_genius()
+to return hits on for a given search term, in full." />
 <meta property="og:image" content="https://ewenme.github.io/geniusr/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -119,25 +119,29 @@ get_album_meta returns this data in a tidy, but reduced, format." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Retrieve metadata for an album</h1>
-    <small class="dont-index">Source: <a href='https://github.com/ewenme/geniusr/blob/master/R/deprecated.R'><code>R/deprecated.R</code></a></small>
-    <div class="hidden name"><code>get_album_meta.Rd</code></div>
+    <h1>Search documents hosted on Genius</h1>
+    <small class="dont-index">Source: <a href='https://github.com/ewenme/geniusr/blob/master/R/search.R'><code>R/search.R</code></a></small>
+    <div class="hidden name"><code>search_genius.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>The Genius API lets you return data for a specific album, given an album ID.
-<code>get_album_meta</code> returns this data in a tidy, but reduced, format.</p>
+    <p>The Genius API lets you search hosted content (all songs). Use <code>search_genius()</code>
+to return hits on for a given search term, in full.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>get_album_meta</span>(<span class='no'>album_id</span>, <span class='kw'>access_token</span> <span class='kw'>=</span> <span class='fu'><a href='genius_token.html'>genius_token</a></span>())</pre>
+    <pre class="usage"><span class='fu'>search_genius</span>(<span class='no'>search_term</span>, <span class='kw'>n_results</span> <span class='kw'>=</span> <span class='fl'>10</span>,
+  <span class='kw'>access_token</span> <span class='kw'>=</span> <span class='fu'><a href='genius_token.html'>genius_token</a></span>())</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>album_id</th>
-      <td><p>ID of the album (<code>album_id</code> within an object returned by
-<code><a href='get_song.html'>get_song</a></code>)</p></td>
+      <th>search_term</th>
+      <td><p>A character string to search for</p></td>
+    </tr>
+    <tr>
+      <th>n_results</th>
+      <td><p>Maximum no. of search results to return</p></td>
     </tr>
     <tr>
       <th>access_token</th>
@@ -147,14 +151,11 @@ get_album_meta returns this data in a tidy, but reduced, format." />
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>a tibble</p>
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <div class='dont-index'><p>[get_album()] to return data in full as a list.</p></div>
+    <p>a list</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='fu'>get_album_meta</span>(<span class='kw'>album_id</span> <span class='kw'>=</span> <span class='fl'>337082</span>)
+<span class='fu'>search_genius</span>(<span class='kw'>search_term</span> <span class='kw'>=</span> <span class='st'>"Lil"</span>, <span class='kw'>n_results</span> <span class='kw'>=</span> <span class='fl'>100</span>)
 }</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -162,7 +163,6 @@ get_album_meta returns this data in a tidy, but reduced, format." />
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       <li><a href="#value">Value</a></li>
-      <li><a href="#see-also">See also</a></li>
       <li><a href="#examples">Examples</a></li>
     </ul>
 

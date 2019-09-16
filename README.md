@@ -47,17 +47,10 @@ library(geniusr)
 library(dplyr)
 library(tidytext)
 
-# Get song search results for the term 'good morning'
-gm_search <- gen_search_song(search_term = "good morning") %>%
-  # look for Kanye as the primary artist
-  filter(artist_name == "Kanye West")
-
 # get lyrics
-gm_lyrics <- gen_get_lyrics_id(song_id = gm_search$song_id)
-
-# tokenization of the lyrics
-gm_lyrics %>%
-  # get bigrams
+get_lyrics_search(artist_name = "Kanye West",
+                  song_title = "Good Morning") %>% 
+  # get lyric bigrams
   unnest_tokens(bigram, line, token = "ngrams", n = 2) %>%
   # count bigram frequency
   count(bigram) %>%
@@ -80,10 +73,11 @@ library(ggplot2)
 bing <- get_sentiments("bing")
 
 # scrape album tracklist
-tracklist <- gen_get_album_tracklist(album_id = 150853)
+tracklist <- get_album_tracklist_search(artist_name = "Chance the Rapper",
+                                        album_name = "Coloring Book")
 
 # scrape album lyrics
-lyrics <- map_df(tracklist$song_lyrics_url, gen_get_lyrics_url)
+lyrics <- map_df(tracklist$song_lyrics_url, get_lyrics_url)
 
 # counting negative / positive words
 sentiment <- lyrics %>%

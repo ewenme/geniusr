@@ -189,7 +189,7 @@ get_album_tracklist_search <- function(artist_name, album_name) {
   # get tracklist
   album_tracks <- get_tracklist(session)
 
-  album_tracks
+  as_tibble(album_tracks)
 
 }
 

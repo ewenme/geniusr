@@ -10,7 +10,9 @@ knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE,
 # geniusr <img src="man/figures/logo.png" width="160px" align="right" />
 
 [![lifecycle](https://img.shields.io/badge/lifecycle-stable-green.svg)](https://www.tidyverse.org/lifecycle/#stable)
-[![Build Status](https://travis-ci.org/ewenme/geniusr.png)](https://travis-ci.org/ewenme/geniusr)
+[![Travis build Status](https://travis-ci.org/ewenme/geniusr.png)](https://travis-ci.org/ewenme/geniusr)
+[![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/ewenme/geniusr?branch=master&svg=true)](https://ci.appveyor.com/project/ewenme/geniusr)
+[![Codecov test coverage](https://codecov.io/gh/ewenme/geniusr/branch/master/graph/badge.svg)](https://codecov.io/gh/ewenme/geniusr?branch=master)
 [![CRAN status](https://www.r-pkg.org/badges/version/geniusr)](https://cran.r-project.org/package=geniusr)
 [![DLs](http://cranlogs.r-pkg.org/badges/geniusr)](http://cran.rstudio.com/web/packages/geniusr/index.html)
 

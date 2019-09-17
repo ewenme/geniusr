@@ -7,16 +7,52 @@
     <loc>https://ewenme.github.io/geniusr//reference/genius_token.html</loc>
   </url>
   <url>
-    <loc>https://ewenme.github.io/geniusr//reference/geniusr.html</loc>
+    <loc>https://ewenme.github.io/geniusr//reference/geniusr-package.html</loc>
+  </url>
+  <url>
+    <loc>https://ewenme.github.io/geniusr//reference/get_album.html</loc>
+  </url>
+  <url>
+    <loc>https://ewenme.github.io/geniusr//reference/get_album_df.html</loc>
   </url>
   <url>
     <loc>https://ewenme.github.io/geniusr//reference/get_album_meta.html</loc>
+  </url>
+  <url>
+    <loc>https://ewenme.github.io/geniusr//reference/get_album_tracklist_id.html</loc>
+  </url>
+  <url>
+    <loc>https://ewenme.github.io/geniusr//reference/get_album_tracklist_search.html</loc>
+  </url>
+  <url>
+    <loc>https://ewenme.github.io/geniusr//reference/get_artist.html</loc>
+  </url>
+  <url>
+    <loc>https://ewenme.github.io/geniusr//reference/get_artist_df.html</loc>
   </url>
   <url>
     <loc>https://ewenme.github.io/geniusr//reference/get_artist_meta.html</loc>
   </url>
   <url>
     <loc>https://ewenme.github.io/geniusr//reference/get_artist_songs.html</loc>
+  </url>
+  <url>
+    <loc>https://ewenme.github.io/geniusr//reference/get_artist_songs_df.html</loc>
+  </url>
+  <url>
+    <loc>https://ewenme.github.io/geniusr//reference/get_lyrics_id.html</loc>
+  </url>
+  <url>
+    <loc>https://ewenme.github.io/geniusr//reference/get_lyrics_search.html</loc>
+  </url>
+  <url>
+    <loc>https://ewenme.github.io/geniusr//reference/get_lyrics_url.html</loc>
+  </url>
+  <url>
+    <loc>https://ewenme.github.io/geniusr//reference/get_song.html</loc>
+  </url>
+  <url>
+    <loc>https://ewenme.github.io/geniusr//reference/get_song_df.html</loc>
   </url>
   <url>
     <loc>https://ewenme.github.io/geniusr//reference/get_song_meta.html</loc>
@@ -32,6 +68,9 @@
   </url>
   <url>
     <loc>https://ewenme.github.io/geniusr//reference/search_artist.html</loc>
+  </url>
+  <url>
+    <loc>https://ewenme.github.io/geniusr//reference/search_genius.html</loc>
   </url>
   <url>
     <loc>https://ewenme.github.io/geniusr//reference/search_song.html</loc>

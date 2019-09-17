@@ -3,16 +3,22 @@ output: github_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE,
-                      collapse = TRUE, comment = "#>", fig.path = "man/figures/README-")
+knitr::opts_chunk$set(
+  echo = TRUE, warning = FALSE, message = FALSE, collapse = TRUE, 
+  comment = "#>", fig.path = "man/figures/README-"
+  )
 ```
 
 # geniusr <img src="man/figures/logo.png" width="160px" align="right" />
 
 [![lifecycle](https://img.shields.io/badge/lifecycle-stable-green.svg)](https://www.tidyverse.org/lifecycle/#stable)
-[![Build Status](https://travis-ci.org/ewenme/geniusr.png)](https://travis-ci.org/ewenme/geniusr)
+[![Travis build Status](https://travis-ci.org/ewenme/geniusr.png)](https://travis-ci.org/ewenme/geniusr)
+[![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/ewenme/geniusr?branch=master&svg=true)](https://ci.appveyor.com/project/ewenme/geniusr)
+[![Codecov test coverage](https://codecov.io/gh/ewenme/geniusr/branch/master/graph/badge.svg)](https://codecov.io/gh/ewenme/geniusr?branch=master)
 [![CRAN status](https://www.r-pkg.org/badges/version/geniusr)](https://cran.r-project.org/package=geniusr)
 [![DLs](http://cranlogs.r-pkg.org/badges/geniusr)](http://cran.rstudio.com/web/packages/geniusr/index.html)
+
+## Overview
 
 Tools for working with the Genius API.
 
@@ -21,16 +27,16 @@ Tools for working with the Genius API.
 
 ## Install
 
-Development version (recommended)
+Development version (recommended):
 
 ```{r install_dev, eval=FALSE}
-devtools::install_github('ewenme/geniusr')
+devtools::install_github("ewenme/geniusr")
 ```
 
-Latest stable version on CRAN
+Latest stable version on CRAN:
 
 ```{r, eval = FALSE}
-install.packages('geniusr')
+install.packages("geniusr")
 ```
 
 ## Authenticate
@@ -49,17 +55,10 @@ library(geniusr)
 library(dplyr)
 library(tidytext)
 
-# Get song search results for the term 'good morning'
-gm_search <- search_song(search_term = "good morning") %>%
-  # look for Kanye as the primary artist
-  filter(artist_name == "Kanye West")
-
 # get lyrics
-gm_lyrics <- scrape_lyrics_id(song_id = gm_search$song_id)
-
-# tokenization of the lyrics
-gm_lyrics %>%
-  # get bigrams
+get_lyrics_search(artist_name = "Kanye West",
+                  song_title = "Good Morning") %>% 
+  # get lyric bigrams
   unnest_tokens(bigram, line, token = "ngrams", n = 2) %>%
   # count bigram frequency
   count(bigram) %>%
@@ -77,17 +76,12 @@ library(ggplot2)
 # set lexicon
 bing <- get_sentiments("bing")
 
-# search for Chance
-search_song(search_term = "Chance")
-
-# search track on Coloring Book
-get_song_meta(song_id = 2471960)
-
 # scrape album tracklist
-tracklist <- scrape_tracklist(album_id = 150853)
+tracklist <- get_album_tracklist_search(artist_name = "Chance the Rapper",
+                                        album_name = "Coloring Book")
 
 # scrape album lyrics
-lyrics <- map_df(tracklist$song_lyrics_url, scrape_lyrics_url)
+lyrics <- map_df(tracklist$song_lyrics_url, get_lyrics_url)
 
 # counting negative / positive words
 sentiment <- lyrics %>%
@@ -117,4 +111,4 @@ sentiment %>%
 
 ## Other options
 
-- the [geniusR](https://github.com/JosiahParry/geniusR) package provides a similar API interface.
+- the [genius](https://github.com/JosiahParry/genius) package specialises in lyrics retrieval from Genius.

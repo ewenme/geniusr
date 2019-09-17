@@ -2,7 +2,7 @@
 % Please edit documentation in R/auth.R
 \name{genius_token}
 \alias{genius_token}
-\title{Get or set GENIUS_API_TOKEN value}
+\title{Get or set Genius access token value}
 \usage{
 genius_token(force = FALSE)
 }

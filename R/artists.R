@@ -188,10 +188,10 @@ get_artist_songs_df <- function(artist_id,
                                 include_features, access_token)
 
   # extract track info from returned results
-  song_info <- map_df(seq_along(songs), function(x) {
+  song_info <- lapply(seq_along(songs), function(x) {
     tmp <- songs[[x]]
     art <- songs[[x]]$primary_artist
-    list(
+    tibble(
       song_id = tmp$id,
       song_name = tmp$title_with_featured,
       song_lyrics_url = tmp$url,
@@ -201,6 +201,8 @@ get_artist_songs_df <- function(artist_id,
       artist_url = art$url
     )
   })
+
+  song_info <- do.call(rbind, song_info)
 
   as_tibble(song_info)
 }

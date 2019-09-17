@@ -94,15 +94,17 @@ search_artist <- function(search_term, n_results = 10,
   results <- search_genius(search_term, n_results, access_token)
 
   # extract artist info from returned results
-  artist_info <- map_dfr(seq_along(results), function(x) {
+  artist_info <- lapply(seq_along(results), function(x) {
 
     artist <- results[[x]]$primary_artist
-    list(
+    tibble(
       artist_id = artist$id,
       artist_name = artist$name,
       artist_url = artist$url
     )
   })
+
+  artist_info <- do.call(rbind, artist_info)
 
   # isolate unique artists
   as_tibble(unique(artist_info))
@@ -133,12 +135,12 @@ search_song <- function(search_term, n_results = 10,
   results <- search_genius(search_term, n_results, access_token)
 
   # extract song and artist info from returned results
-  song_info <- map_dfr(seq_along(results), function(x) {
+  song_info <- lapply(seq_along(results), function(x) {
 
     track <- results[[x]]
     artist <- results[[x]]$primary_artist
 
-    list(
+    tibble(
       song_id = track$id,
       song_name = track$title_with_featured,
       song_lyrics_url = track$url,
@@ -146,6 +148,8 @@ search_song <- function(search_term, n_results = 10,
       artist_name = artist$name
     )
   })
+
+  song_info <- do.call(rbind, song_info)
 
   # isolate unique pairs
   as_tibble(unique(song_info))

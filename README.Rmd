@@ -3,8 +3,10 @@ output: github_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE,
-                      collapse = TRUE, comment = "#>", fig.path = "man/figures/README-")
+knitr::opts_chunk$set(
+  echo = TRUE, warning = FALSE, message = FALSE, collapse = TRUE, 
+  comment = "#>", fig.path = "man/figures/README-"
+  )
 ```
 
 # geniusr <img src="man/figures/logo.png" width="160px" align="right" />

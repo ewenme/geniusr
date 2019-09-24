@@ -1,4 +1,4 @@
-#' Get or set GENIUS_API_TOKEN value
+#' Get or set Genius access token value
 #'
 #' The API wrapper functions in this package all rely on a Genius client access token
 #' residing in the environment variable \code{GENIUS_API_TOKEN}. The

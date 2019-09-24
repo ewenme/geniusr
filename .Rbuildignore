@@ -1,4 +1,5 @@
 ^docs$
+^pkgdown
 ^_pkgdown\.yml$
 ^CRAN-RELEASE$
 ^revdep$
@@ -8,5 +9,7 @@
 ^README\.Rmd$
 ^README-.*\.png$
 ^\.travis\.yml$
-README.md
 ^cran-comments\.md$
+README.md
+^appveyor\.yml$
+^codecov\.yml$

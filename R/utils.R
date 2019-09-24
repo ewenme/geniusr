@@ -1,14 +1,37 @@
-ua <- httr::user_agent("http://github.com/ewenme/geniusr")
+# set user agent
+ua <- user_agent("http://github.com/ewenme/geniusr")
 
-#' @importFrom attempt stop_if_not
-#' @importFrom curl has_internet
-check_internet <- function(){
-  attempt::stop_if_not(.x = curl::has_internet(), msg = "Please check your internet connection")
+# check user internet connection
+check_internet <- function() {
+
+  if (!has_internet()) stop("Please check your internet connection")
 }
 
-replace_space <- function(x) {
+# simple GET wrapper
+genius_get <- function(url, access_token) {
+  GET(url = url, add_headers(
+    Authorization = paste0("Bearer ", access_token)
+    ))
+}
 
-  no_spaces <- gsub(" ", "%20", x)
+# named vector of bad strings and replacements
+bad_lyric_strings <- c(
+  "\\s*\\(Ft.[^\\)]+\\)" = "",
+  "&" = "and",
+  "\\$" = " ",
+  "'" = "",
+  "\u00e9" = "e",
+  "\u00f6" = "o",
+  "[[:punct:]]" = "",
+  "[[:blank:]]+" = " ",
+  " " = "-"
+  )
 
-  return(no_spaces)
+# repeat element of x with last TRUE element of y
+repeat_before = function(x, y) {
+  ind = which(y)
+  if(!y[1])
+    ind = c(1,ind)
+  rep(x[ind], times = diff(
+    c(ind, length(x) + 1) ))
 }

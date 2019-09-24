@@ -1,0 +1,43 @@
+---
+title: "Introduction to geniusr"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Introduction to Geniusr}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+The `geniusr` package is designed to help you retrieve data from [Genius](https://genius.com/). Most of this data falls into one of two camps:
+
+- Details about **documents** (e.g. artists, songs) hosted on Genius
+- Song **lyrics** hosted on Genius
+
+Both of these areas will be introduced momentarily, once API authentication is dealt with.
+
+## Authentication {#auth}
+
+```{r setup}
+library(geniusr)
+```
+
+`geniusr` data retrieval is typically done via the [Genius API](https://docs.genius.com/). This necessitates a few common steps:
+
+1. Create a Genius API client via the [API Client management page](https://genius.com/api-clients/new)
+2. Generate a client access token from your [API clients page](https://genius.com/api-clients)
+3. Pass your access token to a `GENIUS_API_TOKEN` environment variable by explicitly calling the `genius_token()` function, or when prompted by other functions
+
+Once you have set the `GENIUS_API_TOKEN` environment variable, it will be active for the rest of the session and automatically called (via `genius_token()`) when using `geniusr` functions for retrieving data.
+
+## Documents {#docs}
+
+
+
+## Lyrics {#lyrics}
+

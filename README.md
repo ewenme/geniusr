@@ -2,11 +2,17 @@
 # geniusr <img src="man/figures/logo.png" width="160px" align="right" />
 
 [![lifecycle](https://img.shields.io/badge/lifecycle-stable-green.svg)](https://www.tidyverse.org/lifecycle/#stable)
-[![Build
+[![Travis build
 Status](https://travis-ci.org/ewenme/geniusr.png)](https://travis-ci.org/ewenme/geniusr)
+[![AppVeyor build
+status](https://ci.appveyor.com/api/projects/status/github/ewenme/geniusr?branch=master&svg=true)](https://ci.appveyor.com/project/ewenme/geniusr)
+[![Codecov test
+coverage](https://codecov.io/gh/ewenme/geniusr/branch/master/graph/badge.svg)](https://codecov.io/gh/ewenme/geniusr?branch=master)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/geniusr)](https://cran.r-project.org/package=geniusr)
 [![DLs](http://cranlogs.r-pkg.org/badges/geniusr)](http://cran.rstudio.com/web/packages/geniusr/index.html)
+
+## Overview
 
 Tools for working with the Genius API.
 
@@ -15,16 +21,16 @@ Tools for working with the Genius API.
 
 ## Install
 
-Development version (recommended)
+Development version (recommended):
 
 ``` r
-devtools::install_github('ewenme/geniusr')
+devtools::install_github("ewenme/geniusr")
 ```
 
-Latest stable version on CRAN
+Latest stable version on CRAN:
 
 ``` r
-install.packages('geniusr')
+install.packages("geniusr")
 ```
 
 ## Authenticate
@@ -47,17 +53,10 @@ library(geniusr)
 library(dplyr)
 library(tidytext)
 
-# Get song search results for the term 'good morning'
-gm_search <- search_song(search_term = "good morning") %>%
-  # look for Kanye as the primary artist
-  filter(artist_name == "Kanye West")
-
 # get lyrics
-gm_lyrics <- scrape_lyrics_id(song_id = gm_search$song_id)
-
-# tokenization of the lyrics
-gm_lyrics %>%
-  # get bigrams
+get_lyrics_search(artist_name = "Kanye West",
+                  song_title = "Good Morning") %>% 
+  # get lyric bigrams
   unnest_tokens(bigram, line, token = "ngrams", n = 2) %>%
   # count bigram frequency
   count(bigram) %>%
@@ -79,37 +78,12 @@ library(ggplot2)
 # set lexicon
 bing <- get_sentiments("bing")
 
-# search for Chance
-search_song(search_term = "Chance")
-#> # A tibble: 10 x 5
-#>    song_id song_name        song_lyrics_url          artist_id artist_name 
-#>      <int> <chr>            <chr>                        <int> <chr>       
-#>  1 2471960 No Problem (Ft.… https://genius.com/Chan…     16751 Chance the …
-#>  2  146864 Cocoa Butter Ki… https://genius.com/Chan…     16751 Chance the …
-#>  3  146855 Favorite Song (… https://genius.com/Chan…     16751 Chance the …
-#>  4  113663 Juice            https://genius.com/Chan…     16751 Chance the …
-#>  5  146865 Pusha Man/Paran… https://genius.com/Chan…     16751 Chance the …
-#>  6 2472248 Same Drugs       https://genius.com/Chan…     16751 Chance the …
-#>  7 2468090 Blessings (Ft. … https://genius.com/Chan…     16751 Chance the …
-#>  8  146915 Lost (Ft. Nonam… https://genius.com/Chan…     16751 Chance the …
-#>  9 2339009 Angels (Ft. Sab… https://genius.com/Chan…     16751 Chance the …
-#> 10  119999 Acid Rain        https://genius.com/Chan…     16751 Chance the …
-
-# search track on Coloring Book
-get_song_meta(song_id = 2471960)
-#> # A tibble: 1 x 13
-#>   song_id song_name song_lyrics_url song_art_image_… release_date pageviews
-#>     <int> <chr>     <chr>           <chr>            <chr>            <int>
-#> 1 2471960 No Probl… https://genius… https://images.… 2016-05-12     2297562
-#> # … with 7 more variables: annotation_count <int>, artist_id <int>,
-#> #   artist_name <chr>, artist_url <chr>, album_id <int>, album_name <chr>,
-#> #   album_url <chr>
-
 # scrape album tracklist
-tracklist <- scrape_tracklist(album_id = 150853)
+tracklist <- get_album_tracklist_search(artist_name = "Chance the Rapper",
+                                        album_name = "Coloring Book")
 
 # scrape album lyrics
-lyrics <- map_df(tracklist$song_lyrics_url, scrape_lyrics_url)
+lyrics <- map_df(tracklist$song_lyrics_url, get_lyrics_url)
 
 # counting negative / positive words
 sentiment <- lyrics %>%
@@ -141,5 +115,5 @@ sentiment %>%
 
 ## Other options
 
-  - the [geniusR](https://github.com/JosiahParry/geniusR) package
-    provides a similar API interface.
+  - the [genius](https://github.com/JosiahParry/genius) package
+    specialises in lyrics retrieval from Genius.

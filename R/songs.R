@@ -1,77 +1,84 @@
-#' Retrieve meta data for all of an artist's appearances on Genius
+#' Retrieve metadata for a song
 #'
-#' Return meta data for all appearances (features optional) of an artist on Genius.
-#' @param artist_id An artist ID (\code{artist_id} returned in \code{\link{search_artist}})
-#' @param include_features Whether to return results where artist isn't the primary artist (logical, defaults to FALSE)
+#' The Genius API lets you return data for a specific song, given a song ID.
+#' \code{get_song} returns this data in full.
+#'
+#' @seealso [get_song_df()] to return a tidy data frame.
+#'
+#' @param song_id ID of the song (\code{song_id} within an object returned by
+#' \code{\link{search_song}})
 #' @param access_token Genius' client access token, defaults to \code{genius_token}
+#'
+#' @return a list
+#'
 #' @examples
 #' \dontrun{
-#' get_artist_songs(artist_id = 1421)
+#' get_song(song_id = 3039923)
 #' }
 #' @export
-get_artist_songs <- function(artist_id, include_features=FALSE, access_token=genius_token()) {
+get_song <- function(song_id, access_token = genius_token()) {
 
-  # check for internet
   check_internet()
 
-  pri_artist_id <- artist_id
+  path <- sprintf("api.genius.com/songs/%s", song_id)
 
-  # base URL
-  base_url <- "api.genius.com/artists/"
+  # request track
+  req <- genius_get(url = path, access_token)
 
-  track_lyric_urls <- list()
+  stop_for_status(req)
 
-  i <- 1
+  res <- content(req)
 
-  while (i > 0) {
-  # search for artist's songs
-  req <- httr::GET(url = paste0(base_url, artist_id, "/songs", '?per_page=', 10, '&page=', i),
-                   httr::add_headers(Authorization=paste0("Bearer ", access_token)))
+  res$response$song
+}
 
-  # stop if unexpected request status returned
-  httr::stop_for_status(req)
+#' Retrieve metadata for a song
+#'
+#' The Genius API lets you search for meta data for a song, given a song ID.
+#' \code{get_song_meta} returns this data in a tidy, but reduced, format.
+#'
+#' @seealso [get_song()] to return data in full as a list.
+#'
+#' @inheritParams get_song
+#'
+#' @return a tibble
+#'
+#' @examples
+#' \dontrun{
+#' get_song_df(song_id = 3039923)
+#' }
+#'
+#' @export
+get_song_df <- function(song_id, access_token = genius_token()) {
 
-  # extract request content
-  res <- httr::content(req)
+  # pull song meta
+  song <- get_song(song_id, access_token)
 
-  # drill down
-  res <- res$response
+  # grab album, artist, stat data
+  album <- song$album
+  artist <- song$primary_artist
+  stats <- song$stats
 
-  # extract track info from returned results
-  song_info <- purrr::map_df(1:length(res$songs), function(x) {
-    tmp <- res$songs[[x]]
-    art <- res$songs[[x]]$primary_artist
-    list(
-      song_id = tmp$id,
-      song_name = tmp$title_with_featured,
-      song_lyrics_url = tmp$url,
-      annotation_count = tmp$annotation_count,
-      artist_id = art$id,
-      artist_name = art$name,
-      artist_url = art$url
-    )
-  })
+  # make list for song_info
+  song_info <- list(
+    song_id = song$id,
+    song_name = song$title_with_featured,
+    song_lyrics_url = song$url,
+    song_art_image_url = song$song_art_image_url,
+    song_release_date = song$release_date,
+    song_pageviews = stats$pageviews,
+    song_annotation_count = song$annotation_count,
+    artist_id = artist$id,
+    artist_name = artist$name,
+    artist_url = artist$url,
+    album_id = album$id,
+    album_name = album$name,
+    album_url = album$url
+  )
 
-  track_lyric_urls[[i]] <- song_info
+  # find list indices of NULL values, change to NA
+  ndxNULL <- which(unlist(lapply(song_info, is.null)))
+  for(i in ndxNULL){ song_info[[i]] <- NA }
 
-  if (!is.null(res$next_page)) {
-    i <- res$next_page
-  } else {
-    break
-  }
-
-  }
-
-  # bind rows of results
-  track_lyrics <- do.call("rbind", track_lyric_urls)
-
-  # keep / discard features
-  if (include_features == FALSE) {
-
-    track_lyrics <- subset(track_lyrics, `artist_id` == pri_artist_id)
-
-  } else if (include_features == TRUE) NULL
-
-  return(tibble::as_tibble(track_lyrics))
-
+  as_tibble(song_info)
 }

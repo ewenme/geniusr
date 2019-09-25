@@ -9,7 +9,8 @@
 #' \code{\link{search_artist}})
 #' @param access_token Genius' client access token, defaults to \code{genius_token}
 #'
-#' @return a list
+#' @return a \code{genius_resource} object that contains the extracted content from the request,
+#' the original JSON response object and the request path.
 #'
 #' @examples
 #' \dontrun{
@@ -59,12 +60,12 @@ get_artist_df <- function(artist_id, access_token = genius_token()) {
 
   # make list for artist_info
   artist_info <- list(
-    artist_id = artist$id,
-    artist_name = artist$name,
-    artist_url = artist$url,
-    artist_image_url = artist$image_url,
-    artist_followers_count = artist$followers_count,
-    artist_twitter_name = artist$twitter_name
+    artist_id = artist$content$id,
+    artist_name = artist$content$name,
+    artist_url = artist$content$url,
+    artist_image_url = artist$content$image_url,
+    artist_followers_count = artist$content$followers_count,
+    artist_twitter_name = artist$content$twitter_name
   )
 
   # find list indices of NULL values, change to NA
@@ -88,7 +89,8 @@ get_artist_df <- function(artist_id, access_token = genius_token()) {
 #' @param include_features Whether to return results where artist
 #' isn't the primary artist (logical, defaults to FALSE)
 #'
-#' @return a list
+#' @return a \code{genius_resource} object that contains the extracted content from the request,
+#' the original JSON response object and the request path.
 #'
 #' @examples
 #' \dontrun{
@@ -192,7 +194,9 @@ get_artist_songs_df <- function(artist_id,
 
   # pull artist discography
   songs <- get_artist_songs(artist_id, sort,
-                                include_features, access_token)
+                            include_features, access_token)
+
+  songs <- songs$content
 
   # extract track info from returned results
   song_info <- lapply(seq_along(songs), function(x) {

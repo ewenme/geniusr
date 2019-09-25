@@ -78,7 +78,7 @@ get_lyrics_id <- function(song_id, access_token = genius_token()) {
   song <- get_song(song_id, access_token)
 
   # start session
-  session <- read_html(song$url)
+  session <- read_html(song$content$url)
 
   # get song lyrics
   lyrics <- get_lyrics(session)

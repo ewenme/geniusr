@@ -15,7 +15,8 @@ search_genius(search_term, n_results = 10,
 \item{access_token}{Genius' client access token, defaults to \code{genius_token}}
 }
 \value{
-a list
+a \code{genius_resource} object that contains the extracted content from the request,
+the original JSON response object and the request path.
 }
 \description{
 The Genius API lets you search hosted content (all songs). Use \code{search_genius()}

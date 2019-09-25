@@ -4,7 +4,7 @@ test_that("search_genius returns the right output formats", {
 
   skip_on_cran()
   output <- search_genius(search_term = "Lil")
-  expect_is(output, "list")
+  expect_is(output, "genius_resource")
 })
 
 test_that("search_artist returns the right output formats", {

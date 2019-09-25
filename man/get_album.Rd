@@ -13,7 +13,8 @@ get_album(album_id, access_token = genius_token())
 \item{access_token}{Genius' client access token, defaults to \code{genius_token}}
 }
 \value{
-a list
+a \code{genius_resource} object that contains the extracted content from the request,
+the original JSON response object and the request path.
 }
 \description{
 The Genius API lets you request data for a specific album, given an album ID.
@@ -25,5 +26,5 @@ get_album(album_id = 337082)
 }
 }
 \seealso{
-[get_album_df()] to return a tidy data frame.
+See [get_album_df()] to return a tidy data frame.
 }

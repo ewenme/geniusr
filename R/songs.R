@@ -9,7 +9,8 @@
 #' \code{\link{search_song}})
 #' @param access_token Genius' client access token, defaults to \code{genius_token}
 #'
-#' @return a list
+#' @return a \code{genius_resource} object that contains the extracted content from the request,
+#' the original JSON response object and the request path.
 #'
 #' @examples
 #' \dontrun{
@@ -55,6 +56,8 @@ get_song_df <- function(song_id, access_token = genius_token()) {
 
   # pull song meta
   song <- get_song(song_id, access_token)
+
+  song <- song$content
 
   # grab album, artist, stat data
   album <- song$album

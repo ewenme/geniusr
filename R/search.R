@@ -7,7 +7,8 @@
 #' @param n_results Maximum no. of search results to return
 #' @param access_token Genius' client access token, defaults to \code{genius_token}
 #'
-#' @return a list
+#' @return a \code{genius_resource} object that contains the extracted content from the request,
+#' the original JSON response object and the request path.
 #'
 #' @examples
 #' \dontrun{
@@ -89,7 +90,7 @@ search_genius <- function(search_term, n_results = 10,
 #'
 #' @examples
 #' \dontrun{
-#' search_artist(search_term = "Lil", n_results = 100)
+#' search_artist(search_term = "Lil", n_results = 20)
 #' }
 #' @export
 search_artist <- function(search_term, n_results = 10,
@@ -98,6 +99,8 @@ search_artist <- function(search_term, n_results = 10,
   check_internet()
 
   results <- search_genius(search_term, n_results, access_token)
+
+  results <- results$content
 
   # extract artist info from returned results
   artist_info <- lapply(seq_along(results), function(x) {
@@ -139,6 +142,8 @@ search_song <- function(search_term, n_results = 10,
   check_internet()
 
   results <- search_genius(search_term, n_results, access_token)
+
+  results <- results$content
 
   # extract song and artist info from returned results
   song_info <- lapply(seq_along(results), function(x) {

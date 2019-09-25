@@ -9,7 +9,8 @@
 #' \code{\link{get_song}})
 #' @param access_token Genius' client access token, defaults to \code{genius_token}
 #'
-#' @return a list
+#' @return a \code{genius_resource} object that contains the extracted content from the request,
+#' the original JSON response object and the request path.
 #'
 #' @examples
 #' \dontrun{
@@ -55,17 +56,17 @@ get_album_df <- function(album_id, access_token = genius_token()) {
   # pull album meta
   album <- get_album(album_id, access_token)
 
-  artist <- album$artist
+  artist <- album$content$artist
 
   # make list for album_info
   album_info <- list(
-    album_id = album$id,
-    album_name = album$name,
-    album_url = album$url,
-    album_cover_art_url = album$cover_art_url,
-    album_release_date = album$release_date,
-    album_comment_count = album$comment_count,
-    song_pageviews = album$song_pageviews,
+    album_id = album$content$id,
+    album_name = album$content$name,
+    album_url = album$content$url,
+    album_cover_art_url = album$content$cover_art_url,
+    album_release_date = album$content$release_date,
+    album_comment_count = album$content$comment_count,
+    song_pageviews = album$content$song_pageviews,
     artist_id = artist$id,
     artist_name = artist$name,
     artist_url = artist$url
@@ -134,20 +135,20 @@ get_album_tracklist_id <- function(album_id, access_token = genius_token()) {
   album <- get_album(album_id, access_token)
 
   # start session
-  session <- read_html(album$url)
+  session <- read_html(album$content$url)
 
   # get tracklist
   album_tracks <- get_tracklist(session)
 
   # add album meta data
-  album_tracks$album_id <- album$id
-  album_tracks$album_name <- album$name
-  album_tracks$album_url <- album$url
-  album_tracks$album_cover_art_url <- album$cover_art_url
-  album_tracks$album_release_date <- album$release_date
-  album_tracks$artist_id <- album$artist$id
-  album_tracks$artist_name <- album$artist$name
-  album_tracks$artist_url <- album$artist$url
+  album_tracks$album_id <- album$content$id
+  album_tracks$album_name <- album$content$name
+  album_tracks$album_url <- album$content$url
+  album_tracks$album_cover_art_url <- album$content$cover_art_url
+  album_tracks$album_release_date <- album$content$release_date
+  album_tracks$artist_id <- album$content$artist$id
+  album_tracks$artist_name <- album$content$artist$name
+  album_tracks$artist_url <- album$content$artist$url
 
   # reorder cols
   album_tracks <- album_tracks[, c(

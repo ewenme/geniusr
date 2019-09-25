@@ -29,7 +29,10 @@ get_artist <- function(artist_id, access_token = genius_token()) {
 
   res <- content(req)
 
-  res$response$artist
+  as_genius_resource(
+    res$response$artist, path, req
+  )
+
 }
 
 #' Retrieve metadata for an artist
@@ -155,8 +158,12 @@ get_artist_songs <- function(artist_id,
     # get position of artist = primary artist
     is_primary_artist <- primary_artist_ids == artist_id
 
-    songs[is_primary_artist]
+    songs <- songs[is_primary_artist]
   }
+
+  as_genius_resource(
+    songs, path, req
+  )
 }
 
 #' Retrieve metadata for all of an artist's songs

@@ -14,6 +14,32 @@ genius_get <- function(url, access_token) {
     ))
 }
 
+# set custom genius resource class
+as_genius_resource <- function(content, path, response) {
+
+  structure(
+    list(
+      content = content,
+      path = path,
+      response = response
+    ),
+    class = "genius_resource"
+  )
+}
+
+#' Slightly more human-readable output for genius_resource objects
+#'
+#' @param x a discogs_database object
+#' @param ... ignored
+#' @export
+print.genius_resource <- function(x, ...) {
+
+  cat("<Genius ", x$path, ">\n", sep = "")
+  utils::str(x$content, max=1)
+  invisible(x)
+
+}
+
 # named vector of bad strings and replacements
 bad_lyric_strings <- c(
   "\\s*\\(Ft.[^\\)]+\\)" = "",

@@ -19,6 +19,8 @@ search_genius <- function(search_term, n_results = 10,
 
   check_internet()
 
+  path <- sprintf("api.genius.com/search?q=%s", search_term)
+
   results <- list()
 
   # start page count
@@ -69,6 +71,10 @@ search_genius <- function(search_term, n_results = 10,
   names(results) <- NULL
 
   results
+
+  as_genius_resource(
+    results, path, req
+  )
 }
 
 #' Search artists on Genius

@@ -29,7 +29,9 @@ get_album <- function(album_id, access_token = genius_token()) {
 
   res <- content(req)
 
-  res$response$album
+  as_genius_resource(
+    res$response$album, path, req
+  )
 }
 
 #' Retrieve meta data for an album

@@ -29,7 +29,9 @@ get_song <- function(song_id, access_token = genius_token()) {
 
   res <- content(req)
 
-  res$response$song
+  as_genius_resource(
+    res$response$song, path, req
+  )
 }
 
 #' Retrieve metadata for a song

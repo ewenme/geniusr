@@ -3,7 +3,7 @@
 #' The Genius API lets you request data for a specific album, given an album ID.
 #' \code{get_album()} returns this data in full.
 #'
-#' @seealso [get_album_df()] to return a tidy data frame.
+#' @seealso See [get_album_df()] to return a tidy data frame.
 #'
 #' @param album_id ID of the album (\code{album_id} within an object returned by
 #' \code{\link{get_song}})

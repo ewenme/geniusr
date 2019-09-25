@@ -16,7 +16,7 @@ knitr::opts_chunk$set(
 
 The `geniusr` package is designed to help you retrieve data from [Genius](https://genius.com/). Most of this data falls into one of two camps:
 
-- Details about **documents** (e.g. artists, songs) hosted on Genius
+- Details about Genius **Resources** (e.g. artists, songs)
 - Song **lyrics** hosted on Genius
 
 Both of these areas will be introduced momentarily, once API authentication is dealt with.
@@ -27,17 +27,64 @@ Both of these areas will be introduced momentarily, once API authentication is d
 library(geniusr)
 ```
 
-`geniusr` data retrieval is typically done via the [Genius API](https://docs.genius.com/). This necessitates a few common steps:
+`geniusr` data retrieval is typically done by making *authenticated* requests to the [Genius API](https://docs.genius.com/). This necessitates a few common steps:
 
 1. Create a Genius API client via the [API Client management page](https://genius.com/api-clients/new)
 2. Generate a client access token from your [API clients page](https://genius.com/api-clients)
 3. Pass your access token to a `GENIUS_API_TOKEN` environment variable by explicitly calling the `genius_token()` function, or when prompted by other functions
 
-Once you have set the `GENIUS_API_TOKEN` environment variable, it will be active for the rest of the session and automatically called (via `genius_token()`) when using `geniusr` functions for retrieving data.
+Once you have set the `GENIUS_API_TOKEN` environment variable, it will be active for the rest of the session and automatically called (via `genius_token()`) when using `geniusr` functions to request data.
 
-## Documents {#docs}
+## Resources {#resources}
 
+The first family of data retrieval functions help with accessing data from various types of Genius **Resources**, explored in turn below.
 
+### Songs
+
+Functions for requesting data on **songs** hosted on Genius take the form `get_song_xxx()`. For example, `get_song()` returns details about the song itself, as well as user annotations that are attached to it, as a list.
+
+Let's get details about the track *Sing About Me, I'm Dying of Thirst* by Kendrick Lamar.
+
+```{r}
+get_song(song_id = 90479)
+```
+
+### Artists
+
+Functions for requesting data on an **artist** (i.e. the creator of one or more songs hosted on Genius) take the form `get_artist_xxx()`. For example, `get_artist()` returns details about the artist as a list.
+
+For example, here's some more info about the artist Kendrick Lamar.
+
+```{r}
+get_artist(artist_id = 1421)
+```
+
+### Albums
+
+Functions for requesting data on an **album** take the form `get_album_xxx()`. For example, `get_album()` returns details about the artist as a list.
+
+We can get data on the album *Good Kid, M.A.A.D City* by Kendrick Lamar.
+
+```{r}
+get_album(album_id = 491200)
+```
+
+### Search
+
+Functions for **searching** all content hosted on Genius take the form `search_xxx()`. For example, `search_genius()` returns documents matching a search term(s) as a list.
+
+We can look for documents that match the search term "Compton".
+
+```{r}
+search_genius(search_term = "Compton")
+```
 
 ## Lyrics {#lyrics}
 
+There are also tools to be found in `geniusr` that help with Genius lyrics retrieval. These functions take the form...you guessed it...`get_lyrics_xxx()`. For example, `get_lyrics_id()` finds song lyrics for a given song id.
+
+To complete the look, let's get song lyrics for *Sing About Me, I'm Dying of Thirst*.
+
+```{r}
+get_lyrics_id(song_id = 90479)
+```

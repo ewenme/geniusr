@@ -36,3 +36,7 @@ reference:
     desc: "Functions for searching Genius content."
     contents:
       - starts_with("search")
+  - title: "Misc"
+    desc: "Other utility functions"
+    contents:
+      - print.genius_resource

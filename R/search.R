@@ -3,6 +3,8 @@
 #' The Genius API lets you search hosted content (all songs). Use \code{search_genius()}
 #' to return hits on for a given search term, in full.
 #'
+#' @family search
+#'
 #' @param search_term A character string to search for
 #' @param n_results Maximum no. of search results to return
 #' @param access_token Genius' client access token, defaults to \code{genius_token}
@@ -84,6 +86,8 @@ search_genius <- function(search_term, n_results = 10,
 #' to return \code{artist_id}, \code{artist_name} and \code{artist_url} for all unique
 #' artist matches found using a search term.
 #'
+#' @family search
+#'
 #' @inheritParams search_genius
 #'
 #' @return a tibble
@@ -126,6 +130,8 @@ search_artist <- function(search_term, n_results = 10,
 #' \code{search_song()} to return \code{song_id}, \code{song_name},
 #' \code{lyrics_url} and \code{artist_id} for all unique song matches
 #' found using a search term.
+#'
+#' @family search
 #'
 #' @inheritParams search_genius
 #'

@@ -21,3 +21,11 @@ get_lyrics_search(artist_name = "Anderson .Paak",
 song_title = "Come Home")
 }
 }
+\seealso{
+See \code{\link{get_lyrics_id}} to search lyrics using a song
+ID, \code{\link{get_lyrics_url}} to search using a song URL
+
+Other lyrics: \code{\link{get_lyrics_id}},
+  \code{\link{get_lyrics_url}}
+}
+\concept{lyrics}

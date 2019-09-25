@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Retrieve meta data for an album — get_album_df • geniusr</title>
+<title>Articles • geniusr</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -44,9 +44,7 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Retrieve meta data for an album — get_album_df" />
-<meta property="og:description" content="The Genius API lets you return data for a specific album, given an album ID.
-get_album_meta returns this data in a tidy, but reduced, format." />
+<meta property="og:title" content="Articles" />
 <meta property="og:image" content="https://ewenme.github.io/geniusr/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -67,7 +65,7 @@ get_album_meta returns this data in a tidy, but reduced, format." />
   </head>
 
   <body>
-    <div class="container template-reference-topic">
+    <div class="container template-article-index">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -131,56 +129,17 @@ get_album_meta returns this data in a tidy, but reduced, format." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Retrieve meta data for an album</h1>
-    <small class="dont-index">Source: <a href='https://github.com/ewenme/geniusr/blob/master/R/albums.R'><code>R/albums.R</code></a></small>
-    <div class="hidden name"><code>get_album_df.Rd</code></div>
+      <h1>Articles</h1>
     </div>
 
-    <div class="ref-description">
-    <p>The Genius API lets you return data for a specific album, given an album ID.
-<code>get_album_meta</code> returns this data in a tidy, but reduced, format.</p>
+    <div class="section ">
+      <h3>All vignettes</h3>
+      <p class="section-desc"></p>
+
+      <ul>
+        <li><a href="intro.html">Introduction to geniusr</a></li>
+      </ul>
     </div>
-
-    <pre class="usage"><span class='fu'>get_album_df</span>(<span class='no'>album_id</span>, <span class='kw'>access_token</span> <span class='kw'>=</span> <span class='fu'><a href='genius_token.html'>genius_token</a></span>())</pre>
-
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>album_id</th>
-      <td><p>ID of the album (<code>album_id</code> within an object returned by
-<code><a href='get_song.html'>get_song</a></code>)</p></td>
-    </tr>
-    <tr>
-      <th>access_token</th>
-      <td><p>Genius' client access token, defaults to <code>genius_token</code></p></td>
-    </tr>
-    </table>
-
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p>a tibble</p>
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <div class='dont-index'><p>See <code><a href='get_album.html'>get_album</a></code> to return extended data as a list.</p>
-<p>Other album: <code><a href='get_album_tracklist_id.html'>get_album_tracklist_id</a></code>,
-  <code><a href='get_album_tracklist_search.html'>get_album_tracklist_search</a></code>,
-  <code><a href='get_album.html'>get_album</a></code></p></div>
-
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='fu'>get_album_df</span>(<span class='kw'>album_id</span> <span class='kw'>=</span> <span class='fl'>337082</span>)
-}</div></pre>
-  </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#value">Value</a></li>
-      <li><a href="#see-also">See also</a></li>
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
   </div>
 </div>
 

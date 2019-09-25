@@ -58,6 +58,9 @@
     <loc>https://ewenme.github.io/geniusr//reference/get_song_meta.html</loc>
   </url>
   <url>
+    <loc>https://ewenme.github.io/geniusr//reference/print.genius_resource.html</loc>
+  </url>
+  <url>
     <loc>https://ewenme.github.io/geniusr//reference/scrape_lyrics_id.html</loc>
   </url>
   <url>
@@ -74,5 +77,8 @@
   </url>
   <url>
     <loc>https://ewenme.github.io/geniusr//reference/search_song.html</loc>
+  </url>
+  <url>
+    <loc>https://ewenme.github.io/geniusr//articles/intro.html</loc>
   </url>
 </urlset>

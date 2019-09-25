@@ -27,3 +27,8 @@ to return hits on for a given search term, in full.
 search_genius(search_term = "Lil", n_results = 100)
 }
 }
+\seealso{
+Other search: \code{\link{search_artist}},
+  \code{\link{search_song}}
+}
+\concept{search}

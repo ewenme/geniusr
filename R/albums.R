@@ -3,7 +3,8 @@
 #' The Genius API lets you request data for a specific album, given an album ID.
 #' \code{get_album()} returns this data in full.
 #'
-#' @seealso See [get_album_df()] to return a tidy data frame.
+#' @family album
+#' @seealso See \code{\link{get_album_df}} to return a tidy data frame.
 #'
 #' @param album_id ID of the album (\code{album_id} within an object returned by
 #' \code{\link{get_song}})
@@ -40,7 +41,8 @@ get_album <- function(album_id, access_token = genius_token()) {
 #' The Genius API lets you return data for a specific album, given an album ID.
 #' \code{get_album_meta} returns this data in a tidy, but reduced, format.
 #'
-#' @seealso [get_album()] to return extended data as a list.
+#' @family album
+#' @seealso See \code{\link{get_album}} to return extended data as a list.
 #'
 #' @inheritParams get_album
 #'
@@ -118,6 +120,10 @@ get_tracklist <- function(session) {
 #'
 #' Get an album's tracklisting, and song meta data, given an album ID.
 #'
+#' @family album
+#' @seealso See \code{\link{get_album_tracklist_search}} to search for
+#' an album tracklist by searching artist/album names.
+#'
 #' @inheritParams get_album
 #'
 #' @return a tibble
@@ -164,6 +170,10 @@ get_album_tracklist_id <- function(album_id, access_token = genius_token()) {
 #'
 #' Attempt to get an album's tracklisting, given an artist
 #' and album name.
+#'
+#' @family album
+#' @seealso See \code{\link{get_album_tracklist_id}} to search for
+#' an album tracklist using an album ID.
 #'
 #' @param artist_name Name of artist
 #' @param album_name Name of album

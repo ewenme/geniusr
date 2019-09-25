@@ -26,5 +26,10 @@ get_album(album_id = 337082)
 }
 }
 \seealso{
-See [get_album_df()] to return a tidy data frame.
+See \code{\link{get_album_df}} to return a tidy data frame.
+
+Other album: \code{\link{get_album_df}},
+  \code{\link{get_album_tracklist_id}},
+  \code{\link{get_album_tracklist_search}}
 }
+\concept{album}

@@ -33,6 +33,10 @@ get_artist_songs_df(artist_id = 1421)
 }
 }
 \seealso{
-[get_artist_songs()] to return data in full as a
+See \code{\link{get_artist_songs}} to return data in full as a
 list.
+
+Other artist: \code{\link{get_artist_df}},
+  \code{\link{get_artist_songs}}, \code{\link{get_artist}}
 }
+\concept{artist}

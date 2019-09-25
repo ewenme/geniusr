@@ -3,7 +3,8 @@
 #' The Genius API lets you return data for a specific song, given a song ID.
 #' \code{get_song} returns this data in full.
 #'
-#' @seealso [get_song_df()] to return a tidy data frame.
+#' @family song
+#' @seealso See \code{\link{get_song_df}} to return a tidy data frame.
 #'
 #' @param song_id ID of the song (\code{song_id} within an object returned by
 #' \code{\link{search_song}})
@@ -40,7 +41,8 @@ get_song <- function(song_id, access_token = genius_token()) {
 #' The Genius API lets you search for meta data for a song, given a song ID.
 #' \code{get_song_meta} returns this data in a tidy, but reduced, format.
 #'
-#' @seealso [get_song()] to return data in full as a list.
+#' @family song
+#' @seealso See \code{\link{get_song}} to return data in full as a list.
 #'
 #' @inheritParams get_song
 #'

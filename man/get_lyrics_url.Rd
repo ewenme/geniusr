@@ -17,3 +17,12 @@ Scrape lyrics from a Genius' lyric page using it's associated URL. Best used wit
 get_lyrics_url(song_lyrics_url = "https://genius.com/Kendrick-lamar-dna-lyrics")
 }
 }
+\seealso{
+See \code{\link{get_lyrics_id}} to search lyrics using a song
+ID, \code{\link{get_lyrics_search}} to search using artist name and song
+title
+
+Other lyrics: \code{\link{get_lyrics_id}},
+  \code{\link{get_lyrics_search}}
+}
+\concept{lyrics}

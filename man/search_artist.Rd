@@ -24,6 +24,11 @@ artist matches found using a search term.
 }
 \examples{
 \dontrun{
-search_artist(search_term = "Lil", n_results = 100)
+search_artist(search_term = "Lil", n_results = 20)
 }
 }
+\seealso{
+Other search: \code{\link{search_genius}},
+  \code{\link{search_song}}
+}
+\concept{search}

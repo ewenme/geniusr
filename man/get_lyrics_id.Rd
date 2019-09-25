@@ -20,3 +20,12 @@ Get lyrics from Genius' lyric pages using an associated song ID.
 get_lyrics_id(song_id = 3214267)
 }
 }
+\seealso{
+See \code{\link{get_lyrics_url}} to search lyrics using a song
+URL, \code{\link{get_lyrics_search}} to search using artist name and song
+title
+
+Other lyrics: \code{\link{get_lyrics_search}},
+  \code{\link{get_lyrics_url}}
+}
+\concept{lyrics}

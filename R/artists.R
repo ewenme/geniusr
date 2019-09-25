@@ -3,7 +3,8 @@
 #' The Genius API lets you return data for a specific artist, given an artist ID.
 #' \code{get_artist} returns this data in full.
 #'
-#' @seealso [get_artist_df()] to return a tidy data frame.
+#' @family artist
+#' @seealso See \code{\link{get_artist_df}} to return a tidy data frame.
 #'
 #' @param artist_id ID of the artist (\code{artist_id} within an object returned by
 #' \code{\link{search_artist}})
@@ -42,7 +43,8 @@ get_artist <- function(artist_id, access_token = genius_token()) {
 #' artist ID. \code{get_artist_df} returns this data in a tidy, but
 #' reduced, format.
 #'
-#' @seealso [get_artist()] to return data in full as a list.
+#' @family artist
+#' @seealso See \code{\link{get_artist}} to return data in full as a list.
 #'
 #' @inheritParams get_artist
 #'
@@ -81,7 +83,8 @@ get_artist_df <- function(artist_id, access_token = genius_token()) {
 #' given an artist ID. \code{get_artist_songs} returns this data
 #' in full.
 #'
-#' @seealso [get_artist_songs_df()] to return a tidy data frame.
+#' @family artist
+#' @seealso See \code{\link{get_artist_songs_df}} to return a tidy data frame.
 #'
 #' @inheritParams get_artist
 #' @param sort method to order results; by "title" (default) or by
@@ -174,7 +177,8 @@ get_artist_songs <- function(artist_id,
 #' given an artist ID. \code{get_artist_songs_df} returns this data
 #' in a tidy, but reduced, format.
 #'
-#' @seealso [get_artist_songs()] to return data in full as a
+#' @family artist
+#' @seealso See \code{\link{get_artist_songs}} to return data in full as a
 #' list.
 #'
 #' @inheritParams get_artist

@@ -36,5 +36,10 @@ get_artist_songs(artist_id = 1421, include_features = TRUE)
 }
 }
 \seealso{
-[get_artist_songs_df()] to return a tidy data frame.
+See \code{\link{get_artist_songs_df}} to return a tidy data frame.
+
+Other artist: \code{\link{get_artist_df}},
+  \code{\link{get_artist_songs_df}},
+  \code{\link{get_artist}}
 }
+\concept{artist}

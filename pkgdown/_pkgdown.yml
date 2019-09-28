@@ -20,6 +20,11 @@ reference:
     desc: "Functions for working with album data."
     contents:
       - starts_with("get_album")
+  - title: "Annotation data"
+    desc: "Functions for working with annotation data."
+    contents:
+      - starts_with("get_annotation")
+      - starts_with("get_referent")
   - title: "Artist data"
     desc: "Functions for working with artist data."
     contents:

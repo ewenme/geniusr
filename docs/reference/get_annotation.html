@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get or set Genius access token value — genius_token • geniusr</title>
+<title>Retrieve metadata for an annotation — get_annotation • geniusr</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -44,11 +44,9 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Get or set Genius access token value — genius_token" />
-<meta property="og:description" content="The API wrapper functions in this package all rely on a Genius client access token
-residing in the environment variable GENIUS_API_TOKEN. The
-easiest way to accomplish this is to set it in the `.Renviron` file in your
-home directory." />
+<meta property="og:title" content="Retrieve metadata for an annotation — get_annotation" />
+<meta property="og:description" content="The Genius API lets you return data for a specific annotation, given an
+annotation ID. get_annotation returns this data in full." />
 <meta property="og:image" content="https://ewenme.github.io/geniusr/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -133,39 +131,57 @@ home directory." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get or set Genius access token value</h1>
-    <small class="dont-index">Source: <a href='https://github.com/ewenme/geniusr/blob/master/R/auth.R'><code>R/auth.R</code></a></small>
-    <div class="hidden name"><code>genius_token.Rd</code></div>
+    <h1>Retrieve metadata for an annotation</h1>
+    <small class="dont-index">Source: <a href='https://github.com/ewenme/geniusr/blob/master/R/annotations.R'><code>R/annotations.R</code></a></small>
+    <div class="hidden name"><code>get_annotation.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>The API wrapper functions in this package all rely on a Genius client access token
-residing in the environment variable <code>GENIUS_API_TOKEN</code>. The
-easiest way to accomplish this is to set it in the `<code>.Renviron</code>` file in your
-home directory.</p>
+    <p>The Genius API lets you return data for a specific annotation, given an
+annotation ID. <code>get_annotation</code> returns this data in full.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>genius_token</span>(<span class='kw'>force</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>get_annotation</span>(<span class='no'>annotation_id</span>, <span class='kw'>access_token</span> <span class='kw'>=</span> <span class='fu'><a href='genius_token.html'>genius_token</a></span>())</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>force</th>
-      <td><p>force setting a new Genius API token for the current environment?</p></td>
+      <th>annotation_id</th>
+      <td><p>ID of the annotation</p></td>
+    </tr>
+    <tr>
+      <th>access_token</th>
+      <td><p>Genius' client access token, defaults to <code>genius_token</code></p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>atomic character vector containing the Genius API token</p>
+    <p>a <code>genius_resource</code> object that contains the extracted content from the request,
+the original JSON response object and the request path.</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
+    <p>A Genius annotation is a piece of content about a part of a document.
+The document may be a song (hosted on Genius) or a web page (hosted anywhere).
+The part of a document that an annotation is attached to is called a referent.</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>Other annotation: <code><a href='get_referent.html'>get_referent</a></code></p></div>
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
+<span class='fu'>get_annotation</span>(<span class='kw'>annotation_id</span> <span class='kw'>=</span> <span class='fl'>16511101</span>)
+}</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       <li><a href="#value">Value</a></li>
+      <li><a href="#details">Details</a></li>
+      <li><a href="#see-also">See also</a></li>
+      <li><a href="#examples">Examples</a></li>
     </ul>
 
   </div>

@@ -25,6 +25,9 @@
     <loc>https://ewenme.github.io/geniusr//reference/get_album_tracklist_search.html</loc>
   </url>
   <url>
+    <loc>https://ewenme.github.io/geniusr//reference/get_annotation.html</loc>
+  </url>
+  <url>
     <loc>https://ewenme.github.io/geniusr//reference/get_artist.html</loc>
   </url>
   <url>
@@ -47,6 +50,9 @@
   </url>
   <url>
     <loc>https://ewenme.github.io/geniusr//reference/get_lyrics_url.html</loc>
+  </url>
+  <url>
+    <loc>https://ewenme.github.io/geniusr//reference/get_referent.html</loc>
   </url>
   <url>
     <loc>https://ewenme.github.io/geniusr//reference/get_song.html</loc>

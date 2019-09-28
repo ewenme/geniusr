@@ -26,9 +26,6 @@ search_genius <- function(search_term, n_results = 10,
 
   results <- list()
 
-  # start page count
-  i <- 1
-
   # limit pages returned if results limit set
   if (is.numeric(n_results)) {
 

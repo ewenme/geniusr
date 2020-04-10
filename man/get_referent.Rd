@@ -4,8 +4,12 @@
 \alias{get_referent}
 \title{Retrieve metadata for a referent}
 \usage{
-get_referent(created_by_id, song_id, web_page_id,
-  access_token = genius_token())
+get_referent(
+  created_by_id,
+  song_id,
+  web_page_id,
+  access_token = genius_token()
+)
 }
 \arguments{
 \item{created_by_id}{ID of a user to get referents for}
@@ -37,6 +41,7 @@ get_referent(song_id = 3039923)
 }
 }
 \seealso{
-Other annotation: \code{\link{get_annotation}}
+Other annotation: 
+\code{\link{get_annotation}()}
 }
 \concept{annotation}

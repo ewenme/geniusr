@@ -4,7 +4,7 @@ test_that("get_artist returns the right output formats", {
 
   skip_on_cran()
   output <- get_artist(artist_id = 16775)
-  expect_is(output, "genius_resource")
+  expect_is(output, "genius_artist")
 })
 
 test_that("get_artist_df returns the right output formats", {

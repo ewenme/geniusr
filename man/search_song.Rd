@@ -28,7 +28,8 @@ search_song(search_term = "Gucci", n_results = 50)
 }
 }
 \seealso{
-Other search: \code{\link{search_artist}},
-  \code{\link{search_genius}}
+Other search: 
+\code{\link{search_artist}()},
+\code{\link{search_genius}()}
 }
 \concept{search}

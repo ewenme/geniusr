@@ -28,8 +28,9 @@ album_name = "DAMN.")
 See \code{\link{get_album_tracklist_id}} to search for
 an album tracklist using an album ID.
 
-Other album: \code{\link{get_album_df}},
-  \code{\link{get_album_tracklist_id}},
-  \code{\link{get_album}}
+Other album: 
+\code{\link{get_album_df}()},
+\code{\link{get_album_tracklist_id}()},
+\code{\link{get_album}()}
 }
 \concept{album}

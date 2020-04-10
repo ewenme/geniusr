@@ -4,7 +4,7 @@ test_that("get_album returns the right output formats", {
 
   skip_on_cran()
   output <- get_album(album_id = 337082)
-  expect_is(output, "genius_resource")
+  expect_is(output, "genius_album")
 })
 
 test_that("get_album_df returns the right output formats", {

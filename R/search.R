@@ -1,3 +1,29 @@
+# set custom genius resource class
+as_genius_resource <- function(content, path, response) {
+
+  structure(
+    list(
+      content = content,
+      path = path,
+      response = response
+    ),
+    class = "genius_resource"
+  )
+}
+
+#' Slightly more human-readable output for genius_resource objects
+#'
+#' @param x a genius_resource object
+#' @param ... ignored
+#' @export
+print.genius_resource <- function(x, ...) {
+
+  cat("<Genius ", x$path, ">\n", sep = "")
+  utils::str(x$content, max=1)
+  invisible(x)
+
+}
+
 #' Search documents hosted on Genius
 #'
 #' The Genius API lets you search hosted content (all songs). Use \code{search_genius()}

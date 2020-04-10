@@ -22,7 +22,8 @@ See \code{\link{get_lyrics_id}} to search lyrics using a song
 ID, \code{\link{get_lyrics_search}} to search using artist name and song
 title
 
-Other lyrics: \code{\link{get_lyrics_id}},
-  \code{\link{get_lyrics_search}}
+Other lyrics: 
+\code{\link{get_lyrics_id}()},
+\code{\link{get_lyrics_search}()}
 }
 \concept{lyrics}

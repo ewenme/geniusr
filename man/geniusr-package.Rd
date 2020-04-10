@@ -6,7 +6,7 @@
 \alias{geniusr-package}
 \title{geniusr: Tools for Working with the 'Genius' API}
 \description{
-\if{html}{\figure{logo.png}{options: align='right'}}
+\if{html}{\figure{logo.png}{options: align='right' alt='logo' width='120'}}
 
 Provides tools to interact nicely with the 'Genius' API <https://docs.genius.com/>. 
     Search hosted content, extract associated metadata and retrieve lyrics with ease.
@@ -21,7 +21,7 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Ewen Henderson \email{ewenhenderson@gmail.com} (0000-0002-4748-4693)
+\strong{Maintainer}: Ewen Henderson \email{ewenhenderson@gmail.com} (\href{https://orcid.org/0000-0002-4748-4693}{ORCID})
 
 }
 \keyword{internal}

@@ -28,6 +28,7 @@ get_song_df(song_id = 3039923)
 \seealso{
 See \code{\link{get_song}} to return data in full as a list.
 
-Other song: \code{\link{get_song}}
+Other song: 
+\code{\link{get_song}()}
 }
 \concept{song}

@@ -4,8 +4,7 @@
 \alias{search_artist}
 \title{Search artists on Genius}
 \usage{
-search_artist(search_term, n_results = 10,
-  access_token = genius_token())
+search_artist(search_term, n_results = 10, access_token = genius_token())
 }
 \arguments{
 \item{search_term}{A character string to search for}
@@ -28,7 +27,8 @@ search_artist(search_term = "Lil", n_results = 20)
 }
 }
 \seealso{
-Other search: \code{\link{search_genius}},
-  \code{\link{search_song}}
+Other search: 
+\code{\link{search_genius}()},
+\code{\link{search_song}()}
 }
 \concept{search}

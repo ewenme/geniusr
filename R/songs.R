@@ -1,3 +1,29 @@
+# set custom genius song class
+as_genius_song <- function(content, path, response) {
+
+  structure(
+    list(
+      content = content,
+      path = path,
+      response = response
+    ),
+    class = "genius_song"
+  )
+}
+
+#' Slightly more human-readable output for genius_song objects
+#'
+#' @param x a genius_song object
+#' @param ... ignored
+#' @export
+print.genius_song <- function(x, ...) {
+
+  cat(x$content$full_title, " <", x$path, ">\n", sep = "")
+  utils::str(x$content, max=1)
+  invisible(x)
+
+}
+
 #' Retrieve metadata for a song
 #'
 #' The Genius API lets you return data for a specific song, given a song ID.
@@ -10,7 +36,7 @@
 #' \code{\link{search_song}})
 #' @param access_token Genius' client access token, defaults to \code{genius_token}
 #'
-#' @return a \code{genius_resource} object that contains the extracted content from the request,
+#' @return a \code{genius_song} object that contains the extracted content from the request,
 #' the original JSON response object and the request path.
 #'
 #' @examples
@@ -31,7 +57,7 @@ get_song <- function(song_id, access_token = genius_token()) {
 
   res <- content(req)
 
-  as_genius_resource(
+  as_genius_song(
     res$response$song, path, req
   )
 }

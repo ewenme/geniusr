@@ -1,3 +1,29 @@
+# set custom genius annotation class
+as_genius_annotation <- function(content, path, response) {
+
+  structure(
+    list(
+      content = content,
+      path = path,
+      response = response
+    ),
+    class = "genius_annotation"
+  )
+}
+
+#' Slightly more human-readable output for genius_annotation objects
+#'
+#' @param x a genius_annotation object
+#' @param ... ignored
+#' @export
+print.genius_annotation <- function(x, ...) {
+
+  cat("Genius annotations <", x$path, ">\n", sep = "")
+  utils::str(x$content, max=1)
+  invisible(x)
+
+}
+
 #' Retrieve metadata for an annotation
 #'
 #' The Genius API lets you return data for a specific annotation, given an
@@ -12,7 +38,7 @@
 #' @param annotation_id ID of the annotation
 #' @param access_token Genius' client access token, defaults to \code{genius_token}
 #'
-#' @return a \code{genius_resource} object that contains the extracted content from the request,
+#' @return a \code{genius_annotation} object that contains the extracted content from the request,
 #' the original JSON response object and the request path.
 #'
 #' @examples
@@ -33,9 +59,35 @@ get_annotation <- function(annotation_id, access_token = genius_token()) {
 
   res <- content(req)
 
-  as_genius_resource(
+  as_genius_annotation(
     res$response, path, req
   )
+}
+
+# set custom genius referent class
+as_genius_referent <- function(content, path, response) {
+
+  structure(
+    list(
+      content = content,
+      path = path,
+      response = response
+    ),
+    class = "genius_referent"
+  )
+}
+
+#' Slightly more human-readable output for genius_referent objects
+#'
+#' @param x a genius_referent object
+#' @param ... ignored
+#' @export
+print.genius_referent <- function(x, ...) {
+
+  cat("Genius referent <", x$path, ">\n", sep = "")
+  utils::str(x$content, max=1)
+  invisible(x)
+
 }
 
 #' Retrieve metadata for a referent
@@ -56,7 +108,7 @@ get_annotation <- function(annotation_id, access_token = genius_token()) {
 #' \code{web_page_id})
 #' @param access_token Genius' client access token, defaults to \code{genius_token}
 #'
-#' @return a \code{genius_resource} object that contains the extracted content from the request,
+#' @return a \code{genius_referent} object that contains the extracted content from the request,
 #' the original JSON response object and the request path.
 #'
 #' @examples
@@ -117,7 +169,7 @@ get_referent <- function(created_by_id, song_id, web_page_id,
   # bind result elements
   results <- do.call(c, results)
 
-  as_genius_resource(
+  as_genius_referent(
     results, path, req
   )
 }

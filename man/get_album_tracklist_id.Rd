@@ -27,8 +27,9 @@ get_album_tracklist_id(album_id = 337082)
 See \code{\link{get_album_tracklist_search}} to search for
 an album tracklist by searching artist/album names.
 
-Other album: \code{\link{get_album_df}},
-  \code{\link{get_album_tracklist_search}},
-  \code{\link{get_album}}
+Other album: 
+\code{\link{get_album_df}()},
+\code{\link{get_album_tracklist_search}()},
+\code{\link{get_album}()}
 }
 \concept{album}

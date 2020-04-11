@@ -26,4 +26,4 @@ Suggests:
 VignetteBuilder: knitr
 Encoding: UTF-8
 LazyData: yes
-RoxygenNote: 6.1.1
+RoxygenNote: 7.0.2

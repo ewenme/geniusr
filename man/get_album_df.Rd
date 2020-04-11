@@ -27,8 +27,9 @@ get_album_df(album_id = 337082)
 \seealso{
 See \code{\link{get_album}} to return extended data as a list.
 
-Other album: \code{\link{get_album_tracklist_id}},
-  \code{\link{get_album_tracklist_search}},
-  \code{\link{get_album}}
+Other album: 
+\code{\link{get_album_tracklist_id}()},
+\code{\link{get_album_tracklist_search}()},
+\code{\link{get_album}()}
 }
 \concept{album}

@@ -28,8 +28,9 @@ get_artist(artist_id = 16775)
 \seealso{
 See \code{\link{get_artist_df}} to return a tidy data frame.
 
-Other artist: \code{\link{get_artist_df}},
-  \code{\link{get_artist_songs_df}},
-  \code{\link{get_artist_songs}}
+Other artist: 
+\code{\link{get_artist_df}()},
+\code{\link{get_artist_songs_df}()},
+\code{\link{get_artist_songs}()}
 }
 \concept{artist}

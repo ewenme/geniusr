@@ -1,3 +1,29 @@
+# set custom genius album class
+as_genius_album <- function(content, path, response) {
+
+  structure(
+    list(
+      content = content,
+      path = path,
+      response = response
+    ),
+    class = "genius_album"
+  )
+}
+
+#' Slightly more human-readable output for genius_album objects
+#'
+#' @param x a genius_album object
+#' @param ... ignored
+#' @export
+print.genius_album <- function(x, ...) {
+
+  cat(x$content$full_title, " <", x$path, ">\n", sep = "")
+  utils::str(x$content, max=1)
+  invisible(x)
+
+}
+
 #' Retrieve metadata for an album
 #'
 #' The Genius API lets you request data for a specific album, given an album ID.
@@ -10,7 +36,7 @@
 #' \code{\link{get_song}})
 #' @param access_token Genius' client access token, defaults to \code{genius_token}
 #'
-#' @return a \code{genius_resource} object that contains the extracted content from the request,
+#' @return a \code{genius_album} object that contains the extracted content from the request,
 #' the original JSON response object and the request path.
 #'
 #' @examples
@@ -31,7 +57,7 @@ get_album <- function(album_id, access_token = genius_token()) {
 
   res <- content(req)
 
-  as_genius_resource(
+  as_genius_album(
     res$response$album, path, req
   )
 }

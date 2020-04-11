@@ -1,3 +1,29 @@
+# set custom genius artist class
+as_genius_artist <- function(content, path, response) {
+
+  structure(
+    list(
+      content = content,
+      path = path,
+      response = response
+    ),
+    class = "genius_artist"
+  )
+}
+
+#' Slightly more human-readable output for genius_artist objects
+#'
+#' @param x a genius_artist object
+#' @param ... ignored
+#' @export
+print.genius_artist <- function(x, ...) {
+
+  cat(x$content$name, " <", x$path, ">\n", sep = "")
+  utils::str(x$content, max=1)
+  invisible(x)
+
+}
+
 #' Retrieve metadata for an artist
 #'
 #' The Genius API lets you return data for a specific artist, given an artist ID.
@@ -10,7 +36,7 @@
 #' \code{\link{search_artist}})
 #' @param access_token Genius' client access token, defaults to \code{genius_token}
 #'
-#' @return a \code{genius_resource} object that contains the extracted content from the request,
+#' @return a \code{genius_artist} object that contains the extracted content from the request,
 #' the original JSON response object and the request path.
 #'
 #' @examples
@@ -31,7 +57,7 @@ get_artist <- function(artist_id, access_token = genius_token()) {
 
   res <- content(req)
 
-  as_genius_resource(
+  as_genius_artist(
     res$response$artist, path, req
   )
 

@@ -28,6 +28,7 @@ get_song(song_id = 3039923)
 \seealso{
 See \code{\link{get_song_df}} to return a tidy data frame.
 
-Other song: \code{\link{get_song_df}}
+Other song: 
+\code{\link{get_song_df}()}
 }
 \concept{song}

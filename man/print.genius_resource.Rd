@@ -7,7 +7,7 @@
 \method{print}{genius_resource}(x, ...)
 }
 \arguments{
-\item{x}{a discogs_database object}
+\item{x}{a genius_resource object}
 
 \item{...}{ignored}
 }

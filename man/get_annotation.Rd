@@ -30,6 +30,7 @@ get_annotation(annotation_id = 16511101)
 }
 }
 \seealso{
-Other annotation: \code{\link{get_referent}}
+Other annotation: 
+\code{\link{get_referent}()}
 }
 \concept{annotation}

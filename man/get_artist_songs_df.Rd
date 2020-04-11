@@ -4,8 +4,12 @@
 \alias{get_artist_songs_df}
 \title{Retrieve metadata for all of an artist's songs}
 \usage{
-get_artist_songs_df(artist_id, sort = c("title", "popularity"),
-  include_features = FALSE, access_token = genius_token())
+get_artist_songs_df(
+  artist_id,
+  sort = c("title", "popularity"),
+  include_features = FALSE,
+  access_token = genius_token()
+)
 }
 \arguments{
 \item{artist_id}{ID of the artist (\code{artist_id} within an object returned by
@@ -36,7 +40,9 @@ get_artist_songs_df(artist_id = 1421)
 See \code{\link{get_artist_songs}} to return data in full as a
 list.
 
-Other artist: \code{\link{get_artist_df}},
-  \code{\link{get_artist_songs}}, \code{\link{get_artist}}
+Other artist: 
+\code{\link{get_artist_df}()},
+\code{\link{get_artist_songs}()},
+\code{\link{get_artist}()}
 }
 \concept{artist}

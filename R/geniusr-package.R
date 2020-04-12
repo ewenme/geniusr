@@ -22,5 +22,6 @@ if(getRversion() >= "2.15.1")  utils::globalVariables(
     "album_id", "album_name", "album_url",
     "album_performances_label", "album_performances_name",
     "custom_performances_label", "song_relationships_type",
-    ".")
+    "custom_performances_name", "producer_artists_name",
+    "writer_artists_name", ".")
   )

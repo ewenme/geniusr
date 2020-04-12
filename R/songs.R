@@ -181,7 +181,7 @@ tidy_song_relationships <- function(x) {
   relationships$song_id <- x$content$id
 
   select(relationships, song_id, song_relationships_type,
-         song_relationships_name, everything())
+         everything())
 }
 
 #' Extract custom performances from a Genius song

@@ -78,7 +78,7 @@ get_album <- function(album_id, access_token = genius_token()) {
 #'
 album_to_df <- function(x) {
 
-  stopifnot(inherits(x, "genius_album"))
+  stopifnot(is_genius_album(x))
 
   # pull album meta
   album <- x$content
@@ -279,7 +279,7 @@ get_album_tracklist_search <- function(artist_name, album_name) {
 #' @export
 tidy_album_performances <- function(x) {
 
-  stopifnot(inherits(x, "genius_album"))
+  stopifnot(is_genius_album(x))
 
   credits <- map_dfr(x$content$song_performances, function(x) {
 

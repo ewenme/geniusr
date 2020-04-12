@@ -79,7 +79,7 @@ get_artist <- function(artist_id, access_token = genius_token()) {
 #'
 artist_to_df <- function(x) {
 
-  stopifnot(inherits(x, "genius_artist"))
+  stopifnot(is_genius_artist(x))
 
   # pull artist meta
   artist <- x$content

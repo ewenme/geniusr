@@ -13,3 +13,6 @@
 README.md
 ^appveyor\.yml$
 ^codecov\.yml$
+^doc$
+^Meta$
+^CODE_OF_CONDUCT\.md$

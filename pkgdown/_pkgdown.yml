@@ -6,6 +6,7 @@ template:
 
 home:
   strip_header: true
+  title: Working the Genius API with R
 
 authors:
   Ewen Henderson:
@@ -20,6 +21,8 @@ reference:
     desc: "Functions for working with album data."
     contents:
       - starts_with("get_album")
+      - starts_with("album")
+      - starts_with("tidy_album")
   - title: "Annotation data"
     desc: "Functions for working with annotation data."
     contents:
@@ -29,6 +32,7 @@ reference:
     desc: "Functions for working with artist data."
     contents:
       - starts_with("get_artist")
+      - starts_with("artist")
   - title: "Lyrics data"
     desc: "Functions for working with lyrics data."
     contents:
@@ -37,6 +41,8 @@ reference:
     desc: "Functions for working with song data."
     contents:
       - starts_with("get_song")
+      - starts_with("song")
+      - starts_with("tidy_song")
   - title: "Search"
     desc: "Functions for searching Genius content."
     contents:
@@ -44,4 +50,5 @@ reference:
   - title: "Misc"
     desc: "Other utility functions"
     contents:
-      - print.genius_resource
+      - starts_with("browse")
+      - starts_with("print")

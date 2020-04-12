@@ -78,7 +78,7 @@ get_song <- function(song_id, access_token = genius_token()) {
 #'
 song_to_df <- function(x) {
 
-  stopifnot(inherits(x, "genius_song"))
+  stopifnot(is_genius_song(x))
 
   song <- x$content
 
@@ -159,7 +159,7 @@ get_song_df <- function(song_id, access_token = genius_token()) {
 #' @export
 tidy_song_relationships <- function(x) {
 
-  stopifnot(inherits(x, "genius_song"))
+  stopifnot(is_genius_song(x))
 
   relationships <- map_dfr(x$content$song_relationships, function(x) {
 
@@ -180,7 +180,8 @@ tidy_song_relationships <- function(x) {
 
   relationships$song_id <- x$content$id
 
-  select(relationships, song_id, song_relationships_type, everything())
+  select(relationships, song_id, song_relationships_type,
+         everything())
 }
 
 #' Extract custom performances from a Genius song
@@ -199,13 +200,13 @@ tidy_song_relationships <- function(x) {
 #' \dontrun{
 #' song <- get_song(song_id = 3039923)
 #'
-#' tidy_custom_performances(song)
+#' tidy_song_performances(song)
 #' }
 #'
 #' @export
 tidy_song_performances <- function(x) {
 
-  stopifnot(inherits(x, "genius_song"))
+  stopifnot(is_genius_song(x))
 
   credits <- map_dfr(x$content$custom_performances, function(x) {
 
@@ -222,7 +223,8 @@ tidy_song_performances <- function(x) {
 
   credits$song_id <- x$content$id
 
-  select(credits, song_id, custom_performances_label, everything())
+  select(credits, song_id, custom_performances_label,
+         custom_performances_name, everything())
 
 }
 
@@ -248,14 +250,14 @@ tidy_song_performances <- function(x) {
 #' @export
 tidy_song_producers <- function(x) {
 
-  stopifnot(inherits(x, "genius_song"))
+  stopifnot(is_genius_song(x))
 
   producers <- bind_rows(x$content$producer_artists)
 
   producers <- prefix_colnames(producers, "producer_artists")
   producers$song_id <- x$content$id
 
-  select(producers, song_id, everything())
+  select(producers, song_id, producer_artists_name, everything())
 
 }
 
@@ -281,13 +283,13 @@ tidy_song_producers <- function(x) {
 #' @export
 tidy_song_writers <- function(x) {
 
-  stopifnot(inherits(x, "genius_song"))
+  stopifnot(is_genius_song(x))
 
   writers <- bind_rows(x$content$writer_artists)
 
   writers <- prefix_colnames(writers, "writer_artists")
   writers$song_id <- x$content$id
 
-  select(writers, song_id, everything())
+  select(writers, song_id, writer_artists_name, everything())
 
 }

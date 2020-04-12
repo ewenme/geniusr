@@ -14,7 +14,7 @@ status](https://www.r-pkg.org/badges/version/geniusr)](https://cran.r-project.or
 
 ## Overview
 
-Tools for working with the Genius API.
+Tools for working with the *Genius* (FKA *Rap Genius*) API.
 
   - Genius Developers Site: <https://genius.com/developers>
   - Genius API Docs: <https://docs.genius.com/>
@@ -40,12 +40,14 @@ install.packages("geniusr")
     page](https://genius.com/api-clients)
 3.  Set your credentials in the System Environment variable
     `GENIUS_API_TOKEN` by calling the `genius_token()` function and
-    entering your Genius Client Access Token when
-prompted.
+    entering your Genius Client Access Token when prompted.
 
 ## Use
 
-### How many times did Kanye West say “good morning”, on the track “Good Morning”?
+Start with the
+[basics\!](https://ewenme.github.io/geniusr/articles/geniusr.html)
+
+### How many times did ’Ye say “good morning”, on the track “Good Morning”?
 
 ``` r
 
@@ -58,60 +60,12 @@ get_lyrics_search(artist_name = "Kanye West",
                   song_title = "Good Morning") %>% 
   # get lyric bigrams
   unnest_tokens(bigram, line, token = "ngrams", n = 2) %>%
-  # count bigram frequency
-  count(bigram) %>%
   # look for good morning
-  filter(bigram == "good morning")
-#> # A tibble: 1 x 2
-#>   bigram           n
-#>   <chr>        <int>
-#> 1 good morning    18
+  filter(bigram == "good morning") %>% 
+  # count bigram frequency
+  nrow()
+#> [1] 18
 ```
-
-### Positive / Negative Sentiment in Coloring Book, by Chance the Rapper
-
-``` r
-
-library(purrr)
-library(ggplot2)
-
-# set lexicon
-bing <- get_sentiments("bing")
-
-# scrape album tracklist
-tracklist <- get_album_tracklist_search(artist_name = "Chance the Rapper",
-                                        album_name = "Coloring Book")
-
-# scrape album lyrics
-lyrics <- map_df(tracklist$song_lyrics_url, get_lyrics_url)
-
-# counting negative / positive words
-sentiment <- lyrics %>%
-  unnest_tokens(word, line) %>%
-  # remove stop words
-  anti_join(stop_words) %>%
-  # join afinn score
-  inner_join(bing) %>%
-  # count negative / positive words
-  count(word, sentiment, sort = TRUE) %>%
-  ungroup()
-
-# plotting top contributors
-sentiment %>%
-  group_by(sentiment) %>%
-  top_n(10) %>%
-  ungroup() %>%
-  mutate(word = reorder(word, n)) %>%
-  ggplot(aes(word, n, fill = sentiment)) +
-  geom_col(show.legend = FALSE) +
-  facet_wrap(~sentiment, scales = "free_y") +
-  labs(y = "Coloring Book: Words that contribute the most to positive and negative sentiment",
-       x = NULL) +
-  coord_flip() +
-  theme_minimal()
-```
-
-![](man/figures/README-coloring_sentiment-1.png)<!-- -->
 
 ## Other options
 

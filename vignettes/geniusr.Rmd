@@ -1,8 +1,8 @@
 ---
-title: "Introduction to geniusr"
+title: "geniusr: the basics"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Introduction to Geniusr}
+  %\VignetteIndexEntry{geniusr: the basics}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -14,12 +14,12 @@ knitr::opts_chunk$set(
 )
 ```
 
-The `geniusr` package is designed to help you retrieve data from [Genius](https://genius.com/). Most of this data falls into one of two camps:
+The `geniusr` package is designed to help you retrieve data from [Genius](https://genius.com/). Most of this data falls into one of two distinct categories:
 
-- *Genius* **Resources** (e.g. artists, songs, albums)
-- Song **lyrics** hosted on *Genius*
+- *Genius* **Resource** (e.g. artists, songs, albums) metadata
+- Song **lyrics** (hosted on *Genius*)
 
-Functionality in both of these areas will be demonstrated once API authentication is dealt with.
+Functionality in both of these areas will be demonstrated once API authentication is dealt with. Make sure to [read more in the docs](https://ewenme.github.io/geniusr/reference/index.html) for detailed guidance on all package features.
 
 ## Authentication {#auth}
 
@@ -77,6 +77,36 @@ We can look for documents that match the search term "Compton".
 
 ```{r}
 search_genius(search_term = "Compton")
+```
+
+### Simplify
+
+The functions introduced above all return fairly complex list objects that are not *immediately* ready for many analytical workflows. The `get_artist|album|song()` functions all have sister functions that prepare a tibble (data frame) for you. 
+
+Here's `get_song()` in action...
+
+```{r}
+get_song(song_id = 3889)
+```
+
+...and here's `get_song_df()`, retrieving data for the same song:
+
+```{r}
+get_song_df(song_id = 3889)
+```
+
+The `get_album|artist|song_df()` output is a somewhat simplified version of the `get_album|artist|song()` counterpart, so make sure to check the original function objects if you need the detail.
+
+Furthermore, there are some `tidy_xxx()` functions available to help you "un-nest" some of the data holed up in nested lists within `genius_song` and `genius_album` objects.
+
+For example, `tidy_song_producers()` pulls out producer credits from a `genius_song()` object as a tidy tibble:
+
+```{r}
+song <- get_song(song_id = 89)
+
+song
+
+tidy_song_producers(song)
 ```
 
 ## Lyrics {#lyrics}

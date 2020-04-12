@@ -31,7 +31,7 @@ browse_genius <- function() {
 #' @param x a \code{genius_album}, \code{genius_artist},
 #' or \code{genius_song} object
 #'
-#' @return A browser is opened to the Genius reource url
+#' @return A browser is opened to the Genius resource's url
 #' if the session is interactive. The URL is returned as a character string.
 #'
 #' @export

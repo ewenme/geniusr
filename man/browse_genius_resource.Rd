@@ -11,7 +11,7 @@ browse_genius_resource(x)
 or \code{genius_song} object}
 }
 \value{
-A browser is opened to the Genius reource url
+A browser is opened to the Genius resource's url
 if the session is interactive. The URL is returned as a character string.
 }
 \description{

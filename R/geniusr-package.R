@@ -3,7 +3,7 @@
 #' @importFrom rvest html_nodes html_text html_attr
 #' @importFrom curl has_internet
 #' @importFrom tibble tibble as_tibble
-#' @importFrom purrr is_empty flatten "%>%"
+#' @importFrom purrr is_empty flatten map_dfr "%>%"
 #' @importFrom stringr str_replace_all
 #' @keywords internal
 "_PACKAGE"

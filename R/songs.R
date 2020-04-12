@@ -62,30 +62,10 @@ get_song <- function(song_id, access_token = genius_token()) {
   )
 }
 
-#' Retrieve metadata for a song
-#'
-#' The Genius API lets you search for meta data for a song, given a song ID.
-#' \code{get_song_meta} returns this data in a tidy, but reduced, format.
-#'
-#' @family song
-#' @seealso See \code{\link{get_song}} to return data in full as a list.
-#'
-#' @inheritParams get_song
-#'
-#' @return a tibble
-#'
-#' @examples
-#' \dontrun{
-#' get_song_df(song_id = 3039923)
-#' }
-#'
-#' @export
-get_song_df <- function(song_id, access_token = genius_token()) {
+# function to convert song object to data frame
+song_to_df <- function(x) {
 
-  # pull song meta
-  song <- get_song(song_id, access_token)
-
-  song <- song$content
+  song <- x
 
   # grab album, artist, stat data
   album <- song$album
@@ -114,4 +94,72 @@ get_song_df <- function(song_id, access_token = genius_token()) {
   for(i in ndxNULL){ song_info[[i]] <- NA }
 
   as_tibble(song_info)
+}
+
+#' Retrieve metadata for a song
+#'
+#' The Genius API lets you search for meta data for a song, given a song ID.
+#' \code{get_song_meta} returns this data in a tidy, but reduced, format.
+#'
+#' @family song
+#' @seealso See \code{\link{get_song}} to return data in full as a list.
+#'
+#' @inheritParams get_song
+#'
+#' @return a tibble
+#'
+#' @examples
+#' \dontrun{
+#' get_song_df(song_id = 3039923)
+#' }
+#'
+#' @export
+get_song_df <- function(song_id, access_token = genius_token()) {
+
+  # pull song meta
+  song <- get_song(song_id, access_token)$content
+
+  song_to_df(song)
+}
+
+
+#' Extract song relationships from a Genius song
+#'
+#' Extract "song relationships" info from a Genius song object, as a tidy tibble.
+#'
+#' @family song
+#' @seealso See \code{\link{get_song}} to generate a Genius song object.
+#'
+#' @inheritParams get_song
+#'
+#' @return a tibble
+#'
+#' @examples
+#' \dontrun{
+#' song_data <- get_song(song_id = 3039923)
+#'
+#' tidy_song_relationships(song_data)
+#' }
+#'
+#' @export
+tidy_song_relationships <- function(x) {
+
+  relationships <- map_dfr(x$content$song_relationships, function(x) {
+
+    songs <- map_dfr(x$songs, song_to_df)
+
+    if (nrow(songs) == 0) return(songs)
+
+    songs$type <- x$type
+
+    songs
+  })
+
+  colnames(relationships) <- paste("song_relationships", colnames(relationships), sep = "_")
+
+  relationships$song_id <- x$content$id
+
+  relationships <- relationships[,c(ncol(relationships),1:(ncol(relationships)-1))]
+
+  relationships
 }

@@ -15,6 +15,7 @@
 - `search_genius()` supports a generic search of hosted content on Genius
 - `tidy_song_xxx()` and `tidy_album_xxx()` functions support the extraction of deeply-nested elements, of `genius_song` and `genius_album` objects respectively, into a tidy tibble format.
 - `album|artist|song_to_df()` simplify `genius_album|artist|song` objects respectively, returning tidy tibbles.
+- `browse_genius()` and `browse_genius_resource()` support easy navigation to Genius URLs from R.
 
 ## Minor changes
 

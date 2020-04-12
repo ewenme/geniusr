@@ -6,6 +6,9 @@
 \usage{
 tidy_song_relationships(x)
 }
+\arguments{
+\item{x}{A \code{genius_song} object}
+}
 \value{
 a tibble
 }
@@ -14,9 +17,9 @@ Extract "song relationships" info from a Genius song object, as a tidy tibble.
 }
 \examples{
 \dontrun{
-song_data <- get_song(song_id = 3039923)
+song <- get_song(song_id = 3039923)
 
-tidy_song_relationships(song_data)
+tidy_song_relationships(song)
 }
 
 }
@@ -26,8 +29,9 @@ See \code{\link{get_song}} to generate a Genius song object.
 Other song: 
 \code{\link{get_song_df}()},
 \code{\link{get_song}()},
-\code{\link{tidy_custom_performances}()},
-\code{\link{tidy_producer_artists}()},
-\code{\link{tidy_writer_artists}()}
+\code{\link{tidy_album_performances}()},
+\code{\link{tidy_song_performances}()},
+\code{\link{tidy_song_producers}()},
+\code{\link{tidy_song_writers}()}
 }
 \concept{song}

@@ -30,9 +30,10 @@ See \code{\link{get_song_df}} to return a tidy data frame.
 
 Other song: 
 \code{\link{get_song_df}()},
-\code{\link{tidy_custom_performances}()},
-\code{\link{tidy_producer_artists}()},
+\code{\link{tidy_album_performances}()},
+\code{\link{tidy_song_performances}()},
+\code{\link{tidy_song_producers}()},
 \code{\link{tidy_song_relationships}()},
-\code{\link{tidy_writer_artists}()}
+\code{\link{tidy_song_writers}()}
 }
 \concept{song}

@@ -130,15 +130,15 @@ get_song_df <- function(song_id, access_token = genius_token()) {
 #' @family song
 #' @seealso See \code{\link{get_song}} to generate a Genius song object.
 #'
-#' @inheritParams get_song
+#' @param x A \code{genius_song} object
 #'
 #' @return a tibble
 #'
 #' @examples
 #' \dontrun{
-#' song_data <- get_song(song_id = 3039923)
+#' song <- get_song(song_id = 3039923)
 #'
-#' tidy_song_relationships(song_data)
+#' tidy_song_relationships(song)
 #' }
 #'
 #' @export
@@ -172,19 +172,19 @@ tidy_song_relationships <- function(x) {
 #' @family song
 #' @seealso See \code{\link{get_song}} to generate a Genius song object.
 #'
-#' @inheritParams get_song
+#' @inheritParams tidy_song_relationships
 #'
 #' @return a tibble
 #'
 #' @examples
 #' \dontrun{
-#' song_data <- get_song(song_id = 3039923)
+#' song <- get_song(song_id = 3039923)
 #'
-#' tidy_custom_performances(song_data)
+#' tidy_custom_performances(song)
 #' }
 #'
 #' @export
-tidy_custom_performances <- function(x) {
+tidy_song_performances <- function(x) {
 
   stopifnot(inherits(x, "genius_song"))
 
@@ -215,19 +215,19 @@ tidy_custom_performances <- function(x) {
 #' @family song
 #' @seealso See \code{\link{get_song}} to generate a Genius song object.
 #'
-#' @inheritParams get_song
+#' @inheritParams tidy_song_relationships
 #'
 #' @return a tibble
 #'
 #' @examples
 #' \dontrun{
-#' song_data <- get_song(song_id = 3039923)
+#' song <- get_song(song_id = 3039923)
 #'
-#' tidy_producer_artists(song_data)
+#' tidy_song_producers(song)
 #' }
 #'
 #' @export
-tidy_producer_artists <- function(x) {
+tidy_song_producers <- function(x) {
 
   stopifnot(inherits(x, "genius_song"))
 
@@ -248,19 +248,19 @@ tidy_producer_artists <- function(x) {
 #' @family song
 #' @seealso See \code{\link{get_song}} to generate a Genius song object.
 #'
-#' @inheritParams get_song
+#' @inheritParams tidy_song_relationships
 #'
 #' @return a tibble
 #'
 #' @examples
 #' \dontrun{
-#' song_data <- get_song(song_id = 3039923)
+#' song <- get_song(song_id = 3039923)
 #'
-#' tidy_writer_artists(song_data)
+#' tidy_song_writers(song)
 #' }
 #'
 #' @export
-tidy_writer_artists <- function(x) {
+tidy_song_writers <- function(x) {
 
   stopifnot(inherits(x, "genius_song"))
 

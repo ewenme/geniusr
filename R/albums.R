@@ -108,6 +108,7 @@ get_album_df <- function(album_id, access_token = genius_token()) {
 
 }
 
+# get tracklist of an album
 get_tracklist <- function(session) {
 
   # get track numbers
@@ -232,3 +233,46 @@ get_album_tracklist_search <- function(artist_name, album_name) {
 
 }
 
+#' Extract album performances from a Genius album
+#'
+#' Extract "album performances" (i.e. album credits) info from a Genius album object,
+#' as a tidy tibble.
+#'
+#' @family song
+#' @seealso See \code{\link{get_album}} to generate a Genius album object.
+#'
+#' @param x A \code{genius_album} object
+#'
+#' @return a tibble
+#'
+#' @examples
+#' \dontrun{
+#' album <- get_album(album_id = 337082)
+#'
+#' tidy_album_performances(album)
+#' }
+#'
+#' @export
+tidy_album_performances <- function(x) {
+
+  stopifnot(inherits(x, "genius_album"))
+
+  credits <- map_dfr(x$content$song_performances, function(x) {
+
+    people <- map_dfr(x$artists, function(y) dplyr::bind_rows(y))
+
+    if (nrow(people) == 0) return(people)
+
+    people$label <- x$label
+
+    people
+  })
+
+  credits <- prefix_colnames(credits, "album_performances")
+
+  credits$album_id <- x$content$id
+
+  select(credits, album_id, album_performances_label,
+         album_performances_name, everything())
+
+}

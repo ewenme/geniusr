@@ -1,3 +1,4 @@
+#' @importFrom dplyr select bind_rows everything
 #' @importFrom httr user_agent GET add_headers stop_for_status content
 #' @importFrom xml2 read_html xml_find_all xml_add_sibling xml_remove
 #' @importFrom rvest html_nodes html_text html_attr

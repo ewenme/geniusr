@@ -144,6 +144,8 @@ get_song_df <- function(song_id, access_token = genius_token()) {
 #' @export
 tidy_song_relationships <- function(x) {
 
+  stopifnot(inherits(x, "genius_song"))
+
   relationships <- map_dfr(x$content$song_relationships, function(x) {
 
     songs <- map_dfr(x$songs, song_to_df)
@@ -155,11 +157,118 @@ tidy_song_relationships <- function(x) {
     songs
   })
 
-  colnames(relationships) <- paste("song_relationships", colnames(relationships), sep = "_")
+  relationships <- prefix_colnames(relationships, "song_relationships")
 
   relationships$song_id <- x$content$id
 
-  relationships <- relationships[,c(ncol(relationships),1:(ncol(relationships)-1))]
+  select(relationships, song_id, song_relationships_type, everything())
+}
 
-  relationships
+#' Extract custom performances from a Genius song
+#'
+#' Extract "custom performances" (i.e. other song credits) info from a Genius song object,
+#' as a tidy tibble.
+#'
+#' @family song
+#' @seealso See \code{\link{get_song}} to generate a Genius song object.
+#'
+#' @inheritParams get_song
+#'
+#' @return a tibble
+#'
+#' @examples
+#' \dontrun{
+#' song_data <- get_song(song_id = 3039923)
+#'
+#' tidy_custom_performances(song_data)
+#' }
+#'
+#' @export
+tidy_custom_performances <- function(x) {
+
+  stopifnot(inherits(x, "genius_song"))
+
+  credits <- map_dfr(x$content$custom_performances, function(x) {
+
+    people <- map_dfr(x$artists, function(y) dplyr::bind_rows(y))
+
+    if (nrow(people) == 0) return(people)
+
+    people$label <- x$label
+
+    people
+  })
+
+  credits <- prefix_colnames(credits, "custom_performances")
+
+  credits$song_id <- x$content$id
+
+  select(credits, song_id, custom_performances_label, everything())
+
+}
+
+#' Extract producer credits from a Genius song
+#'
+#' Extract "producer artists" (i.e. producer credits) info from a Genius song object,
+#' as a tidy tibble.
+#'
+#' @family song
+#' @seealso See \code{\link{get_song}} to generate a Genius song object.
+#'
+#' @inheritParams get_song
+#'
+#' @return a tibble
+#'
+#' @examples
+#' \dontrun{
+#' song_data <- get_song(song_id = 3039923)
+#'
+#' tidy_producer_artists(song_data)
+#' }
+#'
+#' @export
+tidy_producer_artists <- function(x) {
+
+  stopifnot(inherits(x, "genius_song"))
+
+  producers <- bind_rows(x$content$producer_artists)
+
+  producers <- prefix_colnames(producers, "producer_artists")
+  producers$song_id <- x$content$id
+
+  select(producers, song_id, everything())
+
+}
+
+#' Extract writer credits from a Genius song
+#'
+#' Extract "writer artists" (i.e. writer credits) info from a Genius song object,
+#' as a tidy tibble.
+#'
+#' @family song
+#' @seealso See \code{\link{get_song}} to generate a Genius song object.
+#'
+#' @inheritParams get_song
+#'
+#' @return a tibble
+#'
+#' @examples
+#' \dontrun{
+#' song_data <- get_song(song_id = 3039923)
+#'
+#' tidy_writer_artists(song_data)
+#' }
+#'
+#' @export
+tidy_writer_artists <- function(x) {
+
+  stopifnot(inherits(x, "genius_song"))
+
+  writers <- bind_rows(x$content$writer_artists)
+
+  writers <- prefix_colnames(writers, "writer_artists")
+  writers$song_id <- x$content$id
+
+  select(writers, song_id, everything())
+
 }

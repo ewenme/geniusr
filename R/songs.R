@@ -62,10 +62,25 @@ get_song <- function(song_id, access_token = genius_token()) {
   )
 }
 
-# function to convert song object to data frame
+#' Convert genius_song object to a data frame
+#'
+#' @param x a \code{genius_song} object
+#'
+#' @return a tibble
+#' @export
+#'
+#'
+#' @examples
+#' \dontrun{
+#' song <- get_song(song_id = 3039923)
+#' song_to_df(song)
+#' }
+#'
 song_to_df <- function(x) {
 
-  song <- x
+  stopifnot(inherits(x, "genius_song"))
+
+  song <- x$content
 
   # grab album, artist, stat data
   album <- song$album
@@ -117,7 +132,7 @@ song_to_df <- function(x) {
 get_song_df <- function(song_id, access_token = genius_token()) {
 
   # pull song meta
-  song <- get_song(song_id, access_token)$content
+  song <- get_song(song_id, access_token)
 
   song_to_df(song)
 }
@@ -148,7 +163,11 @@ tidy_song_relationships <- function(x) {
 
   relationships <- map_dfr(x$content$song_relationships, function(x) {
 
-    songs <- map_dfr(x$songs, song_to_df)
+    songs <- map_dfr(x$songs, function(y) {
+
+      y <- as_genius_song(content = y, path = "foo", response = "foo")
+      song_to_df(y)
+    })
 
     if (nrow(songs) == 0) return(songs)
 

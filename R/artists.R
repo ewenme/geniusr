@@ -63,6 +63,44 @@ get_artist <- function(artist_id, access_token = genius_token()) {
 
 }
 
+#' Convert genius_artist object to a data frame
+#'
+#' @param x a \code{genius_artist} object
+#'
+#' @return a tibble
+#' @export
+#'
+#'
+#' @examples
+#' \dontrun{
+#' artist <- get_artist(artist_id = 16775)
+#' artist_to_df(artist)
+#' }
+#'
+artist_to_df <- function(x) {
+
+  stopifnot(inherits(x, "genius_artist"))
+
+  # pull artist meta
+  artist <- x$content
+
+  # make list for artist_info
+  artist_info <- list(
+    artist_id = artist$id,
+    artist_name = artist$name,
+    artist_url = artist$url,
+    artist_image_url = artist$image_url,
+    artist_followers_count = artist$followers_count,
+    artist_twitter_name = artist$twitter_name
+  )
+
+  # find list indices of NULL values, change to NA
+  ndxNULL <- which(unlist(lapply(artist_info, is.null)))
+  for(i in ndxNULL){ artist_info[[i]] <- NA }
+
+  as_tibble(artist_info)
+}
+
 #' Retrieve metadata for an artist
 #'
 #' The Genius API lets you search for meta data for an artist, given an
@@ -86,21 +124,7 @@ get_artist_df <- function(artist_id, access_token = genius_token()) {
   # pull artist meta
   artist <- get_artist(artist_id, access_token)
 
-  # make list for artist_info
-  artist_info <- list(
-    artist_id = artist$content$id,
-    artist_name = artist$content$name,
-    artist_url = artist$content$url,
-    artist_image_url = artist$content$image_url,
-    artist_followers_count = artist$content$followers_count,
-    artist_twitter_name = artist$content$twitter_name
-  )
-
-  # find list indices of NULL values, change to NA
-  ndxNULL <- which(unlist(lapply(artist_info, is.null)))
-  for(i in ndxNULL){ artist_info[[i]] <- NA }
-
-  as_tibble(artist_info)
+  artist_to_df(artist)
 }
 
 #' Retrieve metadata for all of an artist's songs

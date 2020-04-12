@@ -1,4 +1,4 @@
-# geniusr 1.2.0
+# geniusr 1.1.0.9000
 
 ## Breaking changes
 
@@ -13,6 +13,8 @@
 - `get_album_tracklist_search()` supports the retrieval of album tracklists using `artist_name` and `album_name`.
 - `get_lyrics_search()` supports the retrieval of lyrics using `artist_name` and `song_title`.
 - `search_genius()` supports a generic search of hosted content on Genius
+- `tidy_song_xxx()` and `tidy_album_xxx()` functions support the extraction of deeply-nested elements, of `genius_song` and `genius_album` objects respectively, into a tidy tibble format.
+- `album|artist|song_to_df()` simplify `genius_album|artist|song` objects respectively, returning tidy tibbles.
 
 ## Minor changes
 

@@ -13,7 +13,7 @@ get_song(song_id, access_token = genius_token())
 \item{access_token}{Genius' client access token, defaults to \code{genius_token}}
 }
 \value{
-a \code{genius_resource} object that contains the extracted content from the request,
+a \code{genius_song} object that contains the extracted content from the request,
 the original JSON response object and the request path.
 }
 \description{
@@ -29,6 +29,11 @@ get_song(song_id = 3039923)
 See \code{\link{get_song_df}} to return a tidy data frame.
 
 Other song: 
-\code{\link{get_song_df}()}
+\code{\link{get_song_df}()},
+\code{\link{tidy_album_performances}()},
+\code{\link{tidy_song_performances}()},
+\code{\link{tidy_song_producers}()},
+\code{\link{tidy_song_relationships}()},
+\code{\link{tidy_song_writers}()}
 }
 \concept{song}

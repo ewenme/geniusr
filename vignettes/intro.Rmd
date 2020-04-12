@@ -16,10 +16,10 @@ knitr::opts_chunk$set(
 
 The `geniusr` package is designed to help you retrieve data from [Genius](https://genius.com/). Most of this data falls into one of two camps:
 
-- Details about Genius **Resources** (e.g. artists, songs)
-- Song **lyrics** hosted on Genius
+- *Genius* **Resources** (e.g. artists, songs, albums)
+- Song **lyrics** hosted on *Genius*
 
-Both of these areas will be introduced momentarily, once API authentication is dealt with.
+Functionality in both of these areas will be demonstrated once API authentication is dealt with.
 
 ## Authentication {#auth}
 
@@ -41,9 +41,9 @@ The first family of data retrieval functions help with accessing data from vario
 
 ### Songs
 
-Functions for requesting data on **songs** hosted on Genius take the form `get_song_xxx()`. For example, `get_song()` returns details about the song itself, as well as user annotations that are attached to it, as a list.
+Functions for requesting data on **songs** hosted on Genius take the form `get_song_xxx()`. For example, `get_song()` returns details about the song itself, as well as user annotations that are attached to it, as a `genius_song` object.
 
-Let's get details about the track *Sing About Me, I'm Dying of Thirst* by Kendrick Lamar.
+For details about the track *Sing About Me, I'm Dying of Thirst* by Kendrick Lamar:
 
 ```{r}
 get_song(song_id = 90479)
@@ -51,9 +51,9 @@ get_song(song_id = 90479)
 
 ### Artists
 
-Functions for requesting data on an **artist** (i.e. the creator of one or more songs hosted on Genius) take the form `get_artist_xxx()`. For example, `get_artist()` returns details about the artist as a list.
+Functions for requesting data on an **artist** (i.e. the creator of one or more songs hosted on Genius) take the form `get_artist_xxx()`. For example, `get_artist()` returns details about the artist as a `genius_artist` object
 
-For example, here's some more info about the artist Kendrick Lamar.
+For info about the artist Kendrick Lamar:
 
 ```{r}
 get_artist(artist_id = 1421)
@@ -61,9 +61,9 @@ get_artist(artist_id = 1421)
 
 ### Albums
 
-Functions for requesting data on an **album** take the form `get_album_xxx()`. For example, `get_album()` returns details about the artist as a list.
+Functions for requesting data on an **album** take the form `get_album_xxx()`. For example, `get_album()` returns details about the artist as a `genius_album` object.
 
-We can get data on the album *Good Kid, M.A.A.D City* by Kendrick Lamar.
+For info on the album *Good Kid, M.A.A.D City* by Kendrick Lamar:
 
 ```{r}
 get_album(album_id = 491200)
@@ -71,7 +71,7 @@ get_album(album_id = 491200)
 
 ### Search
 
-Functions for **searching** all content hosted on Genius take the form `search_xxx()`. For example, `search_genius()` returns documents matching a search term(s) as a list.
+Functions for **searching** all content hosted on Genius take the form `search_xxx()`. For example, `search_genius()` returns documents matching a search term(s) as a `genius_resource` object.
 
 We can look for documents that match the search term "Compton".
 
@@ -81,9 +81,9 @@ search_genius(search_term = "Compton")
 
 ## Lyrics {#lyrics}
 
-There are also tools to be found in `geniusr` that help with Genius lyrics retrieval. These functions take the form...you guessed it...`get_lyrics_xxx()`. For example, `get_lyrics_id()` finds song lyrics for a given song id.
+There are also tools to be found in `geniusr` that help with Genius lyrics retrieval. These functions take the form...you guessed it...`get_lyrics_xxx()`. For example, `get_lyrics_id()` finds song lyrics for a given song id, and returns this data as a tidy tibble - each line of the track as an observation (i.e. a row).
 
-To complete the look, let's get song lyrics for *Sing About Me, I'm Dying of Thirst*.
+To complete the look, here's song lyrics for *Sing About Me, I'm Dying of Thirst*:
 
 ```{r}
 get_lyrics_id(song_id = 90479)

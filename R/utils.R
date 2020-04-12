@@ -35,3 +35,11 @@ repeat_before = function(x, y) {
   rep(x[ind], times = diff(
     c(ind, length(x) + 1) ))
 }
+
+# add prefix to column names
+prefix_colnames <- function(x, prefix) {
+
+  colnames(x) <- paste(prefix, colnames(x), sep = "_")
+
+  x
+}

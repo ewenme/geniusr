@@ -23,7 +23,7 @@ get_referent(
 \item{access_token}{Genius' client access token, defaults to \code{genius_token}}
 }
 \value{
-a \code{genius_resource} object that contains the extracted content from the request,
+a \code{genius_referent} object that contains the extracted content from the request,
 the original JSON response object and the request path.
 }
 \description{

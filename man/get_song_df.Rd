@@ -29,6 +29,11 @@ get_song_df(song_id = 3039923)
 See \code{\link{get_song}} to return data in full as a list.
 
 Other song: 
-\code{\link{get_song}()}
+\code{\link{get_song}()},
+\code{\link{tidy_album_performances}()},
+\code{\link{tidy_song_performances}()},
+\code{\link{tidy_song_producers}()},
+\code{\link{tidy_song_relationships}()},
+\code{\link{tidy_song_writers}()}
 }
 \concept{song}

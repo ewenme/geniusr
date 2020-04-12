@@ -18,30 +18,7 @@ get_album_meta <- function(album_id, access_token = genius_token()) {
 
   .Deprecated("get_album_df")
 
-  # pull album meta
-  album <- get_album(album_id, access_token)
-
-  artist <- album$artist
-
-  # make list for album_info
-  album_info <- list(
-    album_id = album$id,
-    album_name = album$name,
-    album_url = album$url,
-    album_cover_art_url = album$cover_art_url,
-    album_release_date = album$release_date,
-    album_comment_count = album$comment_count,
-    song_pageviews = album$song_pageviews,
-    artist_id = artist$id,
-    artist_name = artist$name,
-    artist_url = artist$url
-  )
-
-  # find list indices of NULL values, change to NA
-  ndxNULL <- which(unlist(lapply(album_info, is.null)))
-  for(i in ndxNULL){ album_info[[i]] <- NA }
-
-  as_tibble(album_info)
+  get_album_df(album_id, access_token)
 
 }
 
@@ -62,35 +39,7 @@ scrape_tracklist <- function(album_id, access_token = genius_token()) {
 
   .Deprecated("get_album_tracklist_id")
 
-  check_internet()
-
-  # get album data
-  album <- get_album(album_id, access_token)
-
-  # start session
-  session <- read_html(album$url)
-
-  # get tracklist
-  album_tracks <- get_tracklist(session)
-
-  # add album meta data
-  album_tracks$album_id <- album$id
-  album_tracks$album_name <- album$name
-  album_tracks$album_url <- album$url
-  album_tracks$album_cover_art_url <- album$cover_art_url
-  album_tracks$album_release_date <- album$release_date
-  album_tracks$artist_id <- album$artist$id
-  album_tracks$artist_name <- album$artist$name
-  album_tracks$artist_url <- album$artist$url
-
-  # reorder cols
-  album_tracks <- album_tracks[, c(
-    "song_number", "song_title", "song_lyrics_url", "album_name",
-    "album_id", "artist_id", "artist_name", "artist_url"
-  )]
-
-  as_tibble(album_tracks)
-
+  get_album_tracklist_id(album_id, access_token)
 }
 
 #' Retrieve metadata for an artist
@@ -114,24 +63,8 @@ get_artist_meta <- function(artist_id, access_token = genius_token()) {
 
   .Deprecated("get_artist_df")
 
-  # pull artist meta
-  artist <- get_artist(artist_id, access_token)
+  get_artist_df(artist_id, access_token)
 
-  # make list for artist_info
-  artist_info <- list(
-    artist_id = artist$id,
-    artist_name = artist$name,
-    artist_url = artist$url,
-    artist_image_url = artist$image_url,
-    artist_followers_count = artist$followers_count,
-    artist_twitter_name = artist$twitter_name
-  )
-
-  # find list indices of NULL values, change to NA
-  ndxNULL <- which(unlist(lapply(artist_info, is.null)))
-  for(i in ndxNULL){ artist_info[[i]] <- NA }
-
-  as_tibble(artist_info)
 }
 
 #' Retrieve lyrics associated with a Genius song ID
@@ -149,21 +82,7 @@ scrape_lyrics_id <- function(song_id, access_token = genius_token()) {
 
   .Deprecated("get_lyrics_id")
 
-  check_internet()
-
-  # get song meta data
-  song <- get_song(song_id, access_token)
-
-  # start session
-  session <- read_html(song$url)
-
-  # get song lyrics
-  lyrics <- get_lyrics(session)
-
-  # add fields
-  lyrics$song_id <- song_id
-
-  lyrics
+  get_lyrics_id(song_id, access_token)
 }
 
 #' Retrieve lyrics associated with a Genius lyrics page URL
@@ -181,17 +100,7 @@ scrape_lyrics_url <- function(song_lyrics_url) {
 
   .Deprecated("get_lyrics_url")
 
-  check_internet()
-
-  # start session
-  session <- read_html(song_lyrics_url)
-
-  # get song lyrics
-  lyrics <- get_lyrics(session)
-
-  lyrics$song_lyrics_url <- song_lyrics_url
-
-  lyrics
+  get_lyrics_url(song_lyrics_url)
 
 }
 
@@ -215,34 +124,5 @@ get_song_meta <- function(song_id, access_token = genius_token()) {
 
   .Deprecated("get_song_df")
 
-  # pull song meta
-  song <- get_song(song_id, access_token)
-
-  # grab album, artist, stat data
-  album <- song$album
-  artist <- song$primary_artist
-  stats <- song$stats
-
-  # make list for song_info
-  song_info <- list(
-    song_id = song$id,
-    song_name = song$title_with_featured,
-    song_lyrics_url = song$url,
-    song_art_image_url = song$song_art_image_url,
-    song_release_date = song$release_date,
-    song_pageviews = stats$pageviews,
-    song_annotation_count = song$annotation_count,
-    artist_id = artist$id,
-    artist_name = artist$name,
-    artist_url = artist$url,
-    album_id = album$id,
-    album_name = album$name,
-    album_url = album$url
-  )
-
-  # find list indices of NULL values, change to NA
-  ndxNULL <- which(unlist(lapply(song_info, is.null)))
-  for(i in ndxNULL){ song_info[[i]] <- NA }
-
-  as_tibble(song_info)
+  get_song_df(song_id, access_token)
 }

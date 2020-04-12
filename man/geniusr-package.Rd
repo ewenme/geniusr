@@ -8,14 +8,15 @@
 \description{
 \if{html}{\figure{logo.png}{options: align='right' alt='logo' width='120'}}
 
-Provides tools to interact nicely with the 'Genius' API <https://docs.genius.com/>. 
+Provides tools to interact nicely with the 'Genius' (FKA 'Rap Genius') API 
+    <https://docs.genius.com/>. 
     Search hosted content, extract associated metadata and retrieve lyrics with ease.
 }
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://github.com/ewenme/geniusr}
   \item \url{https://ewenme.github.io/geniusr/}
+  \item \url{https://github.com/ewenme/geniusr}
   \item Report bugs at \url{https://github.com/ewenme/geniusr/issues}
 }
 

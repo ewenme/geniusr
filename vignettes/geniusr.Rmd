@@ -1,8 +1,8 @@
 ---
-title: "geniusr basics"
+title: "geniusr: the basics"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{basics}
+  %\VignetteIndexEntry{geniusr: the basics}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

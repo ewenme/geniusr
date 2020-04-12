@@ -20,7 +20,7 @@ as a tidy tibble.
 \dontrun{
 song <- get_song(song_id = 3039923)
 
-tidy_custom_performances(song)
+tidy_song_performances(song)
 }
 
 }

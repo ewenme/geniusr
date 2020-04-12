@@ -1,8 +1,8 @@
 pandoc: 2.3.1
-pkgdown: 1.4.0
+pkgdown: 1.4.1
 pkgdown_sha: ~
 articles:
-  intro: intro.html
+  geniusr: geniusr.html
 urls:
   reference: https://ewenme.github.io/geniusr//reference
   article: https://ewenme.github.io/geniusr//articles

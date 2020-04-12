@@ -81,7 +81,7 @@ in a tidy, but reduced, format." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">geniusr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.0.9000</span>
       </span>
     </div>
 
@@ -94,19 +94,10 @@ in a tidy, but reduced, format." />
   </a>
 </li>
 <li>
-  <a href="../reference/index.html">Reference</a>
+  <a href="../articles/geniusr.html">Get started</a>
 </li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Articles
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-    <li>
-      <a href="../articles/intro.html">Introduction to geniusr</a>
-    </li>
-  </ul>
+<li>
+  <a href="../reference/index.html">Reference</a>
 </li>
 <li>
   <a href="../news/index.html">Changelog</a>
@@ -143,8 +134,12 @@ given an artist ID. <code>get_artist_songs_df</code> returns this data
 in a tidy, but reduced, format.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>get_artist_songs_df</span>(<span class='no'>artist_id</span>, <span class='kw'>sort</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"title"</span>, <span class='st'>"popularity"</span>),
-  <span class='kw'>include_features</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>access_token</span> <span class='kw'>=</span> <span class='fu'><a href='genius_token.html'>genius_token</a></span>())</pre>
+    <pre class="usage"><span class='fu'>get_artist_songs_df</span>(
+  <span class='no'>artist_id</span>,
+  <span class='kw'>sort</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"title"</span>, <span class='st'>"popularity"</span>),
+  <span class='kw'>include_features</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>access_token</span> <span class='kw'>=</span> <span class='fu'><a href='genius_token.html'>genius_token</a></span>()
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -177,8 +172,10 @@ isn't the primary artist (logical, defaults to FALSE)</p></td>
 
     <div class='dont-index'><p>See <code><a href='get_artist_songs.html'>get_artist_songs</a></code> to return data in full as a
 list.</p>
-<p>Other artist: <code><a href='get_artist_df.html'>get_artist_df</a></code>,
-  <code><a href='get_artist_songs.html'>get_artist_songs</a></code>, <code><a href='get_artist.html'>get_artist</a></code></p></div>
+<p>Other artist: 
+<code><a href='get_artist_df.html'>get_artist_df</a>()</code>,
+<code><a href='get_artist_songs.html'>get_artist_songs</a>()</code>,
+<code><a href='get_artist.html'>get_artist</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
@@ -204,7 +201,7 @@ list.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
 </div>
 
       </footer>

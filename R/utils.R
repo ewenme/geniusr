@@ -7,6 +7,27 @@ check_internet <- function() {
   if (!has_internet()) stop("Please check your internet connection")
 }
 
+# check genius classes
+is_genius_song <- function(x) {
+
+  inherits(x, "genius_song")
+}
+
+is_genius_album <- function(x) {
+
+  inherits(x, "genius_album")
+}
+
+is_genius_artist <- function(x) {
+
+  inherits(x, "genius_artist")
+}
+
+is_genius_resource <- function(x) {
+
+  inherits(x, "genius_resource")
+}
+
 # simple GET wrapper
 genius_get <- function(url, access_token) {
   GET(url = url, add_headers(

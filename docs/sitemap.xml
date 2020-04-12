@@ -4,6 +4,18 @@
     <loc>https://ewenme.github.io/geniusr//index.html</loc>
   </url>
   <url>
+    <loc>https://ewenme.github.io/geniusr//reference/album_to_df.html</loc>
+  </url>
+  <url>
+    <loc>https://ewenme.github.io/geniusr//reference/artist_to_df.html</loc>
+  </url>
+  <url>
+    <loc>https://ewenme.github.io/geniusr//reference/browse_genius.html</loc>
+  </url>
+  <url>
+    <loc>https://ewenme.github.io/geniusr//reference/browse_genius_resource.html</loc>
+  </url>
+  <url>
     <loc>https://ewenme.github.io/geniusr//reference/genius_token.html</loc>
   </url>
   <url>
@@ -64,7 +76,22 @@
     <loc>https://ewenme.github.io/geniusr//reference/get_song_meta.html</loc>
   </url>
   <url>
+    <loc>https://ewenme.github.io/geniusr//reference/print.genius_album.html</loc>
+  </url>
+  <url>
+    <loc>https://ewenme.github.io/geniusr//reference/print.genius_annotation.html</loc>
+  </url>
+  <url>
+    <loc>https://ewenme.github.io/geniusr//reference/print.genius_artist.html</loc>
+  </url>
+  <url>
+    <loc>https://ewenme.github.io/geniusr//reference/print.genius_referent.html</loc>
+  </url>
+  <url>
     <loc>https://ewenme.github.io/geniusr//reference/print.genius_resource.html</loc>
+  </url>
+  <url>
+    <loc>https://ewenme.github.io/geniusr//reference/print.genius_song.html</loc>
   </url>
   <url>
     <loc>https://ewenme.github.io/geniusr//reference/scrape_lyrics_id.html</loc>
@@ -85,6 +112,24 @@
     <loc>https://ewenme.github.io/geniusr//reference/search_song.html</loc>
   </url>
   <url>
-    <loc>https://ewenme.github.io/geniusr//articles/intro.html</loc>
+    <loc>https://ewenme.github.io/geniusr//reference/song_to_df.html</loc>
+  </url>
+  <url>
+    <loc>https://ewenme.github.io/geniusr//reference/tidy_album_performances.html</loc>
+  </url>
+  <url>
+    <loc>https://ewenme.github.io/geniusr//reference/tidy_song_performances.html</loc>
+  </url>
+  <url>
+    <loc>https://ewenme.github.io/geniusr//reference/tidy_song_producers.html</loc>
+  </url>
+  <url>
+    <loc>https://ewenme.github.io/geniusr//reference/tidy_song_relationships.html</loc>
+  </url>
+  <url>
+    <loc>https://ewenme.github.io/geniusr//reference/tidy_song_writers.html</loc>
+  </url>
+  <url>
+    <loc>https://ewenme.github.io/geniusr//articles/geniusr.html</loc>
   </url>
 </urlset>

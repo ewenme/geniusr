@@ -1,4 +1,4 @@
-# geniusr 1.1.0.9000
+# geniusr 1.2.0
 
 ## Breaking changes
 

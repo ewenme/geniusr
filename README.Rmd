@@ -29,16 +29,16 @@ Tools for working with the *Genius* (FKA *Rap Genius*) API.
 
 ## Install
 
-Development version (recommended):
-
-```{r install_dev, eval=FALSE}
-devtools::install_github("ewenme/geniusr")
-```
-
-Latest stable version on CRAN:
+Get the latest stable version from CRAN...
 
 ```{r, eval = FALSE}
 install.packages("geniusr")
+```
+
+...or install the development version from Github.
+
+```{r install_dev, eval=FALSE}
+remotes::install_github("ewenme/geniusr")
 ```
 
 ## Authenticate
@@ -49,7 +49,7 @@ install.packages("geniusr")
 
 ## Use
 
-Start with the [basics!](https://ewenme.github.io/geniusr/articles/geniusr.html)
+Start with [the basics!](https://ewenme.github.io/geniusr/articles/geniusr.html)
 
 ### How many times did 'Ye say "good morning", on the track "Good Morning"?
 

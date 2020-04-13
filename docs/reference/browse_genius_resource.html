@@ -80,7 +80,7 @@ the result of a successful get_album|artist|song() call)." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">geniusr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.2.0.9000</span>
       </span>
     </div>
 
@@ -151,8 +151,9 @@ if the session is interactive. The URL is returned as a character string.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
-<span class='no'>song</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='get_song.html'>get_song</a></span>(<span class='kw'>song_id</span> <span class='kw'>=</span> <span class='fl'>3039923</span>)</div><div class='output co'>#&gt; <span class='error'>Error: Please set env var GENIUS_API_TOKEN to your Genius API key</span></div><div class='input'><span class='fu'>browse_genius_resource</span>(<span class='no'>song</span>)</div><div class='output co'>#&gt; <span class='error'>Error in is_genius_album(x): object 'song' not found</span></div><div class='input'># }
-</div></pre>
+<span class='no'>song</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='get_song.html'>get_song</a></span>(<span class='kw'>song_id</span> <span class='kw'>=</span> <span class='fl'>3039923</span>)
+<span class='fu'>browse_genius_resource</span>(<span class='no'>song</span>)
+<span class='co'># }</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

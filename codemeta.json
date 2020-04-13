@@ -1,11 +1,17 @@
 {
-  "@context": ["https://doi.org/10.5063/schema/codemeta-2.0", "http://schema.org"],
+  "@context": [
+    "https://doi.org/10.5063/schema/codemeta-2.0",
+    "http://schema.org"
+  ],
   "@type": "SoftwareSourceCode",
   "identifier": "geniusr",
-  "description": "Provides tools to interact nicely with the 'Genius' (FKA 'Rap Genius') API \n    <https://docs.genius.com/>. \n    Search hosted content, extract associated metadata and retrieve lyrics with ease.",
+  "description": "Provides tools to interact nicely with the 'Genius' API \n    <https://docs.genius.com/>. \n    Search hosted content, extract associated metadata and retrieve lyrics with ease.",
   "name": "geniusr: Tools for Working with the 'Genius' API",
   "codeRepository": "https://github.com/ewenme/geniusr",
-  "relatedLink": ["https://ewenme.github.io/geniusr/", "https://CRAN.R-project.org/package=geniusr"],
+  "relatedLink": [
+    "https://ewenme.github.io/geniusr/",
+    "https://CRAN.R-project.org/package=geniusr"
+  ],
   "issueTracker": "https://github.com/ewenme/geniusr/issues",
   "license": "https://spdx.org/licenses/MIT",
   "version": "1.2.0",
@@ -200,7 +206,17 @@
   ],
   "releaseNotes": "https://github.com/ewenme/geniusr/blob/master/NEWS.md",
   "readme": "https://github.com/ewenme/geniusr/blob/master/README.md",
-  "contIntegration": ["https://travis-ci.org/ewenme/geniusr", "https://ci.appveyor.com/project/ewenme/geniusr", "https://codecov.io/gh/ewenme/geniusr?branch=master"],
+  "contIntegration": [
+    "https://travis-ci.org/ewenme/geniusr",
+    "https://ci.appveyor.com/project/ewenme/geniusr",
+    "https://codecov.io/gh/ewenme/geniusr?branch=master"
+  ],
   "developmentStatus": "https://www.tidyverse.org/lifecycle/#maturing",
-  "keywords": ["r", "genius-api", "genius", "rstats", "lyrics"]
+  "keywords": [
+    "r",
+    "genius-api",
+    "genius",
+    "rstats",
+    "lyrics"
+  ]
 }

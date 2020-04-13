@@ -70,6 +70,11 @@ get_lyrics_search(artist_name = "Kanye West",
   nrow()
 ```
 
-## Other options
+## Other
+
+- Get citation information for geniusr in R with `citation(package = 'geniusr')`
+- Please note that the geniusr project is released with a [Contributor Code of Conduct](https://ewenme.github.io/geniusr//CODE_OF_CONDUCT.html). By contributing to this project, you agree to abide by its terms.
+
+## Related work
 
 - the [genius](https://github.com/JosiahParry/genius) package specialises in lyrics retrieval from Genius.

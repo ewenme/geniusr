@@ -4,7 +4,7 @@ Version: 1.2.0
 Authors@R: 
     person("Ewen", "Henderson", email = "ewenhenderson@gmail.com", role = c("aut", "cre"),
     comment = c(ORCID = "0000-0002-4748-4693"))
-Description: Provides tools to interact nicely with the 'Genius' (FKA 'Rap Genius') API 
+Description: Provides tools to interact nicely with the 'Genius' API 
     <https://docs.genius.com/>. 
     Search hosted content, extract associated metadata and retrieve lyrics with ease.
 URL: https://ewenme.github.io/geniusr/, https://github.com/ewenme/geniusr

@@ -1,6 +1,6 @@
 ## Release summary
 
-Minor update to add some data tidying helpers.
+Minor update to add some data tidying helpers. I have not been able to check via win-builder, keep hitting FTP errors on upload.
 
 ## Test environments
 * local R installation, R 3.6.0

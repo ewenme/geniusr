@@ -34,6 +34,9 @@ test_that("tidy_song_producers returns the right output formats", {
 
   skip_on_cran()
   skip_if_offline()
+
+  song <- get_song(song_id = id)
+
   output <- tidy_song_producers(song)
   expect_is(output, "tbl_df")
   expect_is(output, "tbl")
@@ -45,6 +48,9 @@ test_that("tidy_song_writers returns the right output formats", {
 
   skip_on_cran()
   skip_if_offline()
+
+  song <- get_song(song_id = id)
+
   output <- tidy_song_writers(song)
   expect_is(output, "tbl_df")
   expect_is(output, "tbl")

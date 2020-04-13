@@ -1,3 +1,4 @@
+.gitignore
 ^docs$
 ^pkgdown
 ^_pkgdown\.yml$
@@ -16,3 +17,4 @@ README.md
 ^doc$
 ^Meta$
 ^CODE_OF_CONDUCT\.md$
+^codemeta\.json$

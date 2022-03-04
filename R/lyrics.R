@@ -1,14 +1,14 @@
 get_lyrics <- function(session) {
 
   # read lyrics
-  lyrics <- html_nodes(session, ".lyrics p")
+  lyrics <-  session %>% html_nodes(xpath = '//div[contains(@class, "Lyrics__Container")]')
 
   # get meta data
-  song <- html_nodes(session, ".header_with_cover_art-primary_info-title") %>%
-    html_text()
+  song <-  session %>% html_nodes(xpath = '//span[contains(@class, "SongHeaderVariantdesktop__")]') %>% 
+    html_text(trim = TRUE)
 
-  artist <- html_nodes(session, ".header_with_cover_art-primary_info-primary_artist") %>%
-    html_text()
+  artist <-  session %>% html_nodes(xpath = '//a[contains(@class, "SongHeaderVariantdesktop__Artist")]') %>% 
+    html_text(trim = TRUE)
 
   # ensure line breaks are preserved correctly
   xml_find_all(lyrics, ".//br") %>% xml_add_sibling("p", "\n")
@@ -25,17 +25,15 @@ get_lyrics <- function(session) {
 
   # error handling for instrumental songs, writes NA if no lyrics
   if (is_empty(lyrics)) {
-    return(tibble(
-      line = NA,
-      section_name = NA,
-      section_artist = NA,
-      song_name = song,
-      artist_name = artist
-    ))
+    return(tibble(line = NA, 
+                  section_name = NA, 
+                  section_artist = NA, 
+                  song_name = song, 
+                  artist_name = artist))
   }
 
   # identify section tags
-  section_tags <- grepl(pattern = "\\[|\\]", lyrics)
+  section_tags <- nchar(gsub(pattern = "\\[.*\\]", "", lyrics)) == 0
 
   # repeat them across sections they apply to
   sections <- repeat_before(lyrics, section_tags)
@@ -50,13 +48,11 @@ get_lyrics <- function(session) {
 
   section_artist[is.na(section_artist)] <- artist
 
-  tibble(
-    line = lyrics[!section_tags],
-    section_name = section_name[!section_tags],
-    section_artist = section_artist[!section_tags],
-    song_name = song,
-    artist_name = artist
-  )
+  tibble(line = lyrics[!section_tags], 
+         section_name = section_name[!section_tags], 
+         section_artist = section_artist[!section_tags], 
+         song_name = song, 
+         artist_name = artist)
 }
 
 #' Retrieve lyrics associated with a Genius song ID

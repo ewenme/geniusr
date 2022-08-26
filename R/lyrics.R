@@ -1,13 +1,16 @@
 get_lyrics <- function(session) {
 
   # read lyrics
-  lyrics <-  session %>% html_nodes(xpath = '//div[contains(@class, "Lyrics__Container")]')
+  lyrics <-  session %>%
+    html_nodes(xpath = '//div[contains(@class, "Lyrics__Container")]')
 
   # get meta data
-  song <-  session %>% html_nodes(xpath = '//span[contains(@class, "SongHeaderVariantdesktop__")]') %>% 
+  song <-  session %>%
+    html_nodes(xpath = '//span[contains(@class, "SongHeaderdesktop__")]') %>%
     html_text(trim = TRUE)
 
-  artist <-  session %>% html_nodes(xpath = '//a[contains(@class, "SongHeaderVariantdesktop__Artist")]') %>% 
+  artist <-  session %>%
+    html_nodes(xpath = '//a[contains(@class, "SongHeaderdesktop__Artist")]') %>%
     html_text(trim = TRUE)
 
   # ensure line breaks are preserved correctly
@@ -25,10 +28,10 @@ get_lyrics <- function(session) {
 
   # error handling for instrumental songs, writes NA if no lyrics
   if (is_empty(lyrics)) {
-    return(tibble(line = NA, 
-                  section_name = NA, 
-                  section_artist = NA, 
-                  song_name = song, 
+    return(tibble(line = NA,
+                  section_name = NA,
+                  section_artist = NA,
+                  song_name = song,
                   artist_name = artist))
   }
 
@@ -48,10 +51,10 @@ get_lyrics <- function(session) {
 
   section_artist[is.na(section_artist)] <- artist
 
-  tibble(line = lyrics[!section_tags], 
-         section_name = section_name[!section_tags], 
-         section_artist = section_artist[!section_tags], 
-         song_name = song, 
+  tibble(line = lyrics[!section_tags],
+         section_name = section_name[!section_tags],
+         section_artist = section_artist[!section_tags],
+         song_name = song,
          artist_name = artist)
 }
 

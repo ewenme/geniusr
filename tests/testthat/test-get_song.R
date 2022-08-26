@@ -34,9 +34,4 @@ test_that("get_song_df returns the right output formats", {
   expect_is(output, "data.frame")
   expect_setequal(output$song_id, id)
 
-  output <- get_song_meta(song_id = id)
-  expect_is(output, "tbl_df")
-  expect_is(output, "tbl")
-  expect_is(output, "data.frame")
-  expect_setequal(output$song_id, id)
 })

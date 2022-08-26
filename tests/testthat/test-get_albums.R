@@ -36,11 +36,6 @@ test_that("get_album_df returns the right output formats", {
   expect_is(output, "data.frame")
   expect_setequal(output$album_id, id)
 
-  output <- get_album_meta(album_id = id)
-  expect_is(output, "tbl_df")
-  expect_is(output, "tbl")
-  expect_is(output, "data.frame")
-  expect_setequal(output$album_id, id)
 })
 
 test_that("get_album_tracklist_id returns the right output formats", {
@@ -49,12 +44,6 @@ test_that("get_album_tracklist_id returns the right output formats", {
   skip_if_offline()
 
   output <- get_album_tracklist_id(album_id = id)
-  expect_is(output, "tbl_df")
-  expect_is(output, "tbl")
-  expect_is(output, "data.frame")
-  expect_setequal(output$album_id, id)
-
-  output <- scrape_tracklist(album_id = id)
   expect_is(output, "tbl_df")
   expect_is(output, "tbl")
   expect_is(output, "data.frame")

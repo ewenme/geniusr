@@ -95,14 +95,14 @@ get_lyrics_id <- function(song_id, access_token = genius_token()) {
 
 #' Retrieve lyrics associated with a Genius lyrics page URL
 #'
-#' Scrape lyrics from a Genius' lyric page using it's associated URL. Best used with \code{\link{scrape_tracklist}}, when song IDs aren't returned - otherwise, \code{\link{scrape_lyrics_id}} is recommended.
+#' Scrape lyrics from a Genius' lyric page using it's associated URL. Best used with \code{\link{get_album_tracklist_id}}, when song IDs aren't returned - otherwise, \code{\link{get_lyrics_id}} is recommended.
 #'
 #' @family lyrics
 #' @seealso See \code{\link{get_lyrics_id}} to search lyrics using a song
 #' ID, \code{\link{get_lyrics_search}} to search using artist name and song
 #' title
 #'
-#' @param song_lyrics_url song lyrics url (like in \code{song_lyrics_url} returned by \code{\link{get_song_meta}})
+#' @param song_lyrics_url song lyrics url (like in \code{song_lyrics_url} returned by \code{\link{get_song_df}})
 #'
 #' @examples
 #' \dontrun{

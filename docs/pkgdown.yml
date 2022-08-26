@@ -1,9 +1,10 @@
-pandoc: 2.3.1
-pkgdown: 1.4.1
+pandoc: '2.18'
+pkgdown: 2.0.6
 pkgdown_sha: ~
 articles:
   geniusr: geniusr.html
+last_built: 2022-08-26T13:10Z
 urls:
-  reference: https://ewenme.github.io/geniusr//reference
-  article: https://ewenme.github.io/geniusr//articles
+  reference: https://ewenme.github.io/geniusr/reference
+  article: https://ewenme.github.io/geniusr/articles
 

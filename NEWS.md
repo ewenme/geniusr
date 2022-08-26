@@ -1,3 +1,8 @@
+# geniusr 1.2.1
+
+* apply new HTML5 fixes for CRAN
+* remove previously deprecated functions (`get_album|artist|song_meta()`, `get_artist_songs()`, `scrape_lyrics_id|url()`, `scrape_tracklist()`)
+
 # geniusr 1.2.0
 
 ## Breaking changes

@@ -35,7 +35,7 @@ Get the latest stable version from CRAN...
 install.packages("geniusr")
 ```
 
-...or install the development version from Github.
+...or install the development version from Github (recommended).
 
 ```{r install_dev, eval=FALSE}
 remotes::install_github("ewenme/geniusr")

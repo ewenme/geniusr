@@ -3,7 +3,7 @@ pkgdown: 2.0.6
 pkgdown_sha: ~
 articles:
   geniusr: geniusr.html
-last_built: 2022-08-26T13:10Z
+last_built: 2022-09-04T11:19Z
 urls:
   reference: https://ewenme.github.io/geniusr/reference
   article: https://ewenme.github.io/geniusr/articles

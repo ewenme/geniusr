@@ -20,8 +20,8 @@ coverage](https://codecov.io/gh/ewenme/geniusr/branch/master/graph/badge.svg)](h
 
 Tools for working with the *Genius* (FKA *Rap Genius*) API.
 
-  - Genius Developers Site: <https://genius.com/developers>
-  - Genius API Docs: <https://docs.genius.com/>
+-   Genius Developers Site: <https://genius.com/developers>
+-   Genius API Docs: <https://docs.genius.com/>
 
 ## Install
 
@@ -31,7 +31,7 @@ Get the latest stable version from CRAN…
 install.packages("geniusr")
 ```
 
-…or install the development version from Github.
+…or install the development version from Github (recommended).
 
 ``` r
 remotes::install_github("ewenme/geniusr")
@@ -49,7 +49,7 @@ remotes::install_github("ewenme/geniusr")
 ## Use
 
 Start with [the
-basics\!](https://ewenme.github.io/geniusr/articles/geniusr.html)
+basics!](https://ewenme.github.io/geniusr/articles/geniusr.html)
 
 ### How many times did ’Ye say “good morning”, on the track “Good Morning”?
 
@@ -73,14 +73,14 @@ get_lyrics_search(artist_name = "Kanye West",
 
 ## Other
 
-  - Get citation information for geniusr in R with `citation(package =
-    'geniusr')`
-  - Please note that the geniusr project is released with a [Contributor
+-   Get citation information for geniusr in R with
+    `citation(package = 'geniusr')`
+-   Please note that the geniusr project is released with a [Contributor
     Code of
     Conduct](https://ewenme.github.io/geniusr//CODE_OF_CONDUCT.html). By
     contributing to this project, you agree to abide by its terms.
 
 ## Related work
 
-  - the [genius](https://github.com/JosiahParry/genius) package
+-   the [genius](https://github.com/JosiahParry/genius) package
     specialises in lyrics retrieval from Genius.

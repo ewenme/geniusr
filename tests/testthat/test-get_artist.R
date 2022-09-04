@@ -34,11 +34,6 @@ test_that("get_artist_df returns the right output formats", {
   expect_is(output, "data.frame")
   expect_setequal(output$artist_id, id)
 
-  output <- get_artist_meta(artist_id = id)
-  expect_is(output, "tbl_df")
-  expect_is(output, "tbl")
-  expect_is(output, "data.frame")
-  expect_setequal(output$artist_id, id)
 })
 
 test_that("get_artist_songs returns the right output formats", {

@@ -1,6 +1,6 @@
 Package: geniusr
 Title: Tools for Working with the 'Genius' API
-Version: 1.2.0.9000
+Version: 1.2.1.9000
 Authors@R: 
     person("Ewen", "Henderson", email = "ewenhenderson@gmail.com", role = c("aut", "cre"),
     comment = c(ORCID = "0000-0002-4748-4693"))
@@ -25,7 +25,6 @@ Suggests:
     rmarkdown,
     testthat (>= 2.1.0),
     covr
-VignetteBuilder: knitr
 Encoding: UTF-8
 LazyData: yes
-RoxygenNote: 7.0.2
+RoxygenNote: 7.2.1

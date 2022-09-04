@@ -1,12 +1,8 @@
 url: https://ewenme.github.io/geniusr/
 
 template:
-  params:
-    bootswatch: lumen
-
-home:
-  strip_header: true
-  title: Working the Genius API with R
+  bootstrap: 5
+  bootswatch: lumen
 
 authors:
   Ewen Henderson:

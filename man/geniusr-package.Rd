@@ -6,11 +6,9 @@
 \alias{geniusr-package}
 \title{geniusr: Tools for Working with the 'Genius' API}
 \description{
-\if{html}{\figure{logo.png}{options: align='right' alt='logo' width='120'}}
+\if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
-Provides tools to interact nicely with the 'Genius' (FKA 'Rap Genius') API 
-    <https://docs.genius.com/>. 
-    Search hosted content, extract associated metadata and retrieve lyrics with ease.
+Provides tools to interact nicely with the 'Genius' API \url{https://docs.genius.com/}. Search hosted content, extract associated metadata and retrieve lyrics with ease.
 }
 \seealso{
 Useful links:

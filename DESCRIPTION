@@ -7,7 +7,8 @@ Authors@R:
 Description: Provides tools to interact nicely with the 'Genius' API 
     <https://docs.genius.com/>. 
     Search hosted content, extract associated metadata and retrieve lyrics with ease.
-URL: https://ewenme.github.io/geniusr/, https://github.com/ewenme/geniusr
+URL: https://ewenme.github.io/geniusr/,
+    https://github.com/ewenme/geniusr
 BugReports: https://github.com/ewenme/geniusr/issues
 Depends: R (>= 3.2.0)
 License: MIT + file LICENSE

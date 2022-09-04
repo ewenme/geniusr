@@ -1,0 +1,5 @@
+url: https://ewenme.github.io/geniusr/
+template:
+  bootstrap: 5
+  bootswatch: lumen
+

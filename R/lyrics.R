@@ -10,7 +10,7 @@ get_lyrics <- function(session) {
     html_text(trim = TRUE)
 
   artist <-  session %>%
-    html_nodes(xpath = '//a[contains(@class, "SongHeaderdesktop__Artist")]') %>%
+    html_nodes(xpath = '//a[contains(@class, "HeaderArtistAndTracklistdesktop__")]') %>%
     html_text(trim = TRUE)
 
   # ensure line breaks are preserved correctly
